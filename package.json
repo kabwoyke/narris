@@ -1,0 +1,17 @@
+{
+  "name": "narris-international-website",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Narris International marketing site: HTML5, Tailwind CSS, vanilla JS (ES modules).",
+  "scripts": {
+    "dev": "tailwindcss -i ./css/input.css -o ./css/styles.css --watch",
+    "build": "tailwindcss -i ./css/input.css -o ./css/styles.css --minify",
+    "stubs": "node scripts/make-stubs.mjs",
+    "validate": "node scripts/validate.mjs",
+    "serve": "node scripts/serve.mjs"
+  },
+  "devDependencies": {
+    "tailwindcss": "^3.4.19"
+  },
+  "type": "module"
+}
