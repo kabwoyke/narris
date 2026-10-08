@@ -85,63 +85,59 @@ export const config = {
     // Optional: real footage for slide 1 instead of the SVG alignment motif.
     // { webm: '/assets/video/alignment.webm', mp4: '/assets/video/alignment.mp4', poster: '/assets/images/alignment-poster.jpg' }
     heroVideo: null,
-    // Client wording is used EXACTLY where quoted (CLAUDE.md section 8).
+    // Client wording (revised hero document, Phase 2) is used EXACTLY.
     slides: [
       {
         id: 'positioning',
         tab: 'Positioning',
         headline:
-          'Clarify your identity, and understand how customers, partners, investors, or other stakeholders interpret it.',
-        // Rewritten as reflective questions with no promised outcome (D2).
+          'Positioning begins long before the first interaction, in the shaping of the perceptions, expectations, and associations through which a brand is understood.',
+        support: ['Are you intentionally shaping that perception, or leaving it to chance?'],
+        cta: { label: "Become your customer's obvious choice", href: '/services.html#positioning-stakeholder-alignment' },
+        visual: 'rings',
+        image: 'slide4',
+      },
+      {
+        id: 'shared-understanding',
+        tab: 'Shared understanding',
+        headline:
+          'We believe a vision can only achieve its full potential when the people responsible for bringing it to life share a common understanding of it.',
         support: [
-          'Is your vision understood the way you intend it?',
-          'Is it understood the same way inside your organisation as outside it?',
-          'Does it resonate with what your target customers need and care about?',
+          'Is your vision consistently understood across your organization, and does it connect meaningfully with the people the business exists to serve?',
         ],
-        // TODO(client): CTA not given for slide 1. Default used.
-        cta: { label: 'Explore positioning', href: '/services.html#positioning-stakeholder-alignment' },
+        cta: { label: 'Build a shared understanding', href: '/services.html#positioning-stakeholder-alignment' },
         visual: 'motif',
       },
       {
         id: 'communication',
         tab: 'Communication',
-        headline: 'Communication is a strategic mechanism for achieving outcomes, not expression for its own sake.',
-        support: ["What does it take to truly speak to your audience's hearts?"],
+        headline: 'We define communication as a strategic mechanism for achieving outcomes, not expression for its own sake.',
+        support: ['What does it take to truly “speak to your audience’s hearts?”'],
         // D4: client's exact CTA kept. Suggested alternative: "Let us shape your narrative".
-        cta: { label: 'Let us tell your story…', href: '/services.html#strategic-narrative-communication' },
+        cta: { label: 'Let us tell your story', href: '/services.html#strategic-narrative-communication' },
         visual: 'photo',
         image: 'slide2',
       },
       {
-        id: 'counsel',
-        tab: 'Counsel',
-        headline: 'Work through complex decisions and communication challenges with a thoughtful advisory partner.',
-        support: [],
-        cta: { label: 'Start with the question you are facing', href: '/contact.html?service=executive-strategic-counsel' },
-        visual: 'photo',
-        image: 'slide3',
-      },
-      {
-        id: 'tagline',
-        // Tab label follows the tagline (config.brand.tagline) at runtime.
-        tab: null,
-        headline: null, // = config.brand.tagline. TODO(client): confirm tagline (D8)
-        support: [], // TODO(client): supporting line for the tagline slide
-        // TODO(client): CTA not given for slide 4. Default used.
-        cta: { label: 'Request a consultation', href: '/contact.html' },
-        visual: 'rings',
-        image: 'slide4',
-      },
-      {
         id: 'gen-z',
         tab: 'Gen Z research',
-        headline:
-          'How are we reimagining and redesigning market and social research to make it more relevant, engaging and effective for Gen Z.',
-        support: [],
+        headline: "A new generation shouldn't have to fit into old research methods. Research should be redesigned to fit them.",
+        support: ['What if participating in research felt more relevant, engaging, and rewarding to you?'],
         // TODO(client): scope of Gen Z research is unconfirmed (D5)
-        cta: { label: 'Discover now', href: '/gen-z-research.html' },
+        cta: { label: 'Experience research differently', href: '/gen-z-research.html' },
         visual: 'photo',
         image: 'slide5',
+      },
+      {
+        id: 'report',
+        tab: 'Latest report',
+        // TODO(client): placeholder slide, reserved for the latest strategic report. Replace the question,
+        // image and CTA link (currently the Insights page) when the report is ready.
+        headline: 'How are brands positioning themselves to win consumer preference this coming holiday season?',
+        support: [],
+        cta: { label: 'Find out now', href: '/case-studies.html' },
+        visual: 'photo',
+        image: 'slide3',
       },
     ],
   },
