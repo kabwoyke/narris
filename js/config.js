@@ -121,8 +121,9 @@ export const config = {
       {
         id: 'gen-z',
         tab: 'Gen Z research',
-        headline: "A new generation shouldn't have to fit into old research methods. Research should be redesigned to fit them.",
-        support: ['What if participating in research felt more relevant, engaging, and rewarding to you?'],
+        // Client wording (Narris hero section-edited.docx): single question, no supporting line.
+        headline: 'What if the intelligence that helps powerful institutions make better decisions became accessible, affordable, and genuinely useful to the young people making decisions about their own futures?',
+        support: [],
         // TODO(client): scope of Gen Z research is unconfirmed (D5)
         cta: { label: 'Experience research differently', href: '/gen-z-research.html' },
         visual: 'photo',
