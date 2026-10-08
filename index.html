@@ -12,8 +12,8 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="preconnect" href="https://images.unsplash.com" crossorigin>
   <!-- Fonts load without blocking first paint (display=swap) -->
-  <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300;9..144,400;9..144,500&family=Inter:wght@400;500;600&display=swap" onload="this.onload=null;this.rel='stylesheet'">
-  <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300;9..144,400;9..144,500&family=Inter:wght@400;500;600&display=swap"></noscript>
+  <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" onload="this.onload=null;this.rel='stylesheet'">
+  <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap"></noscript>
   <link rel="stylesheet" href="css/styles.css">
   <link rel="modulepreload" href="js/main.js">
   <link rel="modulepreload" href="js/components.js">
@@ -49,7 +49,7 @@
       <div class="container-x relative flex h-full items-center pb-36 pt-24 sm:pb-32" data-prerender>
         <div class="max-w-[40rem]">
           <p class="eyebrow">01 <span aria-hidden="true" class="mx-1.5 inline-block h-px w-6 translate-y-[-3px] bg-azure-300"></span> Positioning</p>
-          <h1 class="mt-5 font-serif text-[1.9rem] font-normal leading-[1.12] !text-white sm:text-4xl lg:text-5xl">Clarify your identity, and understand how customers, partners, investors, or other stakeholders interpret it.</h1>
+          <h1 class="mt-5 font-serif text-[1.75rem] font-extrabold leading-[1.1] !text-white sm:text-4xl lg:text-[2.9rem]">Clarify your identity, and understand how customers, partners, investors, or other stakeholders interpret it.</h1>
           <ul class="mt-6 space-y-2 text-base text-azure-200 sm:text-lg">
             <li class="flex gap-3"><span aria-hidden="true" class="mt-[0.7em] h-px w-5 shrink-0 bg-azure-300"></span>Is your vision understood the way you intend it?</li>
             <li class="flex gap-3"><span aria-hidden="true" class="mt-[0.7em] h-px w-5 shrink-0 bg-azure-300"></span>Is it understood the same way inside your organisation as outside it?</li>
@@ -62,38 +62,38 @@
 
     <!-- 2. POSITIONING STATEMENT -->
     <section id="positioning" class="section" aria-labelledby="positioning-h">
-      <div class="container-x grid gap-10 lg:grid-cols-12">
-        <div class="reveal lg:col-span-3">
-          <p class="eyebrow">Who we are</p>
-        </div>
-        <div class="lg:col-span-9">
-          <h2 id="positioning-h" class="reveal h-section max-w-4xl font-normal">
-            Narris International is a boutique strategic narrative and positioning advisory helping leaders and institutions align complexity, communication, and stakeholder understanding with precision and strategic clarity.
+      <div class="container-x grid items-center gap-12 lg:grid-cols-12 lg:gap-16">
+        <div class="lg:col-span-7">
+          <p class="eyebrow reveal mb-5">Who we are</p>
+          <h2 id="positioning-h" class="reveal h-section">
+            Narris International is a <strong class="font-extrabold">boutique strategic narrative and positioning advisory</strong> helping leaders and institutions align complexity, communication, and stakeholder understanding with <strong class="font-extrabold">precision and strategic clarity.</strong>
           </h2>
           <p class="reveal mt-8"><a class="link-arrow" href="about.html">About Narris <svg aria-hidden="true" viewBox="0 0 16 16" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M3 8h10M9 4l4 4-4 4"/></svg></a></p>
         </div>
+        <figure class="section-img reveal lg:col-span-5 aspect-[16/10] lg:aspect-[4/5]" data-section-img="positioning"></figure>
       </div>
     </section>
 
     <!-- 3. THE GAP WE CLOSE -->
     <section id="gap" class="section bg-warm" aria-labelledby="gap-h">
-      <div class="container-x">
-        <div class="reveal max-w-2xl">
+      <div class="container-x grid gap-12 lg:grid-cols-12 lg:gap-x-16 lg:gap-y-10">
+        <div class="reveal lg:col-span-7 lg:col-start-6 lg:row-start-1">
           <p class="eyebrow">The gap we close</p>
-          <h2 id="gap-h" class="h-section mt-4 font-normal">Between what an organisation intends and what its audiences understand.</h2>
+          <h2 id="gap-h" class="h-section mt-4">Between what an organisation intends and what its audiences understand.</h2>
         </div>
-        <div class="mt-14 max-w-4xl">
+            <figure class="section-img reveal lg:col-span-5 lg:col-start-1 lg:row-span-2 lg:row-start-1 lg:sticky lg:top-28 lg:self-start aspect-[16/10] lg:aspect-[4/5]" data-section-img="gap"></figure>
+        <div class="lg:col-span-7 lg:col-start-6 lg:row-start-2">
           <div class="grid grid-cols-2 gap-4 border-b border-azure/20 pb-4 text-xs font-medium uppercase tracking-widest2 text-azure/70" aria-hidden="true">
             <span>Internal reality</span><span class="text-right">External understanding</span>
           </div>
           <ul class="divide-y divide-azure/15" data-stagger>
             <!-- Hover, focus or tap links each pair -->
-            <li class="gap-row reveal grid grid-cols-2 items-center gap-4 py-6 sm:py-7" tabindex="0"><span class="gap-l font-serif text-2xl text-azure/75 sm:text-4xl">Vision</span><span class="gap-line" aria-hidden="true"></span><span class="gap-r text-right font-serif text-2xl text-azure/75 sm:text-4xl">Perception</span></li>
-            <li class="gap-row reveal grid grid-cols-2 items-center gap-4 py-6 sm:py-7" tabindex="0"><span class="gap-l font-serif text-2xl text-azure/75 sm:text-4xl">Complexity</span><span class="gap-line" aria-hidden="true"></span><span class="gap-r text-right font-serif text-2xl text-azure/75 sm:text-4xl">Clarity</span></li>
-            <li class="gap-row reveal grid grid-cols-2 items-center gap-4 py-6 sm:py-7" tabindex="0"><span class="gap-l font-serif text-2xl text-azure/75 sm:text-4xl">Strategy</span><span class="gap-line" aria-hidden="true"></span><span class="gap-r text-right font-serif text-2xl text-azure/75 sm:text-4xl">Communication</span></li>
-            <li class="gap-row reveal grid grid-cols-2 items-center gap-4 py-6 sm:py-7" tabindex="0"><span class="gap-l font-serif text-2xl text-azure/75 sm:text-4xl">Intention</span><span class="gap-line" aria-hidden="true"></span><span class="gap-r text-right font-serif text-2xl text-azure/75 sm:text-4xl">Interpretation</span></li>
-            <li class="gap-row reveal grid grid-cols-2 items-center gap-4 py-6 sm:py-7" tabindex="0"><span class="gap-l font-serif text-2xl text-azure/75 sm:text-4xl">Knowledge</span><span class="gap-line" aria-hidden="true"></span><span class="gap-r text-right font-serif text-2xl text-azure/75 sm:text-4xl">Influence</span></li>
-            <li class="gap-row reveal grid grid-cols-2 items-center gap-4 py-6 sm:py-7" tabindex="0"><span class="gap-l font-serif text-2xl text-azure/75 sm:text-4xl">Ideas</span><span class="gap-line" aria-hidden="true"></span><span class="gap-r text-right font-serif text-2xl text-azure/75 sm:text-4xl">Action</span></li>
+            <li class="gap-row reveal flex items-center justify-between gap-3 py-6 sm:gap-6 sm:py-7" tabindex="0"><span class="gap-l font-serif text-2xl text-azure/75 sm:text-4xl">Vision</span><span class="gap-line" aria-hidden="true"></span><span class="gap-r font-serif text-2xl text-azure/75 sm:text-4xl">Perception</span></li>
+            <li class="gap-row reveal flex items-center justify-between gap-3 py-6 sm:gap-6 sm:py-7" tabindex="0"><span class="gap-l font-serif text-2xl text-azure/75 sm:text-4xl">Complexity</span><span class="gap-line" aria-hidden="true"></span><span class="gap-r font-serif text-2xl text-azure/75 sm:text-4xl">Clarity</span></li>
+            <li class="gap-row reveal flex items-center justify-between gap-3 py-6 sm:gap-6 sm:py-7" tabindex="0"><span class="gap-l font-serif text-2xl text-azure/75 sm:text-4xl">Strategy</span><span class="gap-line" aria-hidden="true"></span><span class="gap-r font-serif text-2xl text-azure/75 sm:text-4xl">Communication</span></li>
+            <li class="gap-row reveal flex items-center justify-between gap-3 py-6 sm:gap-6 sm:py-7" tabindex="0"><span class="gap-l font-serif text-2xl text-azure/75 sm:text-4xl">Intention</span><span class="gap-line" aria-hidden="true"></span><span class="gap-r font-serif text-2xl text-azure/75 sm:text-4xl">Interpretation</span></li>
+            <li class="gap-row reveal flex items-center justify-between gap-3 py-6 sm:gap-6 sm:py-7" tabindex="0"><span class="gap-l font-serif text-2xl text-azure/75 sm:text-4xl">Knowledge</span><span class="gap-line" aria-hidden="true"></span><span class="gap-r font-serif text-2xl text-azure/75 sm:text-4xl">Influence</span></li>
+            <li class="gap-row reveal flex items-center justify-between gap-3 py-6 sm:gap-6 sm:py-7" tabindex="0"><span class="gap-l font-serif text-2xl text-azure/75 sm:text-4xl">Ideas</span><span class="gap-line" aria-hidden="true"></span><span class="gap-r font-serif text-2xl text-azure/75 sm:text-4xl">Action</span></li>
           </ul>
         </div>
       </div>
@@ -105,12 +105,14 @@
         <div class="reveal flex flex-col justify-between gap-6 md:flex-row md:items-end">
           <div class="max-w-2xl">
             <p class="eyebrow">What we do</p>
-            <h2 id="services-h" class="h-section mt-4 font-normal">Five ways we help leaders and institutions be understood.</h2>
+            <h2 id="services-h" class="h-section mt-4">Five ways we help leaders and institutions be understood.</h2>
           </div>
           <a class="link-arrow self-start md:self-auto" href="services.html">All services <svg aria-hidden="true" viewBox="0 0 16 16" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M3 8h10M9 4l4 4-4 4"/></svg></a>
         </div>
         <!-- TODO(client): approve the one-line summaries on each card -->
-        <ul class="mt-14 grid gap-5 sm:grid-cols-2 lg:grid-cols-3" data-stagger>
+        <div class="mt-14 grid gap-10 lg:grid-cols-12 lg:gap-12">
+        <figure class="section-img reveal lg:col-span-4 lg:sticky lg:top-28 lg:self-start aspect-[16/10] lg:aspect-[4/5]" data-section-img="services"></figure>
+        <ul class="grid gap-5 sm:grid-cols-2 lg:col-span-8" data-stagger>
           <li class="reveal">
             <a href="services.html#research-interpretation" class="card-lift group flex h-full flex-col border border-azure/15 bg-white p-7">
               <svg aria-hidden="true" class="h-10 w-10 text-azure-600" viewBox="0 0 40 40" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"><circle cx="17" cy="17" r="9"/><path d="m24 24 9 9M12 17h10M17 12v10" /></svg>
@@ -161,65 +163,49 @@
             </div>
           </li>
         </ul>
+        </div>
       </div>
     </section>
 
     <!-- 5. STRATEGIC PHILOSOPHY -->
     <section id="philosophy" class="section bg-warm" aria-labelledby="philosophy-h">
       <div class="container-x">
-        <div class="grid gap-10 lg:grid-cols-12">
-          <div class="reveal lg:col-span-5">
+        <div class="grid items-center gap-10 lg:grid-cols-12 lg:gap-16">
+          <div class="reveal lg:col-span-7">
             <p class="eyebrow">Our philosophy</p>
-            <h2 id="philosophy-h" class="h-section mt-4 font-normal">Closing the gap between intent and interpretation.</h2>
+            <h2 id="philosophy-h" class="h-section mt-4">Closing the gap between intent and interpretation.</h2>
+            <p class="lead">Most organisations have the ambition, intelligence or capability. They can still fail because they are <strong class="font-bold text-azure">misunderstood, internally fragmented, poorly positioned, strategically unclear, or disconnected from the people they seek to influence.</strong></p>
           </div>
-          <div class="reveal space-y-6 lg:col-span-7">
-            <p class="lead">Most organisations have the ambition, intelligence or capability. They can still fail because they are misunderstood, internally fragmented, poorly positioned, strategically unclear, or disconnected from the people they seek to influence.</p>
-            <p class="font-serif text-2xl leading-snug">Narris International exists to close the gap between organizational intent and audience interpretation.</p>
-          </div>
+          <figure class="section-img reveal aspect-[16/10] lg:col-span-5 lg:aspect-[5/4]" data-section-img="philosophy"></figure>
         </div>
 
-        <ul class="mt-16 grid gap-px bg-azure/15 sm:grid-cols-3" data-stagger>
-          <li class="reveal bg-warm py-8 sm:pr-8"><p class="font-serif text-3xl leading-tight sm:text-[2rem]">Interpretation precedes communication.</p></li>
-          <li class="reveal bg-warm py-8 sm:px-8"><p class="font-serif text-3xl leading-tight sm:text-[2rem]">Listening precedes positioning.</p></li>
-          <li class="reveal bg-warm py-8 sm:pl-8"><p class="font-serif text-3xl leading-tight sm:text-[2rem]">Understanding precedes influence.</p></li>
+        <ul class="mt-14 grid gap-5 sm:grid-cols-3" data-stagger>
+          <li class="reveal flex flex-col justify-between rounded-2xl bg-white p-7 shadow-[0_1px_0_rgba(22,43,58,0.06)] sm:p-8"><span aria-hidden="true" class="mb-10 block h-1 w-10 rounded-full bg-azure"></span><p class="font-serif text-2xl font-extrabold leading-tight sm:text-[1.7rem]">Interpretation precedes communication.</p></li>
+          <li class="reveal flex flex-col justify-between rounded-2xl bg-white p-7 shadow-[0_1px_0_rgba(22,43,58,0.06)] sm:p-8"><span aria-hidden="true" class="mb-10 block h-1 w-10 rounded-full bg-azure"></span><p class="font-serif text-2xl font-extrabold leading-tight sm:text-[1.7rem]">Listening precedes positioning.</p></li>
+          <li class="reveal flex flex-col justify-between rounded-2xl bg-white p-7 shadow-[0_1px_0_rgba(22,43,58,0.06)] sm:p-8"><span aria-hidden="true" class="mb-10 block h-1 w-10 rounded-full bg-azure"></span><p class="font-serif text-2xl font-extrabold leading-tight sm:text-[1.7rem]">Understanding precedes influence.</p></li>
         </ul>
 
-        <p class="reveal measure mt-14 text-lg text-azure/80">We define communication as a strategic mechanism for achieving outcomes, not expression for its own sake.</p>
+        <div class="reveal mt-5 rounded-3xl bg-white p-7 sm:p-12">
+          <p class="reveal max-w-2xl text-xl font-semibold leading-relaxed text-azure sm:text-2xl">We define communication as a strategic mechanism for achieving outcomes, not expression for its own sake.</p>
 
-        <!-- Interactive chain: Clarity > Trust > Alignment > Influence > Meaningful outcomes -->
-        <div id="chain" class="reveal mt-12">
-          <h3 class="sr-only">From clarity to meaningful outcomes</h3>
-          <ol class="flex flex-col gap-2 sm:flex-row sm:flex-wrap sm:items-center" aria-label="The chain">
-            <li class="flex items-center gap-2"><button type="button" class="chain-btn w-full border border-azure/30 px-5 py-3 text-left text-sm font-medium transition hover:border-azure sm:w-auto" aria-expanded="false" aria-controls="chain-p1">Clarity</button><span aria-hidden="true" class="hidden text-azure-600 sm:inline">&rarr;</span></li>
-            <li class="flex items-center gap-2"><button type="button" class="chain-btn w-full border border-azure/30 px-5 py-3 text-left text-sm font-medium transition hover:border-azure sm:w-auto" aria-expanded="false" aria-controls="chain-p2">Trust</button><span aria-hidden="true" class="hidden text-azure-600 sm:inline">&rarr;</span></li>
-            <li class="flex items-center gap-2"><button type="button" class="chain-btn w-full border border-azure/30 px-5 py-3 text-left text-sm font-medium transition hover:border-azure sm:w-auto" aria-expanded="false" aria-controls="chain-p3">Alignment</button><span aria-hidden="true" class="hidden text-azure-600 sm:inline">&rarr;</span></li>
-            <li class="flex items-center gap-2"><button type="button" class="chain-btn w-full border border-azure/30 px-5 py-3 text-left text-sm font-medium transition hover:border-azure sm:w-auto" aria-expanded="false" aria-controls="chain-p4">Influence</button><span aria-hidden="true" class="hidden text-azure-600 sm:inline">&rarr;</span></li>
-            <li class="flex items-center gap-2"><button type="button" class="chain-btn w-full border border-azure/30 px-5 py-3 text-left text-sm font-medium transition hover:border-azure sm:w-auto" aria-expanded="false" aria-controls="chain-p5">Meaningful outcomes</button></li>
-          </ol>
-          <div class="mt-8 min-h-[9.5rem] border-l-2 sm:min-h-[6rem] border-azure pl-6" aria-live="polite">
-            <p id="chain-p1" class="font-serif text-3xl leading-snug sm:text-4xl">Clarity creates trust.</p>
-            <p id="chain-p2" class="font-serif text-3xl leading-snug sm:text-4xl" hidden>Trust creates alignment.</p>
-            <p id="chain-p3" class="font-serif text-3xl leading-snug sm:text-4xl" hidden>Alignment creates influence.</p>
-            <p id="chain-p4" class="font-serif text-3xl leading-snug sm:text-4xl" hidden>And influence creates meaningful outcomes.</p>
-            <p id="chain-p5" class="font-serif text-3xl leading-snug sm:text-4xl" hidden>Communication, as a strategic mechanism for achieving outcomes.</p>
-          </div>
-          <noscript><p class="mt-6 font-serif text-2xl">Clarity creates trust. Trust creates alignment. Alignment creates influence. And influence creates meaningful outcomes.</p></noscript>
-        </div>
-      </div>
-    </section>
-
-    <!-- 6. VISION AND MISSION -->
-    <section id="vision-mission" class="section bg-azure text-white" aria-labelledby="vision-h">
-      <div class="container-x">
-        <h2 id="vision-h" class="sr-only">Vision and mission</h2>
-        <div class="grid gap-14 lg:grid-cols-2 lg:gap-20">
-          <div class="reveal">
-            <p class="eyebrow">Vision</p>
-            <p class="mt-5 font-serif text-2xl leading-snug sm:text-3xl">To become the most trusted strategic narrative and positioning advisory for organizations operating within complex, emerging, and globally interconnected environments.</p>
-          </div>
-          <div class="reveal border-t border-white/15 pt-14 lg:border-l lg:border-t-0 lg:pl-20 lg:pt-0" style="--d:120ms">
-            <p class="eyebrow">Mission</p>
-            <p class="mt-5 font-serif text-2xl leading-snug sm:text-3xl">To help organizations, institutions, and leadership teams align vision, positioning, communication, and stakeholder understanding through strategic interpretation, narrative architecture, and precision-driven advisory.</p>
+          <!-- Interactive chain: Clarity > Trust > Alignment > Influence > Meaningful outcomes -->
+          <div id="chain" class="reveal mt-10">
+            <h3 class="sr-only">From clarity to meaningful outcomes</h3>
+            <ol class="flex flex-col gap-2 sm:flex-row sm:flex-wrap sm:items-center" aria-label="The chain">
+              <li class="flex items-center gap-2"><button type="button" class="chain-btn w-full rounded-xl border border-azure/30 px-5 py-3 text-left text-sm font-bold tracking-[0.02em] transition hover:border-azure sm:w-auto" aria-expanded="false" aria-controls="chain-p1">Clarity</button><span aria-hidden="true" class="hidden text-azure-600 sm:inline">&rarr;</span></li>
+              <li class="flex items-center gap-2"><button type="button" class="chain-btn w-full rounded-xl border border-azure/30 px-5 py-3 text-left text-sm font-bold tracking-[0.02em] transition hover:border-azure sm:w-auto" aria-expanded="false" aria-controls="chain-p2">Trust</button><span aria-hidden="true" class="hidden text-azure-600 sm:inline">&rarr;</span></li>
+              <li class="flex items-center gap-2"><button type="button" class="chain-btn w-full rounded-xl border border-azure/30 px-5 py-3 text-left text-sm font-bold tracking-[0.02em] transition hover:border-azure sm:w-auto" aria-expanded="false" aria-controls="chain-p3">Alignment</button><span aria-hidden="true" class="hidden text-azure-600 sm:inline">&rarr;</span></li>
+              <li class="flex items-center gap-2"><button type="button" class="chain-btn w-full rounded-xl border border-azure/30 px-5 py-3 text-left text-sm font-bold tracking-[0.02em] transition hover:border-azure sm:w-auto" aria-expanded="false" aria-controls="chain-p4">Influence</button><span aria-hidden="true" class="hidden text-azure-600 sm:inline">&rarr;</span></li>
+              <li class="flex items-center gap-2"><button type="button" class="chain-btn w-full rounded-xl border border-azure/30 px-5 py-3 text-left text-sm font-bold tracking-[0.02em] transition hover:border-azure sm:w-auto" aria-expanded="false" aria-controls="chain-p5">Meaningful outcomes</button></li>
+            </ol>
+            <div class="chain-panel relative mt-8 min-h-[9.5rem] pl-6 sm:min-h-[6rem]" aria-live="polite">
+              <p id="chain-p1" class="font-serif text-3xl leading-snug sm:text-4xl">Clarity creates trust.</p>
+              <p id="chain-p2" class="font-serif text-3xl leading-snug sm:text-4xl" hidden>Trust creates alignment.</p>
+              <p id="chain-p3" class="font-serif text-3xl leading-snug sm:text-4xl" hidden>Alignment creates influence.</p>
+              <p id="chain-p4" class="font-serif text-3xl leading-snug sm:text-4xl" hidden>And influence creates meaningful outcomes.</p>
+              <p id="chain-p5" class="font-serif text-3xl leading-snug sm:text-4xl" hidden>Communication, as a strategic mechanism for achieving outcomes.</p>
+            </div>
+            <noscript><p class="mt-6 font-serif text-2xl">Clarity creates trust. Trust creates alignment. Alignment creates influence.  influence creates meaningful outcomes.</p></noscript>
           </div>
         </div>
       </div>
@@ -230,7 +216,8 @@
       <div class="container-x grid gap-12 lg:grid-cols-12">
         <div class="reveal lg:col-span-4">
           <p class="eyebrow">Core values</p>
-          <h2 id="values-h" class="h-section mt-4 font-normal">What we hold ourselves to.</h2>
+          <h2 id="values-h" class="h-section mt-4">What we hold ourselves to.</h2>
+          <figure class="section-img reveal mt-8 aspect-[16/10] lg:aspect-[4/3]" data-section-img="values"></figure>
         </div>
         <ol class="divide-y divide-azure/15 border-y border-azure/15 lg:col-span-8" data-stagger>
           <li class="reveal grid gap-2 py-7 sm:grid-cols-[11rem_1fr] sm:gap-8"><h3 class="font-serif text-2xl">Precision</h3><p class="text-azure/80">We pursue interpretive, strategic and narrative precision in every engagement. Detail, analytical rigour, thoughtful framing, disciplined thinking.</p></li>
@@ -248,16 +235,19 @@
         <div class="reveal flex flex-col justify-between gap-6 md:flex-row md:items-end">
           <div class="max-w-2xl">
             <p class="eyebrow">How we do it</p>
-            <h2 id="how-h" class="h-section mt-4 font-normal">Four steps, from listening to lasting coherence.</h2>
+            <h2 id="how-h" class="h-section mt-4">Four steps, from listening to lasting coherence.</h2>
           </div>
           <a class="link-arrow self-start md:self-auto" href="about.html#approach">The full approach <svg aria-hidden="true" viewBox="0 0 16 16" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M3 8h10M9 4l4 4-4 4"/></svg></a>
         </div>
-        <ol class="mt-14 grid gap-10 md:grid-cols-4 md:gap-6" data-stagger>
+        <div class="mt-14 grid gap-10 lg:grid-cols-12 lg:gap-14">
+        <figure class="section-img reveal lg:col-span-5 lg:sticky lg:top-28 lg:self-start aspect-[16/10] lg:aspect-[4/5]" data-section-img="how"></figure>
+        <ol class="grid gap-10 sm:grid-cols-2 sm:gap-8 lg:col-span-7" data-stagger>
           <li class="reveal border-t border-azure/30 pt-6"><p class="font-serif text-4xl text-azure-600">1</p><h3 class="mt-4 font-serif text-2xl">Listen</h3><p class="mt-3 text-azure/80">Executive conversations, then a map of context, goals, vision and audiences.</p></li>
           <li class="reveal border-t border-azure/30 pt-6"><p class="font-serif text-4xl text-azure-600">2</p><h3 class="mt-4 font-serif text-2xl">Interpret</h3><p class="mt-3 text-azure/80">Audience motivations and emotional realities, and a diagnosis of fragmentation and misalignment.</p></li>
           <li class="reveal border-t border-azure/30 pt-6"><p class="font-serif text-4xl text-azure-600">3</p><h3 class="mt-4 font-serif text-2xl">Shape</h3><p class="mt-3 text-azure/80">Narrative and positioning that resonate, framed to match your objectives.</p></li>
           <li class="reveal border-t border-azure/30 pt-6"><p class="font-serif text-4xl text-azure-600">4</p><h3 class="mt-4 font-serif text-2xl">Align and sustain</h3><p class="mt-3 text-azure/80">Coherence across stakeholders, with advisory guidance and implementation support.</p></li>
         </ol>
+        </div>
       </div>
     </section>
 
@@ -266,14 +256,17 @@
       <div class="container-x">
         <div class="reveal max-w-2xl">
           <p class="eyebrow">Who we serve</p>
-          <h2 id="serve-h" class="h-section mt-4 font-normal">Leaders who carry complex ideas and need them understood.</h2>
+          <h2 id="serve-h" class="h-section mt-4">Leaders who carry complex ideas and need them understood.</h2>
         </div>
         <!-- TODO(client): approve the supporting lines on these three cards -->
-        <ul class="mt-14 grid gap-5 md:grid-cols-3" data-stagger>
+        <div class="mt-14 grid gap-10 lg:grid-cols-12 lg:gap-14">
+        <figure class="section-img reveal lg:col-span-5 lg:sticky lg:top-28 lg:self-start aspect-[16/10] lg:aspect-[4/5]" data-section-img="serve"></figure>
+        <ul class="grid gap-5 lg:col-span-7" data-stagger>
           <li class="reveal border border-azure/15 p-8"><h3 class="font-serif text-2xl leading-snug">C-suite and leaders in private corporations</h3><p class="mt-3 text-azure/75">Executives shaping strategy, reputation and direction.</p></li>
           <li class="reveal border border-azure/15 p-8"><h3 class="font-serif text-2xl leading-snug">Leaders in NGOs and mission-driven organisations</h3><p class="mt-3 text-azure/75">Teams whose work depends on being clearly understood.</p></li>
           <li class="reveal border border-azure/15 p-8"><h3 class="font-serif text-2xl leading-snug">Business owners and founders</h3><p class="mt-3 text-azure/75">People building something and defining how it is seen.</p></li>
         </ul>
+        </div>
       </div>
     </section>
 
@@ -281,7 +274,7 @@
     <section id="insights" class="section bg-warm" aria-labelledby="insights-h" hidden>
       <div class="container-x">
         <div class="reveal flex flex-col justify-between gap-6 md:flex-row md:items-end">
-          <div class="max-w-2xl"><p class="eyebrow">Insights</p><h2 id="insights-h" class="h-section mt-4 font-normal">Work and thinking, shared with consent.</h2></div>
+          <div class="max-w-2xl"><p class="eyebrow">Insights</p><h2 id="insights-h" class="h-section mt-4">Work and thinking, shared with consent.</h2></div>
           <a class="link-arrow self-start md:self-auto" href="case-studies.html">All insights <svg aria-hidden="true" viewBox="0 0 16 16" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M3 8h10M9 4l4 4-4 4"/></svg></a>
         </div>
         <ul class="mt-12 grid gap-5 md:grid-cols-3" data-insights-list></ul>
@@ -291,7 +284,7 @@
     <!-- 11. CREDIBILITY: hidden until real testimonials / credentials exist -->
     <section id="credibility" class="section" aria-labelledby="credibility-h" hidden>
       <div class="container-x">
-        <h2 id="credibility-h" class="h-section font-normal">In their words</h2>
+        <h2 id="credibility-h" class="h-section">In their words</h2>
         <div data-testimonials hidden><ul class="mt-10 grid gap-10 md:grid-cols-3" data-testimonials-list></ul></div>
         <div data-credentials class="mt-12" hidden><ul class="flex flex-wrap gap-3" data-credentials-list></ul></div>
       </div>
@@ -302,13 +295,14 @@
       <div class="container-x grid gap-14 lg:grid-cols-12">
         <div class="reveal lg:col-span-5">
           <p class="eyebrow">Get in touch</p>
-          <h2 id="contact-h" class="h-section mt-4 font-normal">Begin with a conversation.</h2>
+          <h2 id="contact-h" class="h-section mt-4">Begin with a conversation.</h2>
           <p class="lead mt-5" data-cfg-text="contact.reachLine"></p>
           <ul class="mt-9 space-y-4">
             <li><span class="block text-xs uppercase tracking-widest2 text-azure-300">Call</span><a class="font-serif text-2xl underline decoration-azure-300 decoration-1 underline-offset-8 hover:decoration-white" data-cfg-tel="contact.phoneIntl" data-cfg-text="contact.phone" href="#"></a></li>
             <li><span class="block text-xs uppercase tracking-widest2 text-azure-300">WhatsApp</span><a class="font-serif text-2xl underline decoration-azure-300 decoration-1 underline-offset-8 hover:decoration-white" data-cfg-href="contact.whatsapp" target="_blank" rel="noopener" href="#">Start a chat</a></li>
             <li><span class="block text-xs uppercase tracking-widest2 text-azure-300">Email</span><a class="break-all font-serif text-xl underline decoration-azure-300 decoration-1 underline-offset-8 hover:decoration-white sm:text-2xl" data-cfg-mailto="contact.email" data-cfg-text="contact.email" href="#"></a></li>
           </ul>
+          <figure class="section-img reveal mt-10 aspect-[16/10] lg:aspect-[4/3]" data-section-img="contact"></figure>
         </div>
 
         <div class="reveal lg:col-span-7" style="--d:120ms">

@@ -167,7 +167,7 @@ export function initHero() {
     const hasVisual = s.visual === 'motif' || s.visual === 'rings';
     const long = s.headline.length > 90;
     const short = s.headline.length < 40;
-    const size = short ? 'text-5xl sm:text-6xl lg:text-7xl' : long ? 'text-[1.9rem] sm:text-4xl lg:text-5xl' : 'text-4xl sm:text-5xl lg:text-[3.4rem]';
+    const size = short ? 'text-5xl sm:text-6xl lg:text-7xl' : long ? 'text-[1.75rem] sm:text-4xl lg:text-[2.9rem]' : 'text-[2rem] sm:text-5xl lg:text-6xl';
     const support = s.support.length > 1
       ? `<ul class="hero-anim mt-6 space-y-2 text-base text-azure-200 sm:text-lg" style="--i:2">${s.support.map((q) => `<li class="flex gap-3"><span aria-hidden="true" class="mt-[0.7em] h-px w-5 shrink-0 bg-azure-300"></span>${esc(q)}</li>`).join('')}</ul>`
       : s.support.length === 1
@@ -182,7 +182,7 @@ export function initHero() {
         <div class="container-x relative flex h-full items-center pb-36 pt-24 sm:pb-32">
           <div class="${hasVisual ? 'max-w-[40rem]' : 'max-w-3xl'}">
             <p class="eyebrow hero-anim" style="--i:0">${pad(i)} <span aria-hidden="true" class="mx-1.5 inline-block h-px w-6 translate-y-[-3px] bg-azure-300"></span> ${esc(s.tab)}</p>
-            <${tag} class="hero-anim mt-5 font-serif font-normal leading-[1.12] !text-white ${size}" style="--i:1">${esc(s.headline)}</${tag}>
+            <${tag} class="hero-anim mt-5 font-serif font-extrabold leading-[1.1] !text-white ${size}" style="--i:1">${esc(s.headline)}</${tag}>
             ${support}
             <a class="btn btn-primary hero-anim mt-9" style="--i:3" href="${rel(s.cta.href)}" data-hero-cta>${esc(s.cta.label)} ${ARROW}</a>
           </div>
@@ -197,7 +197,7 @@ export function initHero() {
     <div class="absolute inset-x-0 bottom-0 z-10 pb-[4.75rem] md:pb-6">
       <div class="container-x flex items-end justify-between gap-6">
         <ol class="grid flex-1 grid-cols-5 gap-3 sm:gap-5 lg:max-w-[60rem]" aria-label="Slides">
-          ${slides.map((s, i) => `<li><button type="button" class="hero-tab w-full" data-tab="${i}" aria-label="${pad(i)} ${esc(s.tab)}"><span class="bar" aria-hidden="true"><i></i></span><span aria-hidden="true">${pad(i)}</span><span aria-hidden="true" class="hidden truncate lg:inline">${esc(s.tab)}</span></button></li>`).join('')}
+          ${slides.map((s, i) => `<li><button type="button" class="hero-tab w-full" data-tab="${i}" aria-label="${pad(i)} ${esc(s.tab)}"><span class="bar" aria-hidden="true"><i></i></span><span aria-hidden="true">${pad(i)}</span></button></li>`).join('')}
         </ol>
         <div class="flex shrink-0 items-center gap-1 text-white">
           <button type="button" class="p-2.5 transition hover:text-azure-200" data-prev aria-label="Previous slide">${CHEV('M12 4 6 10l6 6')}</button>
@@ -247,7 +247,7 @@ export function initHero() {
 
   const syncVisuals = () => {
     const onMotif = index === motifSlideIdx;
-    const playing = onMotif && hold.view && !document.hidden;
+    const playing = onMotif && hold.view && !hold.user && !document.hidden; // motif/video also stop when the visitor pauses
     if (motif) (playing ? motif.play : motif.pause)();
     if (heroVideo) (playing && !reduceMotion.matches ? heroVideo.play().catch(() => {}) : heroVideo.pause());
   };
@@ -286,10 +286,17 @@ export function initHero() {
   root.querySelector('[data-prev]').addEventListener('click', () => goTo(index - 1, { user: true }));
   root.querySelector('[data-next]').addEventListener('click', () => goTo(index + 1, { user: true }));
   tabEls.forEach((t) => t.addEventListener('click', () => goTo(Number(t.dataset.tab), { user: true })));
-  toggleBtn.addEventListener('click', () => { hold.user = !hold.user; syncToggle(); });
+  toggleBtn.addEventListener('click', () => {
+    hold.user = !hold.user;
+    hold.focus = false; // an explicit Play/Pause choice always wins over the focus pause
+    last = performance.now();
+    syncToggle();
+    syncVisuals();
+  });
 
-  // Pause-on-hover removed at the client's request. Focus still pauses; the pause button remains.
-  root.addEventListener('focusin', () => { hold.focus = true; });
+  // Pause-on-hover removed at the client's request. Keyboard focus still pauses (WCAG 2.2.2), but mouse/touch
+  // clicks on the controls do not: they used to leave focus inside the hero and silently block autoplay.
+  root.addEventListener('focusin', (e) => { hold.focus = e.target.matches(':focus-visible') && e.target !== toggleBtn; });
   root.addEventListener('focusout', (e) => { if (!root.contains(e.relatedTarget)) hold.focus = false; });
 
   root.addEventListener('keydown', (e) => {
@@ -314,7 +321,7 @@ export function initHero() {
   /* Off-screen / hidden tab pause */
   new IntersectionObserver(([en]) => { hold.view = en.isIntersecting; syncVisuals(); }, { threshold: 0.25 }).observe(root);
   document.addEventListener('visibilitychange', syncVisuals);
-  reduceMotion.addEventListener('change', (m) => { if (m.matches) { hold.user = true; syncToggle(); } });
+  reduceMotion.addEventListener('change', (m) => { if (m.matches) { hold.user = true; syncToggle(); syncVisuals(); } });
 
   /* Network canvas (hidden on the motif slide, off for reduced motion / low power) */
   // Deferred to idle time so it never competes with first paint.

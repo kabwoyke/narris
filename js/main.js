@@ -34,31 +34,130 @@ function initGap() {
   });
 }
 
-/* ---------- Strategic philosophy chain: Clarity -> Outcomes ---------- */
+/* ---------- Strategic philosophy chain: Clarity -> Outcomes ----------
+   Each step is typed out letter by letter. The sentences cycle automatically (looping) until the visitor
+   picks a step themselves; reduced motion shows the full sentence with no typing or cycling. */
 function initChain() {
   const root = document.getElementById('chain');
   if (!root) return;
   const buttons = [...root.querySelectorAll('.chain-btn')];
-  const select = (btn) => {
-    buttons.forEach((b) => {
-      const on = b === btn;
-      b.setAttribute('aria-expanded', String(on));
-      document.getElementById(b.getAttribute('aria-controls')).hidden = !on;
-    });
+  const panel = root.querySelector('[aria-live]');
+  const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const SPEED = 38;       // ms per character
+  const HOLD = 2600;      // ms the finished sentence stays before the next one
+  let timer = 0;
+  let auto = !reduce;     // stops for good once the visitor interacts
+  let current = 0;
+
+  // Rebuild each sentence as: invisible ghost (reserves height), typed overlay, screen-reader text.
+  const paras = buttons.map((b) => {
+    const p = document.getElementById(b.getAttribute('aria-controls'));
+    const text = p.textContent.trim();
+    p.classList.add('relative');
+    p.innerHTML = `<span class="invisible" aria-hidden="true">${text}</span><span class="absolute inset-0" aria-hidden="true"><span class="tw"></span></span><span class="sr-only">${text}</span>`;
+    return { p, text, out: p.querySelector('.tw') };
+  });
+
+  // The panel's left rule is the typewriter cursor: at rest it is the full-height rule; while typing it shrinks to
+  // one line and travels along the end of the typed text, then blinks while the finished sentence is held.
+  const cursor = document.createElement('span');
+  cursor.className = 'chain-cursor';
+  cursor.setAttribute('aria-hidden', 'true');
+  panel.append(cursor);
+  const rest = () => { cursor.dataset.mode = 'rest'; cursor.style.transform = ''; cursor.style.height = ''; };
+  const place = (i, n) => {
+    const { p, out } = paras[i];
+    const pr = panel.getBoundingClientRect();
+    const lh = parseFloat(getComputedStyle(p).lineHeight) || 40;
+    let x; let y;
+    const node = out.firstChild;
+    if (n > 0 && node) {
+      const range = document.createRange();
+      range.setStart(node, n - 1); range.setEnd(node, n);
+      const rects = range.getClientRects();
+      const r = rects[rects.length - 1];
+      x = r.right - pr.left + 3;
+      y = r.top + r.height / 2 - lh / 2 - pr.top;
+    } else {
+      const o = out.getBoundingClientRect();
+      x = o.left - pr.left - 3;
+      y = o.top - pr.top;
+    }
+    cursor.style.transform = `translate(${x}px, ${y}px)`;
+    cursor.style.height = `${lh}px`;
   };
+
+  const type = (i, done) => {
+    const { text, out } = paras[i];
+    clearTimeout(timer);
+    if (reduce) { out.textContent = text; rest(); return; }
+    out.textContent = '';
+    cursor.dataset.mode = 'typing';
+    place(i, 0);
+    let n = 0;
+    const tick = () => {
+      out.textContent = text.slice(0, ++n);
+      place(i, n);
+      if (n < text.length) timer = setTimeout(tick, SPEED);
+      else if (done) { cursor.dataset.mode = 'hold'; done(); }
+      else rest(); // visitor-driven: cursor settles back into the left rule
+    };
+    timer = setTimeout(tick, 250);
+  };
+
+  const select = (i, { announce = true } = {}) => {
+    current = i;
+    panel.setAttribute('aria-live', announce ? 'polite' : 'off'); // no chatter while auto-cycling
+    buttons.forEach((b, k) => {
+      const on = k === i;
+      b.setAttribute('aria-expanded', String(on));
+      paras[k].p.hidden = !on;
+    });
+    type(i, auto ? () => { timer = setTimeout(() => auto && select((i + 1) % buttons.length, { announce: false }), HOLD); } : null);
+  };
+
   buttons.forEach((b, i) => {
-    b.addEventListener('click', () => select(b));
+    b.addEventListener('click', () => { auto = false; select(i); });
     b.addEventListener('keydown', (e) => {
       const k = e.key;
       if (k !== 'ArrowRight' && k !== 'ArrowLeft' && k !== 'ArrowDown' && k !== 'ArrowUp') return;
       e.preventDefault();
-      const next = buttons[(i + (k === 'ArrowRight' || k === 'ArrowDown' ? 1 : buttons.length - 1)) % buttons.length];
-      next.focus();
-      select(next);
+      auto = false;
+      const n = (i + (k === 'ArrowRight' || k === 'ArrowDown' ? 1 : buttons.length - 1)) % buttons.length;
+      buttons[n].focus();
+      select(n);
     });
   });
-  select(buttons[0]);
+
+  // Start typing when the section scrolls into view; pause the cycle while it is off-screen.
+  select(0, { announce: false });
+  if (auto && 'IntersectionObserver' in window) {
+    clearTimeout(timer);
+    paras[0].out.textContent = '';
+    new IntersectionObserver(([en]) => {
+      if (!auto) return;
+      if (en.isIntersecting) { select(current, { announce: false }); }
+      else clearTimeout(timer);
+    }, { threshold: 0.5 }).observe(root);
+  }
 }
+
+/* ---------- Home section images (sources live in config.images.sections) ---------- */
+function renderSectionImages() {
+  const widths = [480, 800, 1200, 1800];
+  const set = (src, fmt) => widths.map((w) => `${src}?auto=format&fit=crop&q=68&w=${w}${fmt ? `&fm=${fmt}` : ''} ${w}w`).join(', ');
+  const esc = (t) => String(t).replace(/[&<>"]/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]));
+  document.querySelectorAll('[data-section-img]').forEach((fig) => {
+    const img = config.images.sections?.[fig.dataset.sectionImg];
+    if (!img) { fig.remove(); return; }
+    const sizes = '(min-width: 1024px) 76rem, 100vw';
+    const web = img.src.includes('images.unsplash.com');
+    fig.innerHTML = web
+      ? `<picture><source type="image/webp" srcset="${set(img.src, 'webp')}" sizes="${sizes}"><img src="${img.src}?auto=format&fit=crop&q=68&w=1200" srcset="${set(img.src)}" sizes="${sizes}" alt="${esc(img.alt)}" loading="lazy" decoding="async"></picture>`
+      : `<picture><img src="${img.src}" alt="${esc(img.alt)}" loading="lazy" decoding="async"></picture>`;
+  });
+}
+renderSectionImages();
 
 /* ---------- "In progress" stub pages (replaced phase by phase) ---------- */
 function renderStub() {

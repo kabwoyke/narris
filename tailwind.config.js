@@ -28,9 +28,10 @@ export default {
         // No separate accent: the palette is the client's three colours (Azure, Warm Light, White) plus azure tints.
       },
       fontFamily: {
-        // TODO(client): confirm headline face (Fraunces or Cormorant Garamond)
-        serif: ['Fraunces', 'Cormorant Garamond', 'Georgia', 'serif'],
-        sans: ['Inter', 'system-ui', '-apple-system', 'Segoe UI', 'Roboto', 'sans-serif'],
+        // TODO(client): confirm headline face
+        // Headlines now use the same clean sans as body (Kantar-style). Class name `font-serif` kept so markup stays unchanged.
+        serif: ['Plus Jakarta Sans', 'Inter', 'system-ui', '-apple-system', 'Segoe UI', 'Roboto', 'sans-serif'],
+        sans: ['Plus Jakarta Sans', 'Inter', 'system-ui', '-apple-system', 'Segoe UI', 'Roboto', 'sans-serif'],
       },
       maxWidth: { prose2: '38rem' },
       letterSpacing: { widest2: '0.22em' },

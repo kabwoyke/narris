@@ -59,7 +59,7 @@ D1 titles use the questionnaire wording, body copy uses the Concept wording. D2 
 Search the code for `TODO(client)`. The consolidated list is in `Claude.md` section 14 (email and domain, tagline, hero CTAs for slides 1 and 4, Gen Z scope, imagery direction, address/social/hours, team and testimonials, service one-liners, legal review, form endpoint).
 
 ## Notes
-- Fonts (Fraunces, Inter) load from Google Fonts with `display=swap`, non-blocking.
+- Fonts (Plus Jakarta Sans) load from Google Fonts with `display=swap`, non-blocking.
 - Motion respects `prefers-reduced-motion`: the carousel starts paused, Ken Burns and the network canvas are off, and the slide 1 motif shows its aligned static state.
 - The drifting-points canvas switches itself off on low-power devices, data-saver, or if frames drop.
 - Careers CV upload (Phase 8): note the file-size limit of whichever form service is chosen.

@@ -37,6 +37,16 @@ const logo = (extra = '') => `
     </span>
   </a>`;
 
+/** Header logo: the white lockup over the dark hero, the supplied full-colour logo once the bar turns white (CSS swaps them on data-solid). */
+const headerLogo = () => `
+  <a href="${rel('/')}" class="group relative inline-flex items-center" aria-label="${config.brand.name}, home">
+    <span class="logo-light inline-flex items-center gap-3">
+      ${logoMark()}
+      <span class="flex flex-col font-sans text-[0.68rem] font-bold uppercase leading-[1.35] tracking-[0.32em]"><span>Narris</span><span>International</span></span>
+    </span>
+    <img class="logo-dark h-14 w-auto" src="${rel('assets/logo/narris-logo-nav.png')}" width="720" height="633" alt="${config.brand.name}, strategy advisory">
+  </a>`;
+
 /* ---------- header ---------- */
 
 function renderHeader() {
@@ -53,8 +63,8 @@ function renderHeader() {
         <button type="button" class="nav-link" aria-expanded="false" aria-haspopup="true" aria-controls="dd-${item.label.replace(/\W+/g, '')}" ${childActive ? 'data-active="true"' : ''}>
           ${item.label} ${icon.chevron}
         </button>
-        <ul id="dd-${item.label.replace(/\W+/g, '')}" class="invisible absolute left-0 top-full mt-1 min-w-[12rem] translate-y-1 border border-white/10 bg-azure py-2 opacity-0 shadow-xl transition duration-200 data-[open=true]:visible data-[open=true]:translate-y-0 data-[open=true]:opacity-100" data-menu>
-          ${item.children.map((c) => `<li><a class="block px-5 py-2.5 text-sm text-white/90 transition hover:bg-azure-700 hover:text-white" href="${rel(c.href)}" ${isActive(c.href) ? 'aria-current="page"' : ''}>${c.label}</a></li>`).join('')}
+        <ul id="dd-${item.label.replace(/\W+/g, '')}" class="invisible absolute left-0 top-full mt-1 min-w-[12rem] translate-y-1 rounded-xl border border-azure/10 bg-white py-2 opacity-0 shadow-xl transition duration-200 data-[open=true]:visible data-[open=true]:translate-y-0 data-[open=true]:opacity-100" data-menu>
+          ${item.children.map((c) => `<li><a class="block px-5 py-2.5 text-sm font-semibold text-azure transition hover:bg-warm" href="${rel(c.href)}" ${isActive(c.href) ? 'aria-current="page"' : ''}>${c.label}</a></li>`).join('')}
         </ul>
       </li>`;
   };
@@ -77,7 +87,7 @@ function renderHeader() {
   el.innerHTML = `
     <div class="site-header" data-solid="false">
       <div class="container-x flex h-[4.5rem] items-center justify-between gap-6">
-        ${logo()}
+        ${headerLogo()}
         <nav aria-label="Primary" class="hidden shrink-0 xl:block">
           <ul class="flex items-center gap-0.5">${config.nav.map(desktopItem).join('')}</ul>
         </nav>
@@ -259,7 +269,7 @@ function renderCookieNotice() {
   const n = document.createElement('div');
   n.setAttribute('role', 'region');
   n.setAttribute('aria-label', 'Cookie notice');
-  n.className = 'fixed inset-x-4 bottom-20 z-50 mx-auto max-w-xl rounded-sm bg-white p-5 text-sm text-azure shadow-2xl md:bottom-6 md:left-6 md:right-auto';
+  n.className = 'fixed inset-x-4 bottom-20 z-50 mx-auto max-w-xl rounded-2xl bg-white p-5 text-sm text-azure shadow-2xl md:bottom-6 md:left-6 md:right-auto';
   n.innerHTML = `<p>This site uses only essential storage. See our <a class="underline" href="privacy.html">privacy notice</a>.</p>
     <button type="button" class="btn btn-dark mt-4 !py-2">Understood</button>`;
   n.querySelector('button').addEventListener('click', () => {

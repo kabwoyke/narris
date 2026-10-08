@@ -150,13 +150,13 @@ export const config = {
   // TODO(client): all placeholders. Slide 2 should match the MOOD of Untold Research without copying its imagery (D3).
   images: {
     slide2: {
-      src: unsplash('1573164574511-73c773193279'),
-      alt: 'Colleagues in discussion around a long table, hands resting on notebooks and documents.',
+      src: unsplash('1758518731706-be5d5230e5a5'),
+      alt: 'A diverse team of colleagues around a table, working through documents and a tablet.',
       width: 2000, height: 1333,
     },
     slide3: {
-      src: unsplash('1521737604893-d14cc237f11d'),
-      alt: 'A small group in quiet conversation at a table in a softly lit room.',
+      src: unsplash('1573164574048-f968d7ee9f20'),
+      alt: 'Two professionals in quiet conversation across a small table beside a tall window.',
       width: 2000, height: 1333,
     },
     slide4: {
@@ -165,9 +165,21 @@ export const config = {
       width: 2000, height: 1333,
     },
     slide5: {
-      src: unsplash('1531545514256-b1400bc00f31'),
-      alt: 'Young professionals gathered around a laptop, talking through what is on the screen.',
+      src: unsplash('1573497019329-8c73173b95fb'),
+      alt: 'Young professionals of colour laughing and talking around a laptop.',
       width: 2000, height: 1333,
+    },
+    // Home page section images (one per section, rendered by main.js into <figure data-section-img="key">).
+    // TODO(client): placeholders. Replace with supplied photography; keep calm, editorial, Azure/Warm-leaning.
+    sections: {
+      positioning: { src: unsplash('1573164574572-cb89e39749b4'), alt: 'A diverse group of professionals seated along a long boardroom table, in discussion.' },
+      gap: { src: unsplash('1758876202980-0a28b744fb24'), alt: 'A Black woman and a white man talking through a laptop screen together at a desk.' },
+      services: { src: unsplash('1573167710701-35950a41e251'), alt: 'Black women executives in a meeting room, one speaking while the other listens.' },
+      philosophy: { src: unsplash('1758691737543-09a1b2b715fa'), alt: 'A multiracial group of colleagues in relaxed conversation by a window.' },
+      values: { src: unsplash('1573496130488-f3bd89d03653'), alt: 'Women of colour at a meeting table, attentive and mid-conversation.' },
+      how: { src: unsplash('1758691737045-3ece61135061'), alt: 'A multi-ethnic team working through ideas on notes stuck to a glass wall.' },
+      serve: { src: unsplash('1631131431211-4f768d89087d'), alt: 'A confident African business leader in a blue suit, smiling outdoors.' },
+      contact: { src: unsplash('1600679472868-eae382e28b34'), alt: 'A smiling African professional in a navy suit and striped tie.' },
     },
   },
 
