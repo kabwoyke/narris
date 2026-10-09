@@ -147,23 +147,23 @@ export const config = {
   // TODO(client): all placeholders. Slide 2 should match the MOOD of Untold Research without copying its imagery (D3).
   images: {
     slide2: {
-      src: unsplash('1758518731706-be5d5230e5a5'),
-      alt: 'A diverse team of colleagues around a table, working through documents and a tablet.',
+      src: unsplash('1573167710701-35950a41e251'),
+      alt: 'Black women executives in a meeting room, one speaking while the other listens.',
       width: 2000, height: 1333,
     },
     slide3: {
-      src: unsplash('1573164574048-f968d7ee9f20'),
-      alt: 'Two professionals in quiet conversation across a small table beside a tall window.',
+      src: unsplash('1758876202980-0a28b744fb24'),
+      alt: 'A Black woman and a colleague talking through a laptop screen together at a desk.',
       width: 2000, height: 1333,
     },
     slide4: {
-      src: unsplash('1486406146926-c627a92ad1ab'),
-      alt: 'Tall glass buildings seen from below against a pale sky.',
+      src: unsplash('1573496130488-f3bd89d03653'),
+      alt: 'A Black woman professional at a meeting table, attentive and mid-conversation.',
       width: 2000, height: 1333,
     },
     slide5: {
-      src: unsplash('1573497019329-8c73173b95fb'),
-      alt: 'Young professionals of colour laughing and talking around a laptop.',
+      src: unsplash('1631131431211-4f768d89087d'),
+      alt: 'A confident young African business leader in a blue suit, smiling outdoors.',
       width: 2000, height: 1333,
     },
     // Home page section images (one per section, rendered by main.js into <figure data-section-img="key">).
