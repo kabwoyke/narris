@@ -223,3 +223,8 @@ function initSocial() {
   box.hidden = false;
 }
 initSocial();
+
+/* ---------- PWA: register the service worker (needs https or localhost) ---------- */
+if ('serviceWorker' in navigator) {
+  window.addEventListener('load', () => navigator.serviceWorker.register('sw.js').catch((err) => console.warn('[narris] service worker not registered:', err.message)));
+}
