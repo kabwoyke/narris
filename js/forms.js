@@ -59,7 +59,9 @@ function mailtoHref(data) {
 function show(form, kind, html) {
   const box = form.querySelector('[data-form-status]');
   if (!box) return;
-  box.className = `mt-5 border-l-2 px-4 py-3 text-sm ${kind === 'ok' ? 'border-warm bg-white/10' : 'border-[#ffb8a8] bg-white/10'}`;
+  const dark = !!form.closest('.bg-azure');
+  const tone = dark ? (kind === 'ok' ? 'border-warm bg-white/10' : 'border-[#ffb8a8] bg-white/10') : (kind === 'ok' ? 'border-azure bg-white' : 'border-[#a3341f] bg-white text-[#a3341f]');
+  box.className = `mt-5 border-l-2 px-4 py-3 text-sm ${tone}`;
   box.innerHTML = html;
   box.hidden = false;
   box.focus?.();

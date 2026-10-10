@@ -211,3 +211,15 @@ function initServiceNav() {
   map.forEach((_, id) => { const s = document.getElementById(id); if (s) io.observe(s); });
 }
 initServiceNav();
+
+/* ---------- Contact: social links, shown only for accounts set in config.contact.social ---------- */
+function initSocial() {
+  const box = document.querySelector('[data-social]');
+  if (!box) return;
+  const names = { linkedin: 'LinkedIn', x: 'X', instagram: 'Instagram', facebook: 'Facebook', youtube: 'YouTube' };
+  const links = Object.entries(config.contact.social || {}).filter(([, url]) => url);
+  if (!links.length) return;
+  box.querySelector('[data-social-list]').innerHTML = links.map(([k, url]) => `<a class="underline decoration-azure/40 underline-offset-4" target="_blank" rel="noopener" href="${url}">${names[k] || k}</a>`).join('');
+  box.hidden = false;
+}
+initSocial();

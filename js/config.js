@@ -193,8 +193,8 @@ export const config = {
     showSamples: false,
     // Drifting-points canvas in the hero.
     showNetwork: true,
-    // Cookie notice scaffold. Goes live in Phase 4 together with the privacy policy.
-    showCookieNotice: false,
+    // Cookie notice scaffold. Live since Phase 4 (privacy policy exists).
+    showCookieNotice: true,
   },
 
   // Optional credentials strip. Hidden while empty. TODO(client): supply, with evidence.

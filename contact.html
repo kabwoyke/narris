@@ -4,8 +4,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Contact | Narris International</title>
-  <meta name="description" content="Narris International is a research-informed strategy advisory focused on positioning, stakeholder understanding and strategic communication.">
-  <meta name="robots" content="noindex">
+  <meta name="description" content="Contact Narris International: call, WhatsApp, email or send a message. Request a quotation. Work can be delivered remotely, with clients worldwide.">
   <meta name="theme-color" content="#162b3a">
   <link rel="icon" type="image/png" href="assets/logo/narris-logo-bg.png">
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -34,15 +33,58 @@
       </nav>
     </noscript>
   </div>
+  <!-- Phase 4: Contact. Service pre-selected from ?service=, quotation toggle from ?quote=1 (see js/forms.js). -->
+  <main id="main">
+    <section class="bg-azure pb-16 pt-40 text-white sm:pb-20">
+      <div class="container-x">
+        <p class="eyebrow !text-azure-200">Contact</p>
+        <h1 class="h-display mt-4 max-w-3xl !text-white">Begin with a conversation.</h1>
+        <p class="lead mt-6 max-w-2xl !text-azure-100">Start with the question you are facing. We will help shape it. <span data-cfg-text="contact.reachLine"></span></p>
+      </div>
+    </section>
 
-  <!-- STUB: replaced in phase 4. Rendered by js/main.js (renderStub). -->
-  <main id="main" data-stub="Contact">
-    <noscript>
-      <section class="container-x py-16">
-        <h1 class="font-serif text-4xl">Contact</h1>
-        <p class="mt-4">This page is being prepared. Call <a class="underline" href="tel:+254111429478">0111429478</a> or email <a class="underline" href="mailto:bdu@narrisinternational.com">bdu@narrisinternational.com</a>.</p>
-      </section>
-    </noscript>
+    <section class="section" aria-labelledby="form-h">
+      <div class="container-x grid gap-14 lg:grid-cols-12 lg:gap-16">
+        <div class="reveal lg:col-span-4">
+          <h2 class="font-serif text-2xl">Reach us directly</h2>
+          <ul class="mt-6 space-y-6">
+            <li><span class="block text-xs font-bold uppercase tracking-widest2 text-azure-600">Call</span><a class="font-serif text-2xl underline decoration-azure/40 underline-offset-8 hover:decoration-azure" data-cfg-tel="contact.phoneIntl" data-cfg-text="contact.phone" href="#"></a></li>
+            <li><span class="block text-xs font-bold uppercase tracking-widest2 text-azure-600">WhatsApp</span><a class="font-serif text-2xl underline decoration-azure/40 underline-offset-8 hover:decoration-azure" data-cfg-href="contact.whatsapp" target="_blank" rel="noopener" href="#">Start a chat</a></li>
+            <li><span class="block text-xs font-bold uppercase tracking-widest2 text-azure-600">Email</span><a class="break-all font-serif text-xl underline decoration-azure/40 underline-offset-8 hover:decoration-azure sm:text-2xl" data-cfg-mailto="contact.email" data-cfg-text="contact.email" href="#"></a></li>
+            <li data-cfg-show="contact.location"><span class="block text-xs font-bold uppercase tracking-widest2 text-azure-600">Based in</span><span class="font-serif text-xl" data-cfg-text="contact.location"></span></li>
+            <!-- TODO(client): address and hours are optional. They appear here only when set in config.js. -->
+            <li data-cfg-show="contact.address"><span class="block text-xs font-bold uppercase tracking-widest2 text-azure-600">Address</span><span class="font-serif text-xl" data-cfg-text="contact.address"></span></li>
+            <li data-cfg-show="contact.hours"><span class="block text-xs font-bold uppercase tracking-widest2 text-azure-600">Hours</span><span class="font-serif text-xl" data-cfg-text="contact.hours"></span></li>
+            <li data-social hidden><span class="block text-xs font-bold uppercase tracking-widest2 text-azure-600">Follow</span><span class="flex flex-wrap gap-x-5 gap-y-1 font-serif text-xl" data-social-list></span></li>
+          </ul>
+        </div>
+
+        <div class="reveal rounded-3xl bg-warm p-6 sm:p-10 lg:col-span-8" style="--d:120ms">
+          <h2 id="form-h" class="font-serif text-2xl">Send us a message</h2>
+          <form data-narris-form="contact" novalidate class="mt-8 grid gap-5 sm:grid-cols-2" aria-label="Contact form">
+            <div><label for="c-name" class="mb-2 block text-sm font-semibold">Name <span aria-hidden="true">*</span></label><input id="c-name" name="name" type="text" class="field" autocomplete="name" required><p id="c-name-err" class="field-error" data-error-for="name" hidden></p></div>
+            <div><label for="c-org" class="mb-2 block text-sm font-semibold">Organisation</label><input id="c-org" name="organisation" type="text" class="field" autocomplete="organization"></div>
+            <div><label for="c-role" class="mb-2 block text-sm font-semibold">Role</label><input id="c-role" name="role" type="text" class="field" autocomplete="organization-title"></div>
+            <div><label for="c-email" class="mb-2 block text-sm font-semibold">Email <span aria-hidden="true">*</span></label><input id="c-email" name="email" type="email" class="field" autocomplete="email" required><p id="c-email-err" class="field-error" data-error-for="email" hidden></p></div>
+            <div><label for="c-phone" class="mb-2 block text-sm font-semibold">Phone</label><input id="c-phone" name="phone" type="tel" class="field" autocomplete="tel"></div>
+            <div><label for="c-service" class="mb-2 block text-sm font-semibold">Service of interest</label><select id="c-service" name="service" class="field" data-services><option value="">Not sure yet</option></select></div>
+            <div class="sm:col-span-2"><label for="c-message" class="mb-2 block text-sm font-semibold">How can we help? <span aria-hidden="true">*</span></label><textarea id="c-message" name="message" rows="5" class="field" required></textarea><p id="c-message-err" class="field-error" data-error-for="message" hidden></p></div>
+            <div class="absolute -left-[9999px] h-0 w-0 overflow-hidden" aria-hidden="true"><label>Leave this empty<input type="text" name="_gotcha" tabindex="-1" autocomplete="off"></label></div>
+            <div class="sm:col-span-2">
+              <label class="flex items-start gap-3 text-sm"><input type="checkbox" name="quote" class="mt-1 h-4 w-4 accent-[#162b3a]"> <span><strong>Request a quotation.</strong> Quotations are provided on request.</span></label>
+            </div>
+            <div class="sm:col-span-2">
+              <label class="flex items-start gap-3 text-sm"><input type="checkbox" name="consent" class="mt-1 h-4 w-4 accent-[#162b3a]" required aria-describedby="c-consent-err"> <span>I agree that Narris International may use these details to reply to me. See the <a class="underline" href="privacy.html">privacy policy</a>. <span aria-hidden="true">*</span></span></label>
+              <p id="c-consent-err" class="field-error" data-error-for="consent" hidden></p>
+            </div>
+            <div class="sm:col-span-2">
+              <button type="submit" class="btn btn-primary">Send message</button>
+              <div data-form-status role="status" tabindex="-1" hidden></div>
+            </div>
+          </form>
+        </div>
+      </div>
+    </section>
   </main>
 
   <div id="site-footer"></div>
