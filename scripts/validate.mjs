@@ -36,7 +36,7 @@ config.hero.slides.forEach((s) => hrefs.add(s.cta.href));
 hrefs.add(config.quoteCta.href);
 
 for (const href of hrefs) {
-  if (/^(https?:|mailto:|tel:|#$|css\/|js\/|assets\/)/.test(href)) continue;
+  if (/^(https?:|mailto:|tel:|#$|css\/|js\/|assets\/|manifest\.webmanifest$)/.test(href)) continue;
   const clean = href.replace(/^\//, '');
   const [file, hash] = clean.split('#');
   const target = (file.split('?')[0] || 'index.html').replace(/^\.\/$/, 'index.html') || 'index.html';
