@@ -195,3 +195,19 @@ if (document.getElementById('insights') || document.getElementById('credibility'
   import('./case-studies.js').then((m) => m.initHomeCredibility());
 }
 if (document.querySelector('form[data-narris-form]')) import('./forms.js').then((m) => m.initForms());
+
+/* ---------- Services: highlight the anchor-nav link of the section in view ---------- */
+function initServiceNav() {
+  const links = [...document.querySelectorAll('.svc-link')];
+  if (!links.length || !('IntersectionObserver' in window)) return;
+  const map = new Map(links.map((a) => [a.getAttribute('href').slice(1), a]));
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach((e) => {
+      if (!e.isIntersecting) return;
+      links.forEach((a) => a.removeAttribute('aria-current'));
+      map.get(e.target.id)?.setAttribute('aria-current', 'true');
+    });
+  }, { rootMargin: '-35% 0px -60% 0px' });
+  map.forEach((_, id) => { const s = document.getElementById(id); if (s) io.observe(s); });
+}
+initServiceNav();

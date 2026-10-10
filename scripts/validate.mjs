@@ -25,7 +25,11 @@ for (const f of await readdir(path.join(root, 'data'))) {
 /* 2. Links (HTML + config nav/hero CTAs) */
 const { config } = await import(pathToFileURL(path.join(root, 'js/config.js')).href);
 const hrefs = new Set();
-for (const html of pages.values()) for (const m of html.matchAll(/\shref="([^"]+)"/g)) hrefs.add(m[1]);
+for (const [pageName, html] of pages) for (const m of html.matchAll(/\shref="([^"]+)"/g)) {
+  // In-page anchors are checked against the page that contains them; everything else is checked below.
+  if (m[1].startsWith('#') && m[1].length > 1) { if (!html.includes(`id="${m[1].slice(1)}"`)) fail(`${pageName}: missing anchor ${m[1]}`); }
+  else hrefs.add(m[1]);
+}
 const collect = (items) => items.forEach((i) => { hrefs.add(i.href); if (i.children) collect(i.children); });
 collect(config.nav); collect(config.footerLinks);
 config.hero.slides.forEach((s) => hrefs.add(s.cta.href));
@@ -36,7 +40,6 @@ for (const href of hrefs) {
   const clean = href.replace(/^\//, '');
   const [file, hash] = clean.split('#');
   const target = (file.split('?')[0] || 'index.html').replace(/^\.\/$/, 'index.html') || 'index.html';
-  if (clean.startsWith('#')) { if (!pages.get('index.html').includes(`id="${clean.slice(1)}"`)) fail(`index.html: missing anchor ${clean}`); continue; }
   const name = target === '' || target === './' ? 'index.html' : target;
   if (!pages.has(name)) { fail(`broken link: ${href}`); continue; }
   const built = !pages.get(name).includes('data-stub');
