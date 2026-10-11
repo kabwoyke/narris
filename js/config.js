@@ -191,6 +191,8 @@ export const config = {
   flags: {
     // Sample case studies / testimonials render ONLY when this is true. Keep false in production (D9).
     showSamples: false,
+    // Visible "Draft" notes on pages awaiting client sign-off (Gen Z Research). Set false at launch.
+    showDraftNotes: true,
     // Drifting-points canvas in the hero.
     showNetwork: true,
     // Cookie notice scaffold. Live since Phase 4 (privacy policy exists).

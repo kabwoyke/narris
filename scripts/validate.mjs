@@ -82,6 +82,13 @@ for (const href of hrefs) {
   for (const q of s0.support) if (!pages.get('index.html').includes(q)) fail(`index.html pre-rendered hero line is out of sync: "${q}"`);
 }
 
+/* 2c. Gen Z page opening statement must match hero slide 5 (client's exact wording) */
+{
+  const gz = config.hero.slides.find((x) => x.id === 'gen-z');
+  const flat = (t) => t.replace(/<[^>]+>/g, '').replace(/\s+/g, ' ');
+  if (gz && !flat(pages.get('gen-z-research.html')).includes(flat(gz.headline))) fail('gen-z-research.html opening statement is out of sync with the gen-z hero slide');
+}
+
 /* 3. Banned words and never-publish guard in visible copy (HTML + config) */
 const banned = ['cutting-edge', 'world-class', 'synergy', 'game-changing', 'supercharge', 'unlock'];
 const guard = ['guarantee', 'guaranteed', 'revenue model', 'competitor'];

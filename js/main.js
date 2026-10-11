@@ -182,12 +182,29 @@ function renderStub() {
     </section>`;
 }
 
+/* ---------- Gen Z Research: tap-to-reveal questions and a looping ticker ---------- */
+function initPlay() {
+  document.querySelectorAll('.gz-pop').forEach((btn) => {
+    btn.addEventListener('click', () => {
+      const open = btn.getAttribute('aria-expanded') === 'true';
+      btn.setAttribute('aria-expanded', String(!open));
+      document.getElementById(btn.getAttribute('aria-controls')).hidden = open;
+    });
+  });
+  // The ticker loops by duplicating its items; the copy is hidden from assistive tech.
+  const track = document.querySelector('[data-track]');
+  if (track && !matchMedia('(prefers-reduced-motion: reduce)').matches) {
+    [...track.children].forEach((li) => { const c = li.cloneNode(true); c.setAttribute('aria-hidden', 'true'); track.appendChild(c); });
+  }
+}
+
 /* ---------- Boot ---------- */
 renderStub();
 bindConfig();
 initReveals();
 initGap();
 initChain();
+initPlay();
 
 // Page-specific modules, loaded only when their anchor exists.
 if (document.getElementById('hero')) import('./hero.js').then((m) => m.initHero());
