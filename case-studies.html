@@ -5,7 +5,6 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Insights | Narris International</title>
   <meta name="description" content="Narris International is a research-informed strategy advisory focused on positioning, stakeholder understanding and strategic communication.">
-  <meta name="robots" content="noindex">
   <meta name="theme-color" content="#162b3a">
   <link rel="manifest" href="manifest.webmanifest">
   <link rel="apple-touch-icon" href="assets/icons/apple-touch-icon.png">
@@ -37,14 +36,32 @@
     </noscript>
   </div>
 
-  <!-- STUB: replaced in phase 5. Rendered by js/main.js (renderStub). -->
-  <main id="main" data-stub="Insights">
-    <noscript>
-      <section class="container-x py-16">
-        <h1 class="font-serif text-4xl">Insights</h1>
-        <p class="mt-4">This page is being prepared. Call <a class="underline" href="tel:+254111429478">0111429478</a> or email <a class="underline" href="mailto:bdu@narrisinternational.com">bdu@narrisinternational.com</a>.</p>
-      </section>
-    </noscript>
+  <!-- Phase 5: Insights listing. Rendered from data/case-studies.json by js/case-studies.js (initListing). -->
+  <main id="main" data-insights-page>
+    <section class="bg-azure pb-16 pt-40 text-white sm:pb-20">
+      <div class="container-x">
+        <p class="eyebrow !text-azure-200">Insights</p>
+        <h1 class="h-display mt-4 max-w-3xl !text-white">Work and thinking, shared with consent.</h1>
+        <p class="lead mt-6 max-w-2xl !text-azure-100">Case studies are shared with client consent or fully anonymised in line with the Data Protection Act.</p>
+      </div>
+    </section>
+    <section class="section" aria-labelledby="list-h">
+      <div class="container-x">
+        <h2 id="list-h" class="sr-only">Case studies</h2>
+        <form data-filters hidden class="mb-10 grid gap-5 sm:grid-cols-2 lg:max-w-2xl" aria-label="Filter case studies" onsubmit="return false">
+          <div><label for="f-sector" class="mb-2 block text-sm font-semibold">Sector</label><select id="f-sector" class="field" data-filter="sector"><option value="">All sectors</option></select></div>
+          <div><label for="f-service" class="mb-2 block text-sm font-semibold">Service</label><select id="f-service" class="field" data-filter="service"><option value="">All services</option></select></div>
+        </form>
+        <p data-count role="status" class="mb-6 text-sm text-azure/70" hidden></p>
+        <ul class="grid gap-5 md:grid-cols-2 lg:grid-cols-3" data-list></ul>
+        <div data-empty hidden class="max-w-xl">
+          <p class="font-serif text-2xl">Our first case studies are being prepared with the consent of the organisations involved.</p>
+          <p class="mt-4 text-azure/80">If you would like to talk about a challenge of your own, we are glad to hear it.</p>
+          <a class="btn btn-primary mt-8" href="contact.html">Begin with a conversation</a>
+        </div>
+        <noscript><p>Case studies load with JavaScript. Please call <a class="underline" href="tel:+254111429478">0111429478</a> or <a class="underline" href="contact.html">contact us</a>.</p></noscript>
+      </div>
+    </section>
   </main>
 
   <div id="site-footer"></div>

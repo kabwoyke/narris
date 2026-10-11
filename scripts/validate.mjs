@@ -3,7 +3,8 @@
  * Phase 0/1 checks: every internal link in the HTML files and config nav resolves to a file (and anchor,
  * when the target page is built); all JSON data files parse; banned words are absent from page copy;
  * the "never publish" guard terms are absent.
- * TODO(phase 5): add case-study schema + consent checks (client-approved needs consentRef/approvedBy).
+ * Phase 5: case-study schema and consent checks (client-approved needs consentRef/approvedBy; anonymous entries
+ * may carry no identifying fields; live entries may not be placeholders or contain guarantee wording).
  */
 import { readFile, readdir } from 'node:fs/promises';
 import { fileURLToPath, pathToFileURL } from 'node:url';
@@ -20,6 +21,33 @@ for (const f of htmlFiles) pages.set(f, await readFile(path.join(root, f), 'utf8
 /* 1. JSON data */
 for (const f of await readdir(path.join(root, 'data'))) {
   try { JSON.parse(await readFile(path.join(root, 'data', f), 'utf8')); } catch (e) { fail(`data/${f}: invalid JSON (${e.message})`); }
+}
+
+/* 1b. Case studies: schema, consent and disclosure rules (CLAUDE.md sections 5 and 13) */
+{
+  const { config: cfg } = await import(pathToFileURL(path.join(root, 'js/config.js')).href);
+  const entries = JSON.parse(await readFile(path.join(root, 'data/case-studies.json'), 'utf8'));
+  const serviceIds = new Set(cfg.services.map((x) => x.id));
+  const required = ['title', 'slug', 'sector', 'serviceTags', 'summary', 'challenge', 'approach', 'outcome', 'date', 'disclosure', 'published', 'sample'];
+  const identifying = ['client', 'clientName', 'clientLogo', 'logo', 'logoUrl', 'clientUrl', 'website'];
+  const slugs = new Set();
+  if (!Array.isArray(entries)) fail('data/case-studies.json: must be an array');
+  else entries.forEach((e, i) => {
+    const id = `data/case-studies.json[${i}] (${e.slug || 'no slug'})`;
+    for (const k of required) if (e[k] === undefined || e[k] === '') fail(`${id}: missing "${k}"`);
+    if (e.slug && !/^[a-z0-9]+(-[a-z0-9]+)*$/.test(e.slug)) fail(`${id}: slug must be lowercase kebab-case`);
+    if (slugs.has(e.slug)) fail(`${id}: duplicate slug`); slugs.add(e.slug);
+    if (!['anonymous', 'client-approved', 'redacted'].includes(e.disclosure)) fail(`${id}: disclosure must be anonymous | client-approved | redacted`);
+    if (!Array.isArray(e.serviceTags) || !e.serviceTags.length) fail(`${id}: serviceTags must be a non-empty array`);
+    else for (const t of e.serviceTags) if (!serviceIds.has(t)) fail(`${id}: unknown service tag "${t}"`);
+    if (typeof e.published !== 'boolean' || typeof e.sample !== 'boolean') fail(`${id}: published and sample must be true or false`);
+    if (isNaN(Date.parse(e.date))) fail(`${id}: date must be YYYY-MM-DD`);
+    if (e.disclosure === 'client-approved' && !(e.consentRef && e.approvedBy)) fail(`${id}: client-approved needs consentRef and approvedBy`);
+    if (e.disclosure !== 'client-approved') for (const k of identifying) if (e[k]) fail(`${id}: "${k}" must not be set unless disclosure is client-approved`);
+    if (e.published && !e.sample && /^(TEMPLATE|SAMPLE)/i.test(`${e.title} ${e.summary}`.trim())) fail(`${id}: placeholder text in a live entry`);
+    if (e.published && e.sample && !/^SAMPLE\./.test(e.summary || '')) fail(`${id}: sample entries must start their summary with "SAMPLE."`);
+  });
+  if (cfg.flags.showSamples) console.warn('validate: note: flags.showSamples is true. Set it to false before publishing.');
 }
 
 /* 2. Links (HTML + config nav/hero CTAs) */

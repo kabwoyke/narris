@@ -1,1 +1,58 @@
-[]
+[
+  {
+    "title": "TEMPLATE: copy this entry, then edit every field",
+    "slug": "template-entry",
+    "sector": "Sector, e.g. Development finance",
+    "serviceTags": ["positioning-stakeholder-alignment"],
+    "summary": "One or two sentences. No client names, no figures that could identify the client.",
+    "challenge": "What the organisation was facing, described in general terms.",
+    "approach": "What Narris did: listening, interpretation, shaping, alignment.",
+    "outcome": "What changed. Describe it qualitatively. No guaranteed results, rankings or invented statistics.",
+    "date": "2026-01-01",
+    "disclosure": "anonymous",
+    "published": false,
+    "sample": false
+  },
+  {
+    "title": "A research institution finds one voice for its findings",
+    "slug": "sample-research-institution",
+    "sector": "Research and policy",
+    "serviceTags": ["research-interpretation", "strategic-narrative-communication"],
+    "summary": "SAMPLE. A policy research body held strong evidence that decision-makers rarely acted on. The work reframed the findings around the questions its audiences were already asking.",
+    "challenge": "The institution produced rigorous reports. Readers outside the field found them hard to place and harder to use. Teams inside described the same findings in different ways.",
+    "approach": "We began by listening to researchers and to the people who receive their work. We interpreted where meaning was lost, then shaped a shared structure for presenting findings: the question, the evidence, the implication.",
+    "outcome": "The institution now introduces its work in a consistent way, and its reports open with the decision they inform. Staff report that conversations with partners start from a shared understanding.",
+    "date": "2026-03-01",
+    "disclosure": "anonymous",
+    "published": true,
+    "sample": true
+  },
+  {
+    "title": "An organisation in transition keeps its stakeholders steady",
+    "slug": "sample-organisation-in-transition",
+    "sector": "Mission-driven organisations",
+    "serviceTags": ["transition-communication-trust", "executive-strategic-counsel"],
+    "summary": "SAMPLE. During a leadership change, an organisation needed one clear account of what was changing and what was not.",
+    "challenge": "Partners, staff and funders were each hearing a different version of the transition. Silence from the centre was being read as uncertainty.",
+    "approach": "We worked with the executive team in confidence to separate what was decided from what was open. We built a short narrative and a sequence for sharing it with each audience.",
+    "outcome": "Messages to staff, partners and funders now share the same core account. Leaders have a plain way to answer the hardest questions.",
+    "date": "2026-05-01",
+    "disclosure": "anonymous",
+    "published": true,
+    "sample": true
+  },
+  {
+    "title": "A growing company clarifies how it wants to be understood",
+    "slug": "sample-growing-company",
+    "sector": "Private sector",
+    "serviceTags": ["positioning-stakeholder-alignment"],
+    "summary": "SAMPLE. A founder-led company had outgrown the way it described itself. Customers and investors were reading different stories.",
+    "challenge": "The company's identity had changed faster than its language. Internally the team agreed on where it was heading. Externally, the picture was less clear.",
+    "approach": "We interviewed customers and partners, compared their interpretation with leadership intent, and named the gaps. We then shaped positioning that the whole team could explain in the same terms.",
+    "outcome": "Leadership, sales and investor materials now describe the company in consistent terms, and the team can say why it exists in a sentence.",
+    "date": "2026-07-01",
+    "disclosure": "redacted",
+    "published": true,
+    "sample": true
+  }
+]

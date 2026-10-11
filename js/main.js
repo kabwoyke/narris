@@ -194,6 +194,8 @@ if (document.getElementById('hero')) import('./hero.js').then((m) => m.initHero(
 if (document.getElementById('insights') || document.getElementById('credibility')) {
   import('./case-studies.js').then((m) => m.initHomeCredibility());
 }
+if (document.querySelector('[data-insights-page]')) import('./case-studies.js').then((m) => m.initListing());
+if (document.querySelector('[data-insight-page]')) import('./case-studies.js').then((m) => m.initDetail());
 if (document.querySelector('form[data-narris-form]')) import('./forms.js').then((m) => m.initForms());
 
 /* ---------- Services: highlight the anchor-nav link of the section in view ---------- */

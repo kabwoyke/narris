@@ -51,7 +51,8 @@ Dark Azure `#162b3a` is the primary colour (buttons, text, dark bands). Warm Lig
 | 2 | Services page | Done, awaiting review |
 | 3 | About Us | Done, awaiting review |
 | 4 | Contact + Privacy, cookie notice live | Done, awaiting review. Form endpoint still needed for a live submission test |
-| 5-9 | Insights, Gen Z Research, Team + Testimonials, FAQs + Careers, Hardening | Not started |
+| 5 | Insights and case studies (see `CASE_STUDY_GUIDE.md`) | Done, awaiting review |
+| 6-9 | Gen Z Research, Team + Testimonials, FAQs + Careers, Hardening | Not started |
 
 Pages for later phases show a shared "In progress" stub with contact options, so no link is ever dead.
 
