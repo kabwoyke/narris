@@ -1,1 +1,12 @@
-[]
+[
+  {
+    "_schema": "TEMPLATE. Fields: quote, name, role, organisation (optional), consentRef (REQUIRED for live entries: where written consent is stored), published, sample. Prefer anonymous attribution, e.g. name 'Chief executive' and no organisation.",
+    "quote": "SAMPLE. Placeholder quote that does not describe a real engagement.",
+    "name": "Sample client",
+    "role": "Chief executive",
+    "organisation": "",
+    "consentRef": "",
+    "published": true,
+    "sample": true
+  }
+]

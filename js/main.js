@@ -213,6 +213,8 @@ if (document.getElementById('insights') || document.getElementById('credibility'
 }
 if (document.querySelector('[data-insights-page]')) import('./case-studies.js').then((m) => m.initListing());
 if (document.querySelector('[data-insight-page]')) import('./case-studies.js').then((m) => m.initDetail());
+if (document.querySelector('[data-team-page]')) import('./people.js').then((m) => m.initTeam());
+if (document.querySelector('[data-testimonials-page]')) import('./people.js').then((m) => m.initTestimonials());
 if (document.querySelector('form[data-narris-form]')) import('./forms.js').then((m) => m.initForms());
 
 /* ---------- Services: highlight the anchor-nav link of the section in view ---------- */

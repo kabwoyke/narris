@@ -5,7 +5,6 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Our Team | Narris International</title>
   <meta name="description" content="Narris International is a research-informed strategy advisory focused on positioning, stakeholder understanding and strategic communication.">
-  <meta name="robots" content="noindex">
   <meta name="theme-color" content="#162b3a">
   <link rel="manifest" href="manifest.webmanifest">
   <link rel="apple-touch-icon" href="assets/icons/apple-touch-icon.png">
@@ -37,14 +36,27 @@
     </noscript>
   </div>
 
-  <!-- STUB: replaced in phase 7. Rendered by js/main.js (renderStub). -->
-  <main id="main" data-stub="Our Team">
-    <noscript>
-      <section class="container-x py-16">
-        <h1 class="font-serif text-4xl">Our Team</h1>
-        <p class="mt-4">This page is being prepared. Call <a class="underline" href="tel:+254111429478">0111429478</a> or email <a class="underline" href="mailto:bdu@narrisinternational.com">bdu@narrisinternational.com</a>.</p>
-      </section>
-    </noscript>
+  <!-- Phase 7: rendered from /data by js/people.js. TODO(client): supply real profiles / consented quotes. -->
+  <main id="main" data-team-page>
+    <section class="bg-azure pb-16 pt-40 text-white sm:pb-20">
+      <div class="container-x">
+        <p class="eyebrow !text-azure-200">Our Team</p>
+        <h1 class="h-display mt-4 max-w-3xl !text-white">Advisors who listen before they advise.</h1>
+        <p class="lead mt-6 max-w-2xl !text-azure-100">A small, senior team. Every engagement is led by people you will speak with directly.</p>
+      </div>
+    </section>
+    <section class="section" aria-labelledby="list-h">
+      <div class="container-x">
+        <h2 id="list-h" class="sr-only">Team members</h2>
+        <ul class="grid gap-6 sm:grid-cols-2 lg:grid-cols-3" data-list></ul>
+        <div data-empty hidden class="max-w-xl">
+          <p class="font-serif text-2xl">Narris works as a small advisory, and each engagement is led by senior advisors.</p>
+          <p class="mt-4 text-azure/80">If you would like to know who would work with you, ask us. We are glad to introduce the people involved.</p>
+          <a class="btn btn-primary mt-8" href="contact.html">Begin with a conversation</a>
+        </div>
+        <noscript><p>This page loads with JavaScript. Please call <a class="underline" href="tel:+254111429478">0111429478</a> or <a class="underline" href="contact.html">contact us</a>.</p></noscript>
+      </div>
+    </section>
   </main>
 
   <div id="site-footer"></div>

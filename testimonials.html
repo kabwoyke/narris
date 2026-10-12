@@ -5,7 +5,6 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Testimonials | Narris International</title>
   <meta name="description" content="Narris International is a research-informed strategy advisory focused on positioning, stakeholder understanding and strategic communication.">
-  <meta name="robots" content="noindex">
   <meta name="theme-color" content="#162b3a">
   <link rel="manifest" href="manifest.webmanifest">
   <link rel="apple-touch-icon" href="assets/icons/apple-touch-icon.png">
@@ -37,14 +36,27 @@
     </noscript>
   </div>
 
-  <!-- STUB: replaced in phase 7. Rendered by js/main.js (renderStub). -->
-  <main id="main" data-stub="Testimonials">
-    <noscript>
-      <section class="container-x py-16">
-        <h1 class="font-serif text-4xl">Testimonials</h1>
-        <p class="mt-4">This page is being prepared. Call <a class="underline" href="tel:+254111429478">0111429478</a> or email <a class="underline" href="mailto:bdu@narrisinternational.com">bdu@narrisinternational.com</a>.</p>
-      </section>
-    </noscript>
+  <!-- Phase 7: rendered from /data by js/people.js. TODO(client): supply real profiles / consented quotes. -->
+  <main id="main" data-testimonials-page>
+    <section class="bg-azure pb-16 pt-40 text-white sm:pb-20">
+      <div class="container-x">
+        <p class="eyebrow !text-azure-200">Testimonials</p>
+        <h1 class="h-display mt-4 max-w-3xl !text-white">Trust, in our clients’ words.</h1>
+        <p class="lead mt-6 max-w-2xl !text-azure-100">Discretion matters to the people we work with. Words appear here only with their permission.</p>
+      </div>
+    </section>
+    <section class="section" aria-labelledby="list-h">
+      <div class="container-x">
+        <h2 id="list-h" class="sr-only">Client testimonials</h2>
+        <ul class="grid gap-12 md:grid-cols-2" data-list></ul>
+        <div data-empty hidden class="max-w-xl">
+          <p class="font-serif text-2xl">Our work is confidential, and we share client words only with their permission.</p>
+          <p class="mt-4 text-azure/80">To hear how we work from people we have worked with, ask us and we will arrange it where consent allows.</p>
+          <a class="btn btn-primary mt-8" href="contact.html">Begin with a conversation</a>
+        </div>
+        <noscript><p>This page loads with JavaScript. Please call <a class="underline" href="tel:+254111429478">0111429478</a> or <a class="underline" href="contact.html">contact us</a>.</p></noscript>
+      </div>
+    </section>
   </main>
 
   <div id="site-footer"></div>

@@ -1,1 +1,13 @@
-[]
+[
+  {
+    "_schema": "TEMPLATE. Copy this object to add a person. Fields: name, role, bio (optional; \\n starts a new paragraph), photo (optional path under /assets, with photoAlt), order (lower shows first), published (true to show), sample (true hides it in production).",
+    "name": "Sample Advisor",
+    "role": "Sample role",
+    "bio": "SAMPLE. Placeholder text only. Replace with an approved profile.",
+    "photo": "",
+    "photoAlt": "",
+    "order": 1,
+    "published": true,
+    "sample": true
+  }
+]

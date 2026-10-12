@@ -50,6 +50,28 @@ for (const f of await readdir(path.join(root, 'data'))) {
   if (cfg.flags.showSamples) console.warn('validate: note: flags.showSamples is true. Set it to false before publishing.');
 }
 
+/* 1c. Team and testimonials (phase 7): live entries must be real and, for quotes, carry documented consent */
+{
+  const team = JSON.parse(await readFile(path.join(root, 'data/team.json'), 'utf8'));
+  const quotes = JSON.parse(await readFile(path.join(root, 'data/testimonials.json'), 'utf8'));
+  const placeholder = /^(SAMPLE|TEMPLATE)/i;
+  if (!Array.isArray(team)) fail('data/team.json: must be an array');
+  else team.forEach((m, i) => {
+    const id = `data/team.json[${i}] (${m.name || 'no name'})`;
+    for (const k of ['name', 'role', 'published', 'sample']) if (m[k] === undefined || m[k] === '') fail(`${id}: missing "${k}"`);
+    if (m.published && !m.sample && placeholder.test(`${m.name} ${m.bio || ''}`.trim())) fail(`${id}: placeholder text in a live entry`);
+    if (m.photo && !m.photoAlt) fail(`${id}: photo needs photoAlt`);
+  });
+  if (!Array.isArray(quotes)) fail('data/testimonials.json: must be an array');
+  else quotes.forEach((t, i) => {
+    const id = `data/testimonials.json[${i}] (${t.name || 'no name'})`;
+    for (const k of ['quote', 'published', 'sample']) if (t[k] === undefined || t[k] === '') fail(`${id}: missing "${k}"`);
+    if (t.published && !t.sample && !t.consentRef) fail(`${id}: live testimonial needs consentRef`);
+    if (t.published && !t.sample && placeholder.test(t.quote || '')) fail(`${id}: placeholder text in a live entry`);
+    if (t.published && t.sample && !/^SAMPLE\./.test(t.quote || '')) fail(`${id}: sample quotes must start with "SAMPLE."`);
+  });
+}
+
 /* 2. Links (HTML + config nav/hero CTAs) */
 const { config } = await import(pathToFileURL(path.join(root, 'js/config.js')).href);
 const hrefs = new Set();
