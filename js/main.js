@@ -215,6 +215,8 @@ if (document.querySelector('[data-insights-page]')) import('./case-studies.js').
 if (document.querySelector('[data-insight-page]')) import('./case-studies.js').then((m) => m.initDetail());
 if (document.querySelector('[data-team-page]')) import('./people.js').then((m) => m.initTeam());
 if (document.querySelector('[data-testimonials-page]')) import('./people.js').then((m) => m.initTestimonials());
+if (document.querySelector('[data-faq-page]')) import('./faqs.js').then((m) => m.initFaqs());
+if (document.querySelector('[data-careers-page]')) import('./faqs.js').then((m) => m.initCareers());
 if (document.querySelector('form[data-narris-form]')) import('./forms.js').then((m) => m.initForms());
 
 /* ---------- Services: highlight the anchor-nav link of the section in view ---------- */

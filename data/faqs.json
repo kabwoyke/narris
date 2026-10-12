@@ -1,1 +1,51 @@
-[]
+[
+  {
+    "id": "engagement-process",
+    "topic": "Engagement process",
+    "question": "How does an engagement begin?",
+    "answer": "It begins with a conversation. You describe the question you are facing, and we listen. If we are the right fit, we agree a scope together and move through listening, interpretation, shaping and alignment. Each stage is explained on the About page.",
+    "published": true
+  },
+  {
+    "id": "confidentiality",
+    "topic": "Confidentiality",
+    "question": "How do you handle confidential information?",
+    "answer": "Discretion is part of how we work. What you share is used only for your engagement and handled in line with the Kenya Data Protection Act. We will sign a confidentiality agreement on request. We name clients publicly only with their documented consent.",
+    "published": true
+  },
+  {
+    "id": "who-we-work-with",
+    "topic": "Who we work with",
+    "question": "Who do you work with?",
+    "answer": "Executives and leaders in private corporations, leaders in NGOs and mission-driven organisations, and business owners and founders. We also work with institutions, development organisations and research-heavy bodies.",
+    "published": true
+  },
+  {
+    "id": "timelines",
+    "topic": "Timelines",
+    "question": "How long does an engagement take?",
+    "answer": "It depends on the question. A focused advisory session can be arranged quickly. A positioning audit or a narrative project takes longer, because listening properly takes time. We agree a realistic timeline with you before work begins.",
+    "published": true
+  },
+  {
+    "id": "fees-quotations",
+    "topic": "Fees and quotations",
+    "question": "How are fees set, and how do I get a quotation?",
+    "answer": "We do not publish fee levels, because each engagement is shaped to its question. Tell us what you need through the contact form and tick the quotation option, and we will reply with a quotation. Engagements can be retained advisory, fixed-fee projects, reports, workshops or longer partnerships.",
+    "published": true
+  },
+  {
+    "id": "working-internationally",
+    "topic": "Working internationally",
+    "question": "Do you work outside Kenya?",
+    "answer": "Yes. We are based in Nairobi and serve clients worldwide. We pay close attention to cross-cultural interpretation, because the same message is often understood differently from one audience to the next.",
+    "published": true
+  },
+  {
+    "id": "remote-delivery",
+    "topic": "Remote delivery",
+    "question": "Can the work be delivered remotely?",
+    "answer": "Yes. Work can be delivered remotely, with clients worldwide. Where an in-person session would help, we can discuss it.",
+    "published": true
+  }
+]

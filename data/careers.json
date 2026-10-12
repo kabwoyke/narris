@@ -1,0 +1,11 @@
+[
+  {
+    "_schema": "TEMPLATE. Open roles. Fields: title, type (e.g. Full-time), location, summary, published, sample. Add real roles with published true and sample false.",
+    "title": "Sample role",
+    "type": "Full-time",
+    "location": "Nairobi",
+    "summary": "SAMPLE. Placeholder role that does not exist.",
+    "published": true,
+    "sample": true
+  }
+]

@@ -8,6 +8,8 @@
  */
 import { config } from './config.js';
 
+// TODO(client): keep in step with the file-size limit of the chosen form service (Formspree free plan is small).
+const MAX_CV_BYTES = 5 * 1024 * 1024;
 const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/;
 
 const messages = {
@@ -21,6 +23,11 @@ function validateField(el) {
   if (el.name === 'name' && !v) return messages.name;
   if (el.name === 'email' && !EMAIL_RE.test(v)) return messages.email;
   if (el.name === 'message' && v.length < 10) return messages.message;
+  if (el.name === 'cv' && el.files?.[0]) {
+    const file = el.files[0];
+    if (!/\.(pdf|docx?)$/i.test(file.name)) return 'Please attach a PDF or Word file.';
+    if (file.size > MAX_CV_BYTES) return 'That file is larger than 5 MB. Please attach a smaller one.';
+  }
   if (el.name === 'consent' && !el.checked) return 'Please confirm you are happy for us to use these details to reply.';
   return '';
 }
@@ -49,10 +56,12 @@ function mailtoHref(data) {
     data.phone && `Phone: ${data.phone}`,
     data.service && `Service of interest: ${data.service}`,
     data.quote && 'Quotation requested: yes',
+    careers && '(Please attach your CV to this email.)',
     '',
     data.message,
   ].filter((l) => l !== undefined && l !== false && l !== null);
-  const subject = data.quote ? 'Quotation request' : 'Enquiry from the website';
+  const careers = !!data.cv;
+  const subject = careers ? 'Application from the website' : data.quote ? 'Quotation request' : 'Enquiry from the website';
   return `mailto:${config.contact.email}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(lines.join('\n'))}`;
 }
 
@@ -78,7 +87,7 @@ function initForm(form) {
   if (quote && new URLSearchParams(location.search).get('quote')) quote.checked = true;
 
   const fields = [...form.querySelectorAll('input[name], textarea[name], select[name]')]
-    .filter((el) => ['name', 'email', 'message', 'consent'].includes(el.name));
+    .filter((el) => ['name', 'email', 'message', 'consent', 'cv'].includes(el.name));
   fields.forEach((el) => {
     el.addEventListener('blur', () => setError(form, el, validateField(el)));
     el.addEventListener('input', () => { if (el.hasAttribute('aria-invalid')) setError(form, el, validateField(el)); });

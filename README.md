@@ -54,7 +54,8 @@ Dark Azure `#162b3a` is the primary colour (buttons, text, dark bands). Warm Lig
 | 5 | Insights and case studies (see `CASE_STUDY_GUIDE.md`) | Done, awaiting review |
 | 6 | Gen Z Research (playful layout, placeholder copy, noindex until sign-off) | Done, awaiting review |
 | 7 | Our Team + Testimonials (from `data/team.json` and `data/testimonials.json`; placeholders hidden) | Done, awaiting review |
-| 8-9 | FAQs + Careers, Hardening | Not started |
+| 8 | FAQs accordion + Careers (roles, application form) | Done, awaiting review |
+| 9 | Hardening and launch | Not started |
 
 Pages for later phases show a shared "In progress" stub with contact options, so no link is ever dead.
 
@@ -68,4 +69,4 @@ Search the code for `TODO(client)`. The consolidated list is in `Claude.md` sect
 - Fonts (Plus Jakarta Sans) load from Google Fonts with `display=swap`, non-blocking.
 - Motion respects `prefers-reduced-motion`: the carousel starts paused, Ken Burns and the network canvas are off, and the slide 1 motif shows its aligned static state.
 - The drifting-points canvas switches itself off on low-power devices, data-saver, or if frames drop.
-- Careers CV upload (Phase 8): note the file-size limit of whichever form service is chosen.
+- Careers CV upload: the page caps files at 5 MB (`MAX_CV_BYTES` in `js/forms.js`). Check this against the limit of whichever form service is chosen (free plans are often smaller). With no endpoint set, the mailto fallback cannot attach files, so it asks the applicant to attach the CV.

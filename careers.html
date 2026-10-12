@@ -5,7 +5,6 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Careers | Narris International</title>
   <meta name="description" content="Narris International is a research-informed strategy advisory focused on positioning, stakeholder understanding and strategic communication.">
-  <meta name="robots" content="noindex">
   <meta name="theme-color" content="#162b3a">
   <link rel="manifest" href="manifest.webmanifest">
   <link rel="apple-touch-icon" href="assets/icons/apple-touch-icon.png">
@@ -37,14 +36,47 @@
     </noscript>
   </div>
 
-  <!-- STUB: replaced in phase 8. Rendered by js/main.js (renderStub). -->
-  <main id="main" data-stub="Careers">
-    <noscript>
-      <section class="container-x py-16">
-        <h1 class="font-serif text-4xl">Careers</h1>
-        <p class="mt-4">This page is being prepared. Call <a class="underline" href="tel:+254111429478">0111429478</a> or email <a class="underline" href="mailto:bdu@narrisinternational.com">bdu@narrisinternational.com</a>.</p>
-      </section>
-    </noscript>
+  <!-- Phase 8: roles from data/careers.json (js/faqs.js initCareers); form handled by js/forms.js.
+       TODO(client): confirm culture wording, open roles, and the form service file-size limit for CVs. -->
+  <main id="main" data-careers-page>
+    <section class="bg-azure pb-16 pt-40 text-white sm:pb-20">
+      <div class="container-x">
+        <p class="eyebrow !text-azure-200">Careers</p>
+        <h1 class="h-display mt-4 max-w-3xl !text-white">Work that rewards careful thinking.</h1>
+        <p class="lead mt-6 max-w-2xl !text-azure-100">We value precision, integrity, listening and depth. If that is how you work, we would like to hear from you.</p>
+      </div>
+    </section>
+    <section class="section" aria-labelledby="roles-h">
+      <div class="container-x max-w-3xl">
+        <h2 id="roles-h" class="font-serif text-3xl">Open roles</h2>
+        <ul class="mt-8 grid gap-5" data-roles></ul>
+        <p data-roles-empty hidden class="text-lg text-azure/80">There are no open roles at the moment. You are welcome to introduce yourself below, and we will keep your details in mind.</p>
+      </div>
+    </section>
+    <section class="section pt-0" aria-labelledby="apply-h">
+      <div class="container-x max-w-3xl">
+        <div class="rounded-3xl bg-warm p-6 sm:p-10">
+          <h2 id="apply-h" class="font-serif text-2xl">Introduce yourself</h2>
+          <form data-narris-form="careers" novalidate class="mt-8 grid gap-5 sm:grid-cols-2" aria-label="Application form">
+            <div><label for="a-name" class="mb-2 block text-sm font-semibold">Name <span aria-hidden="true">*</span></label><input id="a-name" name="name" type="text" class="field" autocomplete="name" required><p id="a-name-err" class="field-error" data-error-for="name" hidden></p></div>
+            <div><label for="a-email" class="mb-2 block text-sm font-semibold">Email <span aria-hidden="true">*</span></label><input id="a-email" name="email" type="email" class="field" autocomplete="email" required><p id="a-email-err" class="field-error" data-error-for="email" hidden></p></div>
+            <div><label for="a-phone" class="mb-2 block text-sm font-semibold">Phone</label><input id="a-phone" name="phone" type="tel" class="field" autocomplete="tel"></div>
+            <div><label for="a-role" class="mb-2 block text-sm font-semibold">Area of interest</label><input id="a-role" name="role" type="text" class="field"></div>
+            <div class="sm:col-span-2"><label for="a-message" class="mb-2 block text-sm font-semibold">Tell us about yourself <span aria-hidden="true">*</span></label><textarea id="a-message" name="message" rows="5" class="field" required></textarea><p id="a-message-err" class="field-error" data-error-for="message" hidden></p></div>
+            <div class="sm:col-span-2"><label for="a-cv" class="mb-2 block text-sm font-semibold">CV (PDF or Word, up to 5 MB)</label><input id="a-cv" name="cv" type="file" accept=".pdf,.doc,.docx" class="field" aria-describedby="a-cv-err"><p id="a-cv-err" class="field-error" data-error-for="cv" hidden></p></div>
+            <div class="absolute -left-[9999px] h-0 w-0 overflow-hidden" aria-hidden="true"><label>Leave this empty<input type="text" name="_gotcha" tabindex="-1" autocomplete="off"></label></div>
+            <div class="sm:col-span-2">
+              <label class="flex items-start gap-3 text-sm"><input type="checkbox" name="consent" class="mt-1 h-4 w-4 accent-[#162b3a]" required aria-describedby="a-consent-err"> <span>I agree that Narris International may use these details to consider my application. See the <a class="underline" href="privacy.html">privacy policy</a>. <span aria-hidden="true">*</span></span></label>
+              <p id="a-consent-err" class="field-error" data-error-for="consent" hidden></p>
+            </div>
+            <div class="sm:col-span-2">
+              <button type="submit" class="btn btn-primary">Send application</button>
+              <div data-form-status role="status" tabindex="-1" hidden></div>
+            </div>
+          </form>
+        </div>
+      </div>
+    </section>
   </main>
 
   <div id="site-footer"></div>

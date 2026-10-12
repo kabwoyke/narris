@@ -72,6 +72,22 @@ for (const f of await readdir(path.join(root, 'data'))) {
   });
 }
 
+/* 1d. FAQs and careers (phase 8): FAQs carry no fee figures; live roles are not placeholders */
+{
+  const faqs = JSON.parse(await readFile(path.join(root, 'data/faqs.json'), 'utf8'));
+  const roles = JSON.parse(await readFile(path.join(root, 'data/careers.json'), 'utf8'));
+  faqs.forEach((f, i) => {
+    const id = `data/faqs.json[${i}] (${f.id || 'no id'})`;
+    for (const k of ['id', 'question', 'answer', 'published']) if (f[k] === undefined || f[k] === '') fail(`${id}: missing "${k}"`);
+    if (/\b(KES|Ksh|USD|EUR)\b|[$€£]\s?\d|\d+\s?%/i.test(`${f.question} ${f.answer}`)) fail(`${id}: no fee figures or statistics in FAQ answers`);
+  });
+  roles.forEach((r, i) => {
+    const id = `data/careers.json[${i}] (${r.title || 'no title'})`;
+    for (const k of ['title', 'published', 'sample']) if (r[k] === undefined || r[k] === '') fail(`${id}: missing "${k}"`);
+    if (r.published && !r.sample && /^(SAMPLE|TEMPLATE)/i.test(`${r.title} ${r.summary || ''}`.trim())) fail(`${id}: placeholder text in a live role`);
+  });
+}
+
 /* 2. Links (HTML + config nav/hero CTAs) */
 const { config } = await import(pathToFileURL(path.join(root, 'js/config.js')).href);
 const hrefs = new Set();
