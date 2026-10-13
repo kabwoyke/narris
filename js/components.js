@@ -30,20 +30,22 @@ const logoMark = (cls = 'h-9 w-auto') =>
   `<svg class="${cls}" viewBox="0 0 1286 1130" aria-hidden="true" focusable="false" fill="currentColor"><path d="M0 82h937v241h197v807H0z"/><rect x="990" width="296" height="269"/></svg>`;
 
 const logo = (extra = '') => `
-  <a href="${rel('/')}" class="group inline-flex items-center gap-3 ${extra}" aria-label="${config.brand.name}, home">
+  <a href="${rel('/')}" class="group inline-flex items-center gap-3 ${extra}">
     ${logoMark()}
     <span class="flex flex-col font-sans text-[0.68rem] font-semibold uppercase leading-[1.35] tracking-[0.32em]">
       <span>Narris</span><span>International</span>
     </span>
+    <span class="sr-only">, home</span>
   </a>`;
 
 /** Header logo: white lockup over the dark hero; once the bar turns white (past the hero) the supplied logo image is shown (CSS swaps them on data-solid). */
 const headerLogo = () => `
-  <a href="${rel('/')}" class="group relative inline-flex items-center" aria-label="${config.brand.name}, home">
+  <a href="${rel('/')}" class="group relative inline-flex items-center">
     <span class="logo-light inline-flex items-center gap-3.5">
       ${logoMark('h-11 w-auto')}
       <span class="flex flex-col font-sans text-[0.82rem] font-bold uppercase leading-[1.3] tracking-[0.28em]"><span>Narris</span><span>International</span></span>
     </span>
+    <span class="sr-only">, home</span>
     <img class="logo-dark h-16 w-auto" src="${rel('assets/logo/narris-logo-nav.png')}" width="640" height="563" alt="${config.brand.name}, strategy advisory">
   </a>`;
 

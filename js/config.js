@@ -22,6 +22,13 @@ export const config = {
     metaDescriptor: 'A research-informed strategy advisory focused on positioning, stakeholder understanding and strategic communication.',
   },
 
+  // Public site address, used for canonical URLs, Open Graph, sitemap.xml and JSON-LD (`npm run seo`).
+  site: {
+    // TODO(client): domain not confirmed. Assumed from the email domain; change here, then run `npm run seo`.
+    url: 'https://narrisinternational.com',
+    ogImage: 'assets/images/og-image.png',
+  },
+
   contact: {
     phone: '0111429478',
     phoneIntl: '+254111429478',

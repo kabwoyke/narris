@@ -5,7 +5,7 @@
  * - Non-GET requests (form posts) and cross-origin requests (stock photos, form endpoint) are never touched.
  * Bump VERSION on each deploy that changes the precache list.
  */
-const VERSION = 'narris-v3';
+const VERSION = 'narris-v4';
 const PRECACHE = [
   './', 'index.html', 'services.html', 'about.html', 'contact.html', 'privacy.html', 'team.html', 'testimonials.html',
   'faqs.html', 'careers.html', 'case-studies.html', 'case-study.html', 'gen-z-research.html',

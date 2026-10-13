@@ -157,7 +157,7 @@
 .gz-dot { display: inline-block; width: .6rem; height: .6rem; margin-right: .4rem; border-radius: 9999px; background: #ebe6e4; animation: gzPulse 1.8s ease-in-out infinite; }
 .gz-bubbles { position: absolute; inset: 0; pointer-events: none; }
 .gz-bubble { position: absolute; left: var(--x); top: var(--y); transform: rotate(var(--r)); padding: .55rem 1rem; border-radius: 9999px 9999px 9999px .4rem; background: rgba(235,230,228,.1); border: 1px solid rgba(235,230,228,.3); color: #c3cfd7; font-size: .8rem; font-weight: 600; white-space: nowrap; animation: gzFloat var(--t, 10s) ease-in-out infinite; animation-delay: var(--dl, 0s); }
-@media (max-width: 639px) { .gz-bubble { font-size: .7rem; opacity: .7; } }
+@media (max-width: 639px) { .gz-bubble { font-size: .7rem; } }
 .gz-squiggle { text-decoration: underline wavy #ebe6e4; text-decoration-thickness: 2px; text-underline-offset: .22em; text-decoration-skip-ink: none; }
 .gz-wobble { transition: transform .5s var(--bounce); }
 .gz-wobble:hover, .gz-wobble:focus-visible { animation: gzWobble .6s ease-in-out; }

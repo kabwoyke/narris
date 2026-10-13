@@ -102,7 +102,7 @@ config.hero.slides.forEach((s) => hrefs.add(s.cta.href));
 hrefs.add(config.quoteCta.href);
 
 for (const href of hrefs) {
-  if (/^(https?:|mailto:|tel:|#$|css\/|js\/|assets\/|manifest\.webmanifest$)/.test(href)) continue;
+  if (/^(https?:|mailto:|tel:|#$|css\/|js\/|assets\/|manifest\.webmanifest$|favicon\.ico$)/.test(href)) continue;
   const clean = href.replace(/^\//, '');
   const [file, hash] = clean.split('#');
   const target = (file.split('?')[0] || 'index.html').replace(/^\.\/$/, 'index.html') || 'index.html';
@@ -133,6 +133,37 @@ const guard = ['guarantee', 'guaranteed', 'revenue model', 'competitor'];
 const copy = [...pages.values(), await readFile(path.join(root, 'js/config.js'), 'utf8')].join('\n').toLowerCase();
 for (const w of banned) if (copy.includes(w)) fail(`banned word in copy: "${w}"`);
 for (const w of guard) if (copy.includes(w)) fail(`never-publish term in copy: "${w}"`);
+
+/* 4. SEO (Phase 9): unique title and description, canonical, Open Graph, Twitter, JSON-LD, sitemap */
+{
+  const { config: cfg } = await import(pathToFileURL(path.join(root, 'js/config.js')).href);
+  const site = cfg.site.url.replace(/\/+$/, '');
+  const seen = { title: new Map(), description: new Map() };
+  let sitemap = '';
+  try { sitemap = await readFile(path.join(root, 'sitemap.xml'), 'utf8'); } catch { fail('sitemap.xml missing (run npm run seo)'); }
+  try { await readFile(path.join(root, 'robots.txt'), 'utf8'); } catch { fail('robots.txt missing (run npm run seo)'); }
+  for (const [f, html] of pages) {
+    const title = /<title>([^<]*)<\/title>/.exec(html)?.[1];
+    const desc = /<meta name="description" content="([^"]*)"/.exec(html)?.[1];
+    if (!title) fail(`${f}: missing <title>`);
+    if (!desc) fail(`${f}: missing meta description`);
+    if (desc && desc.length > 200) fail(`${f}: meta description is ${desc.length} characters (keep under 200)`);
+    for (const [k, v] of [['title', title], ['description', desc]]) {
+      if (!v) continue;
+      if (seen[k].has(v)) fail(`${f}: ${k} duplicates ${seen[k].get(v)}`); else seen[k].set(v, f);
+    }
+    const want = f === 'index.html' ? `${site}/` : `${site}/${f}`;
+    if (!html.includes(`<link rel="canonical" href="${want}">`)) fail(`${f}: canonical missing or stale (run npm run seo)`);
+    for (const t of ['og:title', 'og:description', 'og:url', 'og:image', 'twitter:card']) {
+      if (!html.includes(`"${t}"`)) fail(`${f}: missing ${t} (run npm run seo)`);
+    }
+    if (f !== 'case-study.html' && !/<meta name="robots" content="[^"]*noindex/.test(html) && sitemap && !sitemap.includes(`<loc>${want}</loc>`)) fail(`${f}: not in sitemap.xml (run npm run seo)`);
+    for (const m of html.matchAll(/<script type="application\/ld\+json">([\s\S]*?)<\/script>/g)) {
+      try { JSON.parse(m[1]); } catch (e) { fail(`${f}: invalid JSON-LD (${e.message})`); }
+    }
+  }
+  if (!/ld\+json/.test(pages.get('index.html') || '')) fail('index.html: JSON-LD missing');
+}
 
 if (errors.length) {
   console.error(`\nvalidate: ${errors.length} problem(s)\n` + errors.map((e) => ` - ${e}`).join('\n'));

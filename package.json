@@ -7,6 +7,7 @@
     "dev": "tailwindcss -i ./css/input.css -o ./css/styles.css --watch",
     "build": "tailwindcss -i ./css/input.css -o ./css/styles.css --minify",
     "stubs": "node scripts/make-stubs.mjs",
+    "seo": "node scripts/seo.mjs",
     "validate": "node scripts/validate.mjs",
     "serve": "node scripts/serve.mjs"
   },
