@@ -155,7 +155,6 @@ export function initHero() {
   const root = document.getElementById('hero');
   const slides = resolveSlides();
   const total = slides.length;
-  const pad = (n) => String(n + 1).padStart(2, '0');
   const prerendered = !!root.querySelector('[data-prerender]'); // slide 1 text is already painted
   const motifSlideIdx = slides.findIndex((s) => s.visual === 'motif');
   let motif = null;
@@ -169,9 +168,9 @@ export function initHero() {
     const short = s.headline.length < 40;
     const size = short ? 'text-5xl sm:text-6xl lg:text-7xl' : long ? 'text-[1.75rem] sm:text-4xl lg:text-[2.9rem]' : 'text-[2rem] sm:text-5xl lg:text-6xl';
     const support = s.support.length > 1
-      ? `<ul class="hero-anim mt-6 space-y-2 text-base text-azure-200 sm:text-lg" style="--i:2">${s.support.map((q) => `<li class="flex gap-3"><span aria-hidden="true" class="mt-[0.7em] h-px w-5 shrink-0 bg-azure-300"></span>${esc(q)}</li>`).join('')}</ul>`
+      ? `<ul class="hero-anim mt-9 space-y-3.5 text-base text-azure-200 sm:text-lg" style="--i:2">${s.support.map((q) => `<li class="flex gap-3"><span aria-hidden="true" class="mt-[0.7em] h-px w-5 shrink-0 bg-azure-300"></span>${esc(q)}</li>`).join('')}</ul>`
       : s.support.length === 1
-        ? `<p class="hero-anim mt-6 max-w-xl text-lg text-azure-200 sm:text-xl" style="--i:2">${esc(s.support[0])}</p>`
+        ? `<p class="hero-anim mt-9 max-w-xl text-lg text-azure-200 sm:text-xl" style="--i:2">${esc(s.support[0])}</p>`
         : '';
     const bgClass = img ? '' : 'is-plain';
     const tag = i === 0 ? 'h1' : 'h2'; // first headline is the page h1
@@ -180,11 +179,11 @@ export function initHero() {
         <div class="hero-bg ${bgClass}">${img ? pictureHTML(img, { eager: i === 0 }) : ''}</div>
         ${hasVisual ? `<div class="pointer-events-none absolute inset-y-0 right-0 flex w-full items-center justify-end pr-0 opacity-25 sm:opacity-45 lg:w-[46%] lg:pr-6 lg:opacity-100" aria-hidden="true"><div class="w-[min(40rem,125%)] shrink-0 translate-x-[18%] lg:w-full lg:translate-x-0" data-visual="${s.visual}"></div></div>` : ''}
         <div class="container-x relative flex h-full items-center pb-36 pt-24 sm:pb-32">
-          <div class="${hasVisual ? 'max-w-[40rem]' : 'max-w-3xl'}">
-            <p class="eyebrow hero-anim" style="--i:0">${pad(i)} <span aria-hidden="true" class="mx-1.5 inline-block h-px w-6 translate-y-[-3px] bg-azure-300"></span> ${esc(s.tab)}</p>
-            <${tag} class="hero-anim mt-5 font-serif font-extrabold leading-[1.1] !text-white ${size}" style="--i:1">${esc(s.headline)}</${tag}>
+          <div class="${hasVisual ? 'max-w-[44rem]' : 'max-w-4xl'}">
+            ${s.tab === 'Latest report' ? `<p class="eyebrow hero-anim mb-7" style="--i:0">${esc(s.tab)}</p>` : ''}
+            <${tag} class="hero-anim font-serif font-extrabold leading-[1.6] tracking-normal !text-white ${size}" style="--i:1">${esc(s.headline)}</${tag}>
             ${support}
-            <a class="btn btn-primary hero-anim mt-9" style="--i:3" href="${rel(s.cta.href)}" data-hero-cta>${esc(s.cta.label)} ${ARROW}</a>
+            <a class="btn btn-primary hero-anim mt-12" style="--i:3" href="${rel(s.cta.href)}" data-hero-cta>${esc(s.cta.label)} ${ARROW}</a>
           </div>
         </div>
       </div>`;
@@ -197,7 +196,7 @@ export function initHero() {
     <div class="absolute inset-x-0 bottom-0 z-10 pb-[4.75rem] md:pb-6">
       <div class="container-x flex items-end justify-between gap-6">
         <ol class="grid flex-1 grid-cols-5 gap-3 sm:gap-5 lg:max-w-[60rem]" aria-label="Slides">
-          ${slides.map((s, i) => `<li><button type="button" class="hero-tab w-full" data-tab="${i}" aria-label="${pad(i)} ${esc(s.tab)}"><span class="bar" aria-hidden="true"><i></i></span><span aria-hidden="true">${pad(i)}</span></button></li>`).join('')}
+          ${slides.map((s, i) => `<li><button type="button" class="hero-tab w-full" data-tab="${i}" aria-label="${esc(s.tab)}"><span class="bar" aria-hidden="true"><i></i></span></button></li>`).join('')}
         </ol>
         <div class="flex shrink-0 items-center gap-1 text-white">
           <button type="button" class="p-2.5 transition hover:text-azure-200" data-prev aria-label="Previous slide">${CHEV('M12 4 6 10l6 6')}</button>

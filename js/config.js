@@ -94,7 +94,7 @@ export const config = {
           'Positioning begins long before the first interaction, in the shaping of the perceptions, expectations, and associations through which a brand is understood.',
         support: ['Are you intentionally shaping that perception, or leaving it to chance?'],
         cta: { label: "Become your customer's obvious choice", href: '/services.html#positioning-stakeholder-alignment' },
-        visual: 'rings',
+        visual: 'photo',
         image: 'slide4',
       },
       {

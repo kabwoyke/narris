@@ -37,14 +37,14 @@ const logo = (extra = '') => `
     </span>
   </a>`;
 
-/** Header logo: the white lockup over the dark hero, the supplied full-colour logo once the bar turns white (CSS swaps them on data-solid). */
+/** Header logo: white lockup over the dark hero; once the bar turns white (past the hero) the supplied logo image is shown (CSS swaps them on data-solid). */
 const headerLogo = () => `
   <a href="${rel('/')}" class="group relative inline-flex items-center" aria-label="${config.brand.name}, home">
-    <span class="logo-light inline-flex items-center gap-3">
-      ${logoMark()}
-      <span class="flex flex-col font-sans text-[0.68rem] font-bold uppercase leading-[1.35] tracking-[0.32em]"><span>Narris</span><span>International</span></span>
+    <span class="logo-light inline-flex items-center gap-3.5">
+      ${logoMark('h-11 w-auto')}
+      <span class="flex flex-col font-sans text-[0.82rem] font-bold uppercase leading-[1.3] tracking-[0.28em]"><span>Narris</span><span>International</span></span>
     </span>
-    <img class="logo-dark h-14 w-auto" src="${rel('assets/logo/narris-logo-nav.png')}" width="720" height="633" alt="${config.brand.name}, strategy advisory">
+    <img class="logo-dark h-16 w-auto" src="${rel('assets/logo/narris-logo-nav.png')}" width="640" height="563" alt="${config.brand.name}, strategy advisory">
   </a>`;
 
 /* ---------- header ---------- */
