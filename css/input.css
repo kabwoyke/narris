@@ -209,3 +209,10 @@
   .gz-sticker:hover, .js .gz-sticker.reveal.is-visible:hover, .gz-pop:hover, .gz-step:hover { transform: rotate(var(--r, 0deg)); }
   .gz-sticker, .gz-pop, .gz-plus, .gz-step { transition: none; }
 }
+
+/* ---------- Six-discipline dot motifs (Home "How we do it") ---------- */
+.dot-motif { display: block; }
+.dot-motif .dm-off { fill: #162b3a; opacity: .18; }
+.dot-motif .dm-on { fill: #162b3a; transform-box: fill-box; transform-origin: center; transition: transform .5s ease var(--d, 0ms); }
+li:hover > .dot-motif .dm-on, li:focus-within > .dot-motif .dm-on { transform: scale(1.35); }
+@media (prefers-reduced-motion: reduce) { .dot-motif .dm-on { transition: none; } }

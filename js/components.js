@@ -271,9 +271,9 @@ function renderCookieNotice() {
   const n = document.createElement('div');
   n.setAttribute('role', 'region');
   n.setAttribute('aria-label', 'Cookie notice');
-  n.className = 'fixed inset-x-4 bottom-20 z-50 mx-auto max-w-xl rounded-2xl bg-white p-5 text-sm text-azure shadow-2xl md:bottom-6 md:left-6 md:right-auto';
-  n.innerHTML = `<p>This site uses only essential storage. See our <a class="underline" href="privacy.html">privacy notice</a>.</p>
-    <button type="button" class="btn btn-dark mt-4 !py-2">Understood</button>`;
+  n.className = 'fixed inset-x-4 bottom-20 z-50 mx-auto max-w-xl rounded-2xl bg-white p-5 pr-12 text-sm text-azure shadow-2xl md:bottom-6 md:left-6 md:right-auto';
+  n.innerHTML = `<p>This site uses only essential cookies. See our <a class="underline" href="privacy.html">privacy notice</a>.</p>
+    <button type="button" aria-label="Close cookie notice" class="absolute right-3 top-3 flex h-8 w-8 items-center justify-center rounded-full text-azure hover:bg-warm"><svg aria-hidden="true" viewBox="0 0 16 16" width="14" height="14" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M3 3l10 10M13 3L3 13"/></svg></button>`;
   n.querySelector('button').addEventListener('click', () => {
     try { localStorage.setItem('narris-cookie-ack', '1'); } catch { /* ignore */ }
     n.remove();
