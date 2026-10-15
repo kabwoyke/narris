@@ -1,0 +1,169 @@
+[
+  {
+    "id": "strategy",
+    "short": "Strategy",
+    "name": "Strategy",
+    "image": "services",
+    "summary": "Clarity of position, grounded in how your audiences actually understand you.",
+    "metaDescription": "Strategy from Narris International: research-informed positioning and stakeholder alignment for leaders and institutions.",
+    "lead": "Strategy at Narris begins with interpretation. We study how customers, partners, investors and teams understand you, then shape a position that is clear, coherent and true to your intent.",
+    "deliverables": [
+      {
+        "name": "Positioning audits",
+        "text": "An account of how you are positioned today, set against how you intend to be."
+      },
+      {
+        "name": "Stakeholder alignment reports",
+        "text": "Where each audience's understanding matches intent, and where it does not."
+      },
+      {
+        "name": "Perception analysis",
+        "text": "How customers, partners, investors and others interpret the organisation."
+      },
+      {
+        "name": "Audience interpretation frameworks",
+        "text": "A way to read and anticipate how audiences will understand what you say."
+      },
+      {
+        "name": "Strategic reports and executive briefings",
+        "text": "Concise, decision-oriented documents written for senior readers."
+      }
+    ],
+    "capabilities": [
+      "Positioning",
+      "Stakeholder alignment",
+      "Perception analysis",
+      "Audience interpretation",
+      "Research interpretation",
+      "Strategic reporting",
+      "Executive briefings",
+      "Institutional coherence"
+    ]
+  },
+  {
+    "id": "design",
+    "short": "Design",
+    "name": "Design",
+    "motif": "grid",
+    "image": "positioning",
+    "summary": "The structure of meaning, designed so ideas are easy to follow and hard to misread.",
+    "metaDescription": "Design from Narris International: narrative architecture, publication structure and positioning documents that make complex ideas clear.",
+    "lead": "Design at Narris gives strategy a form people can understand. We shape the structure of meaning, from narrative frameworks to the clarity of a report, so ideas are easy to follow and hard to misread.",
+    "deliverables": [
+      {
+        "name": "Narrative architecture frameworks",
+        "text": "The structure of meaning behind the organisation's communication."
+      },
+      {
+        "name": "Publication architecture",
+        "text": "The structure, sequence and format of a body of publications."
+      },
+      {
+        "name": "Executive narrative maps",
+        "text": "A single view of how leadership explains the organisation, and to whom."
+      },
+      {
+        "name": "Positioning documents",
+        "text": "A written statement of position that teams and partners can share."
+      },
+      {
+        "name": "Research synthesis documents",
+        "text": "Several sources brought together into one clear, well-structured account."
+      }
+    ],
+    "capabilities": [
+      "Narrative architecture",
+      "Publication architecture",
+      "Positioning documents",
+      "Research synthesis",
+      "Executive narrative maps",
+      "Information structure",
+      "Editorial framing",
+      "Document refinement"
+    ]
+  },
+  {
+    "id": "brand-communication",
+    "short": "Brand communication",
+    "name": "Brand communication",
+    "motif": "network",
+    "image": "how",
+    "summary": "One voice across audiences, built on listening and shaped for each of them.",
+    "metaDescription": "Brand communication from Narris International: narrative, messaging systems and executive communication strategy.",
+    "lead": "We help organisations speak with one voice. Brand communication at Narris is a strategic mechanism for achieving outcomes, built on listening and shaped for each audience.",
+    "deliverables": [
+      {
+        "name": "Narrative architecture frameworks",
+        "text": "The structure of meaning that holds communication together."
+      },
+      {
+        "name": "Messaging systems",
+        "text": "Core and audience-specific messages, organised for everyday use."
+      },
+      {
+        "name": "Executive narrative maps",
+        "text": "How leadership explains the organisation, and to whom."
+      },
+      {
+        "name": "Institutional communication strategy",
+        "text": "Direction for how the organisation communicates, and why."
+      },
+      {
+        "name": "Communication direction for leaders",
+        "text": "Clear guidance on what to say, to whom, and why."
+      }
+    ],
+    "capabilities": [
+      "Narrative development",
+      "Messaging systems",
+      "Communication strategy",
+      "Executive communication",
+      "Audience messaging",
+      "Voice and tone guidance",
+      "Stakeholder communication",
+      "Investor communication"
+    ]
+  },
+  {
+    "id": "brand-led-change",
+    "short": "Brand-led change",
+    "name": "Brand-led change",
+    "motif": "shift",
+    "image": "serve",
+    "summary": "Clear, steady communication that carries identity and people through transition.",
+    "metaDescription": "Brand-led change from Narris International: transition communication, stakeholder trust and executive counsel through institutional change.",
+    "lead": "Change tests trust. We help organisations carry their identity, and their stakeholders, through transition, with communication that stays clear and steady.",
+    "deliverables": [
+      {
+        "name": "Transition communication frameworks",
+        "text": "A plan for what is said, to whom and when, through the period of change."
+      },
+      {
+        "name": "Stakeholder trust strategies",
+        "text": "Approaches for sustaining or rebuilding trust with each audience."
+      },
+      {
+        "name": "Crisis positioning guidance",
+        "text": "Direction on position and tone when circumstances are difficult."
+      },
+      {
+        "name": "Narrative stabilisation strategies",
+        "text": "Ways to keep the organisation's story steady while conditions move."
+      },
+      {
+        "name": "Executive strategic counsel",
+        "text": "Confidential advisory sessions, briefings and memos for the leaders carrying the change."
+      }
+    ],
+    "capabilities": [
+      "Transition communication",
+      "Stakeholder trust",
+      "Crisis positioning",
+      "Narrative stabilisation",
+      "Merger communication",
+      "Leadership change communication",
+      "Market-entry communication",
+      "Executive strategic counsel"
+    ]
+  }
+]

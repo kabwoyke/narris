@@ -38,7 +38,7 @@ const logo = (extra = '') => `
     <span class="sr-only">, home</span>
   </a>`;
 
-/** Header logo: white lockup over the dark hero; once the bar turns white (past the hero) the supplied logo image is shown (CSS swaps them on data-solid). */
+/** Header logo: mark plus text outside it; white over the dark hero, Dark Azure once the bar turns white (follows currentColor). */
 const headerLogo = () => `
   <a href="${rel('/')}" class="group relative inline-flex items-center">
     <span class="logo-light inline-flex items-center gap-3.5">
@@ -46,7 +46,6 @@ const headerLogo = () => `
       <span class="flex flex-col font-sans text-[0.82rem] font-bold uppercase leading-[1.3] tracking-[0.28em]"><span>Narris</span><span>International</span></span>
     </span>
     <span class="sr-only">, home</span>
-    <img class="logo-dark h-16 w-auto" src="${rel('assets/logo/narris-logo-nav.png')}" width="640" height="563" alt="${config.brand.name}, strategy advisory">
   </a>`;
 
 /* ---------- header ---------- */

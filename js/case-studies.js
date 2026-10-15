@@ -180,3 +180,14 @@ export async function initHomeCredibility() {
     requestAnimationFrame(() => el.classList.add('is-visible'));
   });
 }
+
+/** Service pages: up to three published case studies tagged with this service. The section stays hidden when there are none. */
+export async function initServiceWork() {
+  const section = document.querySelector('[data-service-work]');
+  if (!section) return;
+  const studies = (await loadStudies()).filter((e) => (e.serviceTags || []).includes(section.dataset.service));
+  if (!studies.length) return;
+  section.querySelector('[data-service-list]').innerHTML = studies.slice(0, 3).map(card).join('');
+  section.hidden = false;
+  revealNew(section);
+}

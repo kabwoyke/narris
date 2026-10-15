@@ -6,6 +6,7 @@
   "scripts": {
     "dev": "tailwindcss -i ./css/input.css -o ./css/styles.css --watch",
     "build": "tailwindcss -i ./css/input.css -o ./css/styles.css --minify",
+    "services": "node scripts/make-services.mjs",
     "stubs": "node scripts/make-stubs.mjs",
     "seo": "node scripts/seo.mjs",
     "validate": "node scripts/validate.mjs",

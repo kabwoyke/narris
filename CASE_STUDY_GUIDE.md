@@ -18,7 +18,7 @@ Case studies live in `data/case-studies.json`. Adding one entry publishes it. `n
 | `title` | yes | Plain, specific, no client name unless `client-approved` |
 | `slug` | yes | Lowercase kebab-case, unique. Becomes the URL |
 | `sector` | yes | Used for the listing filter. Keep wording consistent between entries |
-| `serviceTags` | yes | One or more service ids: `research-interpretation`, `positioning-stakeholder-alignment`, `strategic-narrative-communication`, `executive-strategic-counsel`, `transition-communication-trust` |
+| `serviceTags` | yes | One or more service ids: `strategy`, `design`, `brand-communication`, `brand-led-change` |
 | `summary` | yes | One or two sentences, shown on cards |
 | `challenge`, `approach`, `outcome` | yes | Separate paragraphs with a blank line (`\n\n`). Qualitative. No guarantees, rankings or invented statistics |
 | `date` | yes | `YYYY-MM-DD`. Newest first |

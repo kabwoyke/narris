@@ -159,6 +159,82 @@ function renderSectionImages() {
 }
 renderSectionImages();
 
+/* ---------- Service pages: slow parallax drift on [data-parallax] images ---------- */
+(function parallax() {
+  const els = [...document.querySelectorAll('[data-parallax]')];
+  if (!els.length || matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+  let queued = false;
+  const update = () => {
+    queued = false;
+    els.forEach((el) => {
+      const r = el.getBoundingClientRect();
+      if (r.bottom < 0 || r.top > innerHeight) return;
+      const max = r.height * 0.05; // stays inside the image's 12% scale headroom, so no edge ever shows
+      el.style.setProperty('--py', `${Math.max(-max, Math.min(max, (r.top + r.height / 2 - innerHeight / 2) * -0.06)).toFixed(1)}px`);
+    });
+  };
+  addEventListener('scroll', () => { if (!queued) { queued = true; requestAnimationFrame(update); } }, { passive: true });
+  update();
+})();
+
+/* ---------- Typing effect: [data-type] text is typed out once, with a caret ---------- */
+(function typing() {
+  const els = [...document.querySelectorAll('[data-type]')];
+  if (!els.length || matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+  const esc = (t) => t.replace(/[&<>]/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;' }[c]));
+  els.forEach((el) => {
+    const text = el.textContent.trim();
+    el.innerHTML = `<span class="sr-only">${esc(text)}</span><span class="svc-type" aria-hidden="true"><span class="svc-type-ghost">${esc(text)}</span><span class="svc-type-live"><span class="svc-typed"></span><i class="svc-caret"></i></span></span>`;
+    const typed = el.querySelector('.svc-typed');
+    const caret = el.querySelector('.svc-caret');
+    const run = () => {
+      let n = 0;
+      const tick = () => {
+        n += 1;
+        typed.textContent = text.slice(0, n);
+        if (n < text.length) setTimeout(tick, 16 + Math.random() * 26);
+        else setTimeout(() => caret.classList.add('is-off'), 1800);
+      };
+      setTimeout(tick, Number(el.dataset.typeDelay) || 900); // lets the headline land first
+    };
+    // Start when the text first scrolls into view, so below-the-fold lines are not typed unseen.
+    new IntersectionObserver((entries, io) => { if (entries[0].isIntersecting) { io.disconnect(); run(); } }, { threshold: 0.6 }).observe(el);
+  });
+})();
+
+/* ---------- Service pages: pointer drift on the hero motif, and the scroll-filled area rail ---------- */
+(function servicePageMotion() {
+  if (matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+  const hero = document.querySelector('[data-tilt]');
+  if (hero && matchMedia('(hover: hover)').matches) {
+    hero.addEventListener('pointermove', (e) => {
+      const r = hero.getBoundingClientRect();
+      hero.style.setProperty('--mx', (((e.clientX - r.left) / r.width) * 2 - 1).toFixed(2));
+      hero.style.setProperty('--my', (((e.clientY - r.top) / r.height) * 2 - 1).toFixed(2));
+    });
+    hero.addEventListener('pointerleave', () => { hero.style.setProperty('--mx', 0); hero.style.setProperty('--my', 0); });
+  }
+  const spot = document.querySelector('[data-spot]');
+  if (spot && matchMedia('(hover: hover)').matches) {
+    spot.addEventListener('pointermove', (e) => {
+      const r = spot.getBoundingClientRect();
+      spot.style.setProperty('--sx', `${e.clientX - r.left}px`);
+      spot.style.setProperty('--sy', `${e.clientY - r.top}px`);
+    });
+  }
+  const rail = document.querySelector('[data-rail]');
+  if (!rail) return;
+  let queued = false;
+  const fill = () => {
+    queued = false;
+    const r = rail.getBoundingClientRect();
+    const p = (innerHeight * 0.6 - r.top) / r.height;
+    rail.style.setProperty('--prog', Math.min(1, Math.max(0, p)).toFixed(3));
+  };
+  addEventListener('scroll', () => { if (!queued) { queued = true; requestAnimationFrame(fill); } }, { passive: true });
+  fill();
+})();
+
 /* ---------- "In progress" stub pages (replaced phase by phase) ---------- */
 function renderStub() {
   const main = document.querySelector('main[data-stub]');
@@ -211,6 +287,7 @@ if (document.getElementById('hero')) import('./hero.js').then((m) => m.initHero(
 if (document.getElementById('insights') || document.getElementById('credibility')) {
   import('./case-studies.js').then((m) => m.initHomeCredibility());
 }
+if (document.querySelector('[data-service-work]')) import('./case-studies.js').then((m) => m.initServiceWork());
 if (document.querySelector('[data-insights-page]')) import('./case-studies.js').then((m) => m.initListing());
 if (document.querySelector('[data-insight-page]')) import('./case-studies.js').then((m) => m.initDetail());
 if (document.querySelector('[data-team-page]')) import('./people.js').then((m) => m.initTeam());

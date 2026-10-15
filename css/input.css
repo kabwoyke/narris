@@ -49,10 +49,6 @@
   /* Header */
   .site-header { @apply fixed inset-x-0 top-0 z-50 text-white transition-[background-color,box-shadow] duration-300 ease-calm; }
   .site-header[data-solid="true"] { @apply bg-white text-azure shadow-[0_1px_0_rgba(22,43,58,0.1)]; }
-  /* Logo swap: white lockup over the hero, supplied logo image on the white bar */
-  .site-header .logo-dark { display: none; }
-  .site-header[data-solid="true"] .logo-light { display: none; }
-  .site-header[data-solid="true"] .logo-dark { display: block; }
   /* Solid (white) bar: dark text, dark-azure button, dark focus ring */
   .site-header[data-solid="true"] .nav-link { @apply text-azure/85 hover:text-azure; }
   .site-header[data-solid="true"] .nav-link::after { @apply bg-azure; }
@@ -210,9 +206,97 @@
   .gz-sticker, .gz-pop, .gz-plus, .gz-step { transition: none; }
 }
 
-/* ---------- Six-discipline dot motifs (Home "How we do it") ---------- */
-.dot-motif { display: block; }
-.dot-motif .dm-off { fill: #162b3a; opacity: .18; }
-.dot-motif .dm-on { fill: #162b3a; transform-box: fill-box; transform-origin: center; transition: transform .5s ease var(--d, 0ms); }
-li:hover > .dot-motif .dm-on, li:focus-within > .dot-motif .dm-on { transform: scale(1.35); }
-@media (prefers-reduced-motion: reduce) { .dot-motif .dm-on { transition: none; } }
+/* ---------- Service pages: hero entrance, line motifs, image reveals ---------- */
+.svc-in { opacity: 0; animation: svcUp .9s cubic-bezier(.22,.61,.36,1) forwards; animation-delay: calc(var(--i, 0) * 130ms + 150ms); }
+.svc-motif { pointer-events: none; }
+.svc-motif * { transform-box: fill-box; transform-origin: center; }
+.svc-cell { animation: svcCell 9s cubic-bezier(.65,0,.35,1) infinite; animation-delay: calc(var(--k) * 120ms); }
+.svc-flow { stroke-dasharray: 8 10; animation: svcFlow 3.5s linear infinite; }
+.svc-node { animation: svcNode 4s ease-in-out infinite; animation-delay: calc(var(--k) * -0.7s); }
+.svc-bar { animation: svcBar 8s cubic-bezier(.65,0,.35,1) infinite; animation-delay: calc(var(--k) * 140ms); }
+
+/* Images reveal with a wipe and a slow settle, then the band drifts gently on scroll (main.js sets --py) */
+/* The wipe is applied to the picture, not the figure: a clipped figure has no visible area, so the scroll observer would never reveal it. */
+.js .svc-img.reveal picture { clip-path: inset(0 0 100% 0); transition: clip-path 1.2s cubic-bezier(.22,.61,.36,1); }
+.js .svc-img.reveal.is-visible picture { clip-path: inset(0); }
+.js .svc-img.reveal img { transform: scale(1.18); transition: transform 1.8s cubic-bezier(.22,.61,.36,1); }
+.js .svc-img.reveal.is-visible img { transform: scale(1); }
+.js .svc-par.reveal.is-visible img, .svc-par img { transform: translate3d(0, var(--py, 0px), 0) scale(1.12); transition: none; }
+
+/* Steps: a rule draws across the top of each card as it appears; deliverable rows underline and nudge on hover */
+.svc-step { position: relative; }
+.svc-step::before { content: ''; position: absolute; left: 0; right: 0; top: 0; height: 2px; background: #162b3a; transform: scaleX(0); transform-origin: left; transition: transform 1.1s cubic-bezier(.22,.61,.36,1); transition-delay: calc(var(--d, 0ms) + 250ms); }
+.svc-step.is-visible::before { transform: scaleX(1); }
+.svc-row::after { content: ''; position: absolute; left: 0; bottom: -1px; height: 2px; width: 100%; background: #162b3a; transform: scaleX(0); transform-origin: left; transition: transform .6s cubic-bezier(.22,.61,.36,1); }
+.svc-row:hover::after { transform: scaleX(1); }
+.svc-row h3 { transition: transform .4s cubic-bezier(.22,.61,.36,1); }
+.svc-row:hover h3 { transform: translateX(8px); }
+
+@keyframes svcUp { from { opacity: 0; transform: translateY(24px); } to { opacity: 1; transform: none; } }
+@keyframes svcCell { 0%, 100% { transform: translate(var(--dx), var(--dy)); opacity: .5; } 35%, 65% { transform: none; opacity: 1; } }
+@keyframes svcFlow { to { stroke-dashoffset: -72; } }
+@keyframes svcNode { 0%, 100% { transform: scale(1); opacity: .7; } 50% { transform: scale(1.6); opacity: 1; } }
+@keyframes svcBar { 0%, 100% { transform: translateX(var(--dx)); opacity: .55; } 35%, 65% { transform: none; opacity: 1; } }
+@media (prefers-reduced-motion: reduce) {
+  .svc-in { opacity: 1; animation: none; }
+  .svc-cell, .svc-flow, .svc-node, .svc-bar { animation: none; }
+  .js .svc-img.reveal picture, .js .svc-img.reveal img { clip-path: none; transform: none; transition: none; }
+  .svc-step::before { transform: none; transition: none; }
+  .svc-par img { transform: none !important; }
+}
+
+/* Service hero: photograph anchors the heading, under a strong Azure wash; slow zoom; motif drifts with the pointer */
+.section-img.svc-hero-img { position: absolute; inset: 0; border-radius: 0; background: #162b3a; }
+.svc-hero-img::after { background: linear-gradient(90deg, rgba(22,43,58,.96) 0%, rgba(22,43,58,.78) 50%, rgba(22,43,58,.38) 100%); }
+.svc-hero-img img { object-position: var(--pos, center 22%); transform-origin: var(--pos, center 22%); animation: kenburns 18s ease-out forwards; }
+.svc-hero-img:hover img { transform: none; }
+.svc-tilt { transform: translate(calc(var(--mx, 0) * 22px), calc(var(--my, 0) * 16px)); transition: transform .8s cubic-bezier(.22,.61,.36,1); }
+
+/* Area rail: a rule down the left that fills with scroll, with a dot that lights as each area arrives */
+.svc-rail::before, .svc-rail::after { content: ''; position: absolute; left: 0; top: 0; bottom: 0; width: 2px; background: rgba(22,43,58,.15); }
+.svc-rail::after { background: #162b3a; transform-origin: top; transform: scaleY(var(--prog, 0)); }
+.svc-area { position: relative; }
+.svc-area::before { content: ''; position: absolute; left: -1.75rem; top: 1.25rem; width: 10px; height: 10px; margin-left: -4px; border-radius: 9999px; background: #fff; border: 2px solid rgba(22,43,58,.3); transition: background .5s, border-color .5s, transform .5s cubic-bezier(.34,1.56,.64,1); z-index: 1; }
+@media (min-width: 640px) { .svc-area::before { left: -2.5rem; } }
+.svc-area.is-visible::before { background: #162b3a; border-color: #162b3a; transform: scale(1.35); }
+.svc-u { background: linear-gradient(currentColor, currentColor) 0 100% / 0 2px no-repeat; padding-bottom: 6px; transition: background-size 1.1s cubic-bezier(.22,.61,.36,1) .35s; }
+.svc-area.is-visible .svc-u { background-size: 100% 2px; }
+@media (prefers-reduced-motion: reduce) {
+  .svc-hero-img img { animation: none; }
+  .svc-tilt { transform: none; transition: none; }
+  .svc-rail::after { transform: scaleY(1); }
+  .svc-area::before, .svc-u { transition: none; }
+  .svc-u { background-size: 100% 2px; }
+}
+
+/* ---------- Service pages: creative layer ---------- */
+/* Headline words rise out of a mask, one after another */
+.svc-w { display: inline-block; overflow: hidden; vertical-align: bottom; padding-bottom: .12em; margin-bottom: -.12em; }
+.svc-w > span { display: inline-block; transform: translateY(115%); animation: svcWord 1s cubic-bezier(.22,.61,.36,1) forwards; animation-delay: calc(var(--w) * 120ms + 200ms); }
+@keyframes svcWord { to { transform: none; } }
+
+/* Area photos: muted at rest; on hover they warm to full colour and a small square (the logo's second block) slides into the corner */
+.svc-par img { filter: saturate(.55) contrast(1.02); transition: filter .8s !important; }
+.svc-par:hover img { filter: saturate(1) contrast(1); }
+.svc-par::before { content: ''; position: absolute; top: 0; right: 0; z-index: 2; width: 2.75rem; height: 2.75rem; background: #162b3a; border-bottom-left-radius: .75rem; transform: translate(100%, -100%); transition: transform .5s cubic-bezier(.22,.61,.36,1); }
+.svc-par:hover::before { transform: none; }
+
+/* Closing band: a soft light follows the pointer */
+.svc-spot::before { content: ''; position: absolute; inset: 0; pointer-events: none; background: radial-gradient(circle 320px at var(--sx, 78%) var(--sy, 25%), rgba(235,230,228,.16), transparent 70%); transition: background-position .3s; }
+@media (prefers-reduced-motion: reduce) {
+  .svc-w > span { transform: none; animation: none; }
+  .svc-par img { transition: none !important; }
+}
+
+/* ---------- Services index ---------- */
+.svc-row-link:hover .svc-go, .svc-row-link:focus-visible .svc-go { background: #162b3a; color: #fff; border-color: #162b3a; transform: rotate(-45deg); }
+@media (prefers-reduced-motion: reduce) { .svc-row-link:hover .svc-go { transform: none; } }
+
+/* ---------- Typing effect ([data-type], js/main.js) ---------- */
+/* The full text stays in the DOM (screen readers, search, no-JS). While typing, an invisible copy reserves the final height so nothing shifts. */
+.svc-type { position: relative; display: block; }
+.svc-type-ghost { visibility: hidden; }
+.svc-type-live { position: absolute; left: 0; top: 0; width: 100%; }
+.svc-caret { display: inline-block; width: .08em; height: 1em; margin-left: .06em; vertical-align: -.12em; background: currentColor; animation: caret .9s steps(1) infinite; }
+.svc-caret.is-off { display: none; }
+@media (prefers-reduced-motion: reduce) { .svc-caret { animation: none; } }

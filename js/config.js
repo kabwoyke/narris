@@ -78,14 +78,14 @@ export const config = {
 
   quoteCta: { label: 'Request a quote', href: '/contact.html?quote=1' },
 
-  // Service list (public names from the questionnaire). Used by forms and the Home cards.
+  // Service categories (client's four: Strategy, Design, Brand communication, Brand-led change). Used by forms and the Home cards.
   services: [
-    { id: 'research-interpretation', name: 'Research interpretation and strategic insight' },
-    { id: 'positioning-stakeholder-alignment', name: 'Positioning and stakeholder alignment' },
-    { id: 'strategic-narrative-communication', name: 'Strategic narrative and communication' },
-    { id: 'executive-strategic-counsel', name: 'Executive strategic counsel' },
-    { id: 'transition-communication-trust', name: 'Transition communication and trust' },
+    { id: 'strategy', name: 'Strategy' },
+    { id: 'design', name: 'Design' },
+    { id: 'brand-communication', name: 'Brand communication' },
+    { id: 'brand-led-change', name: 'Brand-led change' },
   ],
+
 
   hero: {
     intervalMs: 5000, // time each slide stays before advancing (ms)
@@ -100,7 +100,7 @@ export const config = {
         headline:
           'Positioning begins long before the first interaction, in the shaping of the perceptions, expectations, and associations through which a brand is understood.',
         support: ['Are you intentionally shaping that perception, or leaving it to chance?'],
-        cta: { label: "Become your customer's obvious choice", href: '/services.html#positioning-stakeholder-alignment' },
+        cta: { label: "Become your customer's obvious choice", href: '/service-strategy.html' },
         visual: 'photo',
         image: 'slide4',
       },
@@ -112,7 +112,7 @@ export const config = {
         support: [
           'Is your vision consistently understood across your organization, and does it connect meaningfully with the people the business exists to serve?',
         ],
-        cta: { label: 'Build a shared understanding', href: '/services.html#positioning-stakeholder-alignment' },
+        cta: { label: 'Build a shared understanding', href: '/service-strategy.html' },
         visual: 'motif',
       },
       {
@@ -121,7 +121,7 @@ export const config = {
         headline: 'We define communication as a strategic mechanism for achieving outcomes, not expression for its own sake.',
         support: ['What does it take to truly “speak to your audience’s hearts?”'],
         // D4: client's exact CTA kept. Suggested alternative: "Let us shape your narrative".
-        cta: { label: 'Let us tell your story', href: '/services.html#strategic-narrative-communication' },
+        cta: { label: 'Let us tell your story', href: '/service-brand-communication.html' },
         visual: 'photo',
         image: 'slide2',
       },
