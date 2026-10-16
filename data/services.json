@@ -4,41 +4,28 @@
     "short": "Strategy",
     "name": "Strategy",
     "image": "services",
-    "summary": "Clarity of position, grounded in how your audiences actually understand you.",
+    "summary": "In a world that demands new and better, no one can afford to stand still. Your brand can be a catalyst for change, helping you supercharge your transformation efforts and drive business performance.",
     "metaDescription": "Strategy from Narris International: research-informed positioning and stakeholder alignment for leaders and institutions.",
-    "lead": "Strategy at Narris begins with interpretation. We study how customers, partners, investors and teams understand you, then shape a position that is clear, coherent and true to your intent.",
+    "lead": "We dig through data and do the blue sky thinking to help organizations build brands that drive success.",
     "deliverables": [
       {
-        "name": "Positioning audits",
-        "text": "An account of how you are positioned today, set against how you intend to be."
+        "name": "Analysis",
+        "text": "We review your business, competitive landscape, cultural context, and changing customer needs to add clarity and direction to business strategy and guide brand decisions."
       },
       {
-        "name": "Stakeholder alignment reports",
-        "text": "Where each audience's understanding matches intent, and where it does not."
+        "name": "Positioning",
+        "text": "We uncover the simple idea that expresses your unique value and turn it into a philosophy that governs your brand's decisions and actions."
       },
       {
-        "name": "Perception analysis",
-        "text": "How customers, partners, investors and others interpret the organisation."
+        "name": "Brand architecture",
+        "text": "We develop the structure that supports your story, aligning brand expression with business strategy and giving you a roadmap for growth."
       },
       {
-        "name": "Audience interpretation frameworks",
-        "text": "A way to read and anticipate how audiences will understand what you say."
-      },
-      {
-        "name": "Strategic reports and executive briefings",
-        "text": "Concise, decision-oriented documents written for senior readers."
+        "name": "Envisioning/Innovation",
+        "text": "We facilitate innovation through the lens of brand, helping you imagine and create new things that deliver on your new strategy."
       }
     ],
-    "capabilities": [
-      "Positioning",
-      "Stakeholder alignment",
-      "Perception analysis",
-      "Audience interpretation",
-      "Research interpretation",
-      "Strategic reporting",
-      "Executive briefings",
-      "Institutional coherence"
-    ]
+    "perspective": "The innovator's dilemma"
   },
   {
     "id": "design",
@@ -46,41 +33,32 @@
     "name": "Design",
     "motif": "grid",
     "image": "positioning",
-    "summary": "The structure of meaning, designed so ideas are easy to follow and hard to misread.",
+    "summary": "Narris fuses emotion, art and rigor to turn your vision of tomorrow into something your customers can feel today.",
     "metaDescription": "Design from Narris International: narrative architecture, publication structure and positioning documents that make complex ideas clear.",
-    "lead": "Design at Narris gives strategy a form people can understand. We shape the structure of meaning, from narrative frameworks to the clarity of a report, so ideas are easy to follow and hard to misread.",
+    "lead": "We bring together emotion, art and rigor to design brand experiences that surprise, delight and drive measurable results.",
     "deliverables": [
       {
-        "name": "Narrative architecture frameworks",
-        "text": "The structure of meaning behind the organisation's communication."
+        "name": "Brand design audits",
+        "text": "We analyze opportunities for communicating with your customers at every stage of their journey."
       },
       {
-        "name": "Publication architecture",
-        "text": "The structure, sequence and format of a body of publications."
+        "name": "Creative concepts",
+        "text": "We develop the core creative concepts that define and drive visual executions and communications."
       },
       {
-        "name": "Executive narrative maps",
-        "text": "A single view of how leadership explains the organisation, and to whom."
+        "name": "Brand identity",
+        "text": "We build brand identity systems that allow a brand to express itself across all channels and mediums."
       },
       {
-        "name": "Positioning documents",
-        "text": "A written statement of position that teams and partners can share."
+        "name": "Tools and assets",
+        "text": "We create brand design principles and guidelines that allow you to own and execute your new identity."
       },
       {
-        "name": "Research synthesis documents",
-        "text": "Several sources brought together into one clear, well-structured account."
+        "name": "Training and maintenance",
+        "text": "We train internal teams in your new visual identity and help you maintain your brand as your organization grows."
       }
     ],
-    "capabilities": [
-      "Narrative architecture",
-      "Publication architecture",
-      "Positioning documents",
-      "Research synthesis",
-      "Executive narrative maps",
-      "Information structure",
-      "Editorial framing",
-      "Document refinement"
-    ]
+    "perspective": "Stop confusing minimalism with simplicity"
   },
   {
     "id": "brand-communication",
@@ -88,41 +66,36 @@
     "name": "Brand communication",
     "motif": "network",
     "image": "how",
-    "summary": "One voice across audiences, built on listening and shaped for each of them.",
+    "summary": "We find the right words to express new ideas, simplify complex topics, and empower our clients to communicate in the most effective and meaningful ways.",
     "metaDescription": "Brand communication from Narris International: narrative, messaging systems and executive communication strategy.",
-    "lead": "We help organisations speak with one voice. Brand communication at Narris is a strategic mechanism for achieving outcomes, built on listening and shaped for each audience.",
+    "lead": "We find the right words to express new ideas, simplify complex topics, and empower our clients to communicate in the most effective and meaningful ways.",
     "deliverables": [
       {
-        "name": "Narrative architecture frameworks",
-        "text": "The structure of meaning that holds communication together."
+        "name": "Messaging",
+        "text": "We establish and organize the underlying content—the core themes and facts—that brands should communicate to both external and internal audiences."
       },
       {
-        "name": "Messaging systems",
-        "text": "Core and audience-specific messages, organised for everyday use."
+        "name": "Voice",
+        "text": "We create a brand's unique tone of voice, so they can stand out in the marketplace and make more immediate connections with their stakeholders."
       },
       {
-        "name": "Executive narrative maps",
-        "text": "How leadership explains the organisation, and to whom."
+        "name": "Strategic storytelling",
+        "text": "Whether it's in a manifesto or video, or on the About Us of a brand's website, we bring a brand's strategy to life in narrative form."
       },
       {
-        "name": "Institutional communication strategy",
-        "text": "Direction for how the organisation communicates, and why."
+        "name": "Content strategy",
+        "text": "We help brands determine what to say, how to say it and where to say it across their experiences, including websites, apps and events."
       },
       {
-        "name": "Communication direction for leaders",
-        "text": "Clear guidance on what to say, to whom, and why."
+        "name": "Content creation",
+        "text": "We provide ongoing as well as one-off content-creation and editorial services, helping brands deliver powerful communications to the world."
+      },
+      {
+        "name": "Campaign development",
+        "text": "We transform brand ideas into dynamic, voice-driven campaigns across channels, for both internal and external audiences."
       }
     ],
-    "capabilities": [
-      "Narrative development",
-      "Messaging systems",
-      "Communication strategy",
-      "Executive communication",
-      "Audience messaging",
-      "Voice and tone guidance",
-      "Stakeholder communication",
-      "Investor communication"
-    ]
+    "perspective": "When words go wrong"
   },
   {
     "id": "brand-led-change",
@@ -130,40 +103,31 @@
     "name": "Brand-led change",
     "motif": "shift",
     "image": "serve",
-    "summary": "Clear, steady communication that carries identity and people through transition.",
+    "summary": "We help clients deliver on the full potential of their brand by embedding it in the hearts, minds and actions of the entire organization.",
     "metaDescription": "Brand-led change from Narris International: transition communication, stakeholder trust and executive counsel through institutional change.",
-    "lead": "Change tests trust. We help organisations carry their identity, and their stakeholders, through transition, with communication that stays clear and steady.",
+    "lead": "We help clients deliver on the full potential of their brand by embedding it in the hearts, minds and actions of the entire organization.",
     "deliverables": [
       {
-        "name": "Transition communication frameworks",
-        "text": "A plan for what is said, to whom and when, through the period of change."
+        "name": "Explain the why",
+        "text": "We help you explain, engage and excite people in the promise of your brand."
       },
       {
-        "name": "Stakeholder trust strategies",
-        "text": "Approaches for sustaining or rebuilding trust with each audience."
+        "name": "Lead with culture",
+        "text": "We uncover the strengths of your culture and identify areas to build, leading to long-term success."
       },
       {
-        "name": "Crisis positioning guidance",
-        "text": "Direction on position and tone when circumstances are difficult."
+        "name": "Make purpose real",
+        "text": "We define and create brand-led experiences that equip your people to take action behind a strategic idea."
       },
       {
-        "name": "Narrative stabilisation strategies",
-        "text": "Ways to keep the organisation's story steady while conditions move."
+        "name": "Define your employer brand",
+        "text": "We work with you to define a compelling, differentiated EVP and employer experience that attracts and retains top talent."
       },
       {
-        "name": "Executive strategic counsel",
-        "text": "Confidential advisory sessions, briefings and memos for the leaders carrying the change."
+        "name": "Keep it relevant",
+        "text": "We give you the tools to measure progress, identify opportunities and strengthen your brand."
       }
     ],
-    "capabilities": [
-      "Transition communication",
-      "Stakeholder trust",
-      "Crisis positioning",
-      "Narrative stabilisation",
-      "Merger communication",
-      "Leadership change communication",
-      "Market-entry communication",
-      "Executive strategic counsel"
-    ]
+    "perspective": "Time may be changing but the promise you make to employees never should"
   }
 ]

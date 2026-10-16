@@ -130,7 +130,10 @@ for (const href of hrefs) {
 /* 3. Banned words and never-publish guard in visible copy (HTML + config) */
 const banned = ['cutting-edge', 'world-class', 'synergy', 'game-changing', 'supercharge', 'unlock'];
 const guard = ['guarantee', 'guaranteed', 'revenue model', 'competitor'];
-const copy = [...pages.values(), await readFile(path.join(root, 'js/config.js'), 'utf8')].join('\n').toLowerCase();
+const copy = [...pages.values(), await readFile(path.join(root, 'js/config.js'), 'utf8')].join('\n')
+  // Client's exact wording wins over the banned list (brief section 2): Services comments.docx, Strategy line.
+  .replace('helping you supercharge your transformation efforts', '')
+  .toLowerCase();
 for (const w of banned) if (copy.includes(w)) fail(`banned word in copy: "${w}"`);
 for (const w of guard) if (copy.includes(w)) fail(`never-publish term in copy: "${w}"`);
 

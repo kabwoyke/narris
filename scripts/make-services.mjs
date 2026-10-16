@@ -15,6 +15,7 @@ const services = JSON.parse(await readFile(path.join(root, 'data/services.json')
 const esc = (s) => String(s).replace(/[&<>"]/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]));
 const num = (i) => String(i + 1).padStart(2, '0');
 const hasCopy = (s) => !!(s.lead || s.deliverables.length);
+const slug = (t) => t.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '');
 const file = (s) => `service-${s.id}.html`;
 
 const arrow = '<svg aria-hidden="true" viewBox="0 0 16 16" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M3 8h10M9 4l4 4-4 4"/></svg>';
@@ -71,15 +72,14 @@ const engage = `
     <!-- HOW WE ENGAGE (names only, no prices) -->
     <section id="engage" class="section scroll-mt-32 bg-azure text-white" aria-labelledby="engage-h">
       <div class="container-x">
-        <div class="reveal max-w-2xl"><p class="eyebrow !text-azure-200">How we engage</p><h2 id="engage-h" class="h-section mt-4 !text-white">Engagements shaped around the question, not a template.</h2>
-        <p class="mt-5 text-lg text-azure-100">Quotations are provided on request, once we understand what you are facing.</p></div>
+        <div class="reveal max-w-2xl"><p class="eyebrow !text-azure-200">How we engage</p><h2 id="engage-h" class="h-section mt-4 !text-white">Our engagements are shaped around the client&rsquo;s business questions.</h2>
+        <p class="mt-5 text-lg text-azure-100">Quotations are provided on request, once we understand how success looks like for you.</p></div>
         <ul class="mt-12 grid gap-px bg-white/15 sm:grid-cols-2 lg:grid-cols-5" data-stagger>
           ${['Retained executive advisory', 'Fixed-fee strategic projects', 'Strategic reports and analysis', 'Workshops and executive sessions', 'Long-term institutional partnerships']
             .map((t) => `<li class="reveal group bg-azure p-6"><span aria-hidden="true" class="block h-px w-8 bg-azure-200 transition-all duration-500 group-hover:w-16"></span><p class="mt-6 font-serif text-xl leading-snug">${t}</p></li>`).join('\n          ')}
         </ul>
         <div class="reveal mt-14 flex flex-wrap items-center gap-x-8 gap-y-4">
-          <a class="btn bg-warm text-azure hover:opacity-90" href="contact.html?quote=1">Request a quotation</a>
-          <a class="link-arrow text-white" href="contact.html">Or start a conversation ${arrow}</a>
+          <a class="btn bg-warm text-azure hover:opacity-90" href="contact.html">Start a conversation</a>
         </div>
         <p class="reveal mt-8 text-azure-200">Work can be delivered remotely, with clients worldwide.</p>
       </div>
@@ -90,18 +90,17 @@ const indexPage = () => `${head('What we do', 'Narris International services: st
     <section class="relative overflow-hidden bg-azure pb-16 pt-40 text-white sm:pb-24">
       <figure class="section-img svc-hero-img absolute inset-0" data-section-img="philosophy"></figure>
       <div class="container-x relative">
-        <p style="--i:0" class="svc-in eyebrow !text-azure-200">What we do</p>
-        <h1 class="h-display mt-4 max-w-4xl !text-white">${'We help leaders and institutions be understood the way they intend.'.split(' ').map((w, n) => `<span class="svc-w"><span style="--w:${n}">${w}</span></span>`).join(' ')}</h1>
-        <p style="--i:2" data-type class="svc-in lead mt-6 max-w-2xl !text-azure-100">Most organisations have the ambition, intelligence or capability. We close the gap between organisational intent and audience interpretation.</p>
+        <h1 class="h-display max-w-4xl !text-white">${'By untangling complexity, we reveal the core of who you are.'.split(' ').map((w, n) => `<span class="svc-w"><span style="--w:${n}">${w}</span></span>`).join(' ')}</h1>
       </div>
     </section>
 
     <!-- Stacked service list: each row opens its own page. Row ids keep older #anchor links working. -->
     <section class="section" aria-labelledby="list-h">
       <div class="container-x">
-        <h2 id="list-h" class="reveal h-section max-w-3xl">Four ways we work with you.</h2>
+        <p class="reveal eyebrow">What we do</p>
+        <h2 id="list-h" class="reveal h-section mt-4 max-w-3xl">We clear the way for you to show up bold, confident and authentically you.</h2>
         <ul class="mt-12 border-t border-azure/25" data-stagger>
-${services.map((s) => `          <li id="${s.id}" class="reveal scroll-mt-32 border-b border-azure/25">
+${services.map((s) => `          <li id="${s.id}" class="reveal group/row relative scroll-mt-32 border-b border-azure/25">
             <a href="${file(s)}" class="svc-row-link group grid items-center gap-x-8 gap-y-3 py-8 sm:grid-cols-[1fr_auto] sm:py-10">
               <span>
                 <span class="block font-serif text-2xl font-extrabold leading-tight transition-transform duration-300 group-hover:translate-x-2 sm:text-4xl">${esc(s.name)}</span>
@@ -110,6 +109,10 @@ ${services.map((s) => `          <li id="${s.id}" class="reveal scroll-mt-32 bor
               <span class="svc-go hidden h-14 w-14 items-center justify-center rounded-full border border-azure/30 text-azure transition duration-300 sm:flex">${arrow}</span>
               <span class="link-arrow mt-2 sm:hidden">Read more ${arrow}</span>
             </a>
+            <!-- Hover/focus menu: links straight to each specific service on the detail page -->
+            <ul class="invisible absolute left-0 top-full z-20 -mt-2 min-w-[18rem] translate-y-1 rounded-xl border border-azure/10 bg-white py-2 opacity-0 shadow-xl transition duration-200 group-hover/row:visible group-hover/row:translate-y-0 group-hover/row:opacity-100 group-focus-within/row:visible group-focus-within/row:translate-y-0 group-focus-within/row:opacity-100" aria-label="${esc(s.name)} services">
+              ${s.deliverables.map((d) => `<li><a class="block px-5 py-2.5 text-sm font-semibold text-azure transition hover:bg-warm" href="${file(s)}#${slug(d.name)}">${esc(d.name)}</a></li>`).join('\n              ')}
+            </ul>
           </li>`).join('\n')}
         </ul>
       </div>
@@ -117,10 +120,9 @@ ${services.map((s) => `          <li id="${s.id}" class="reveal scroll-mt-32 bor
 
     <section class="bg-warm section" aria-labelledby="statement-h">
       <div class="container-x">
-        <h2 id="statement-h" class="h-section max-w-4xl" data-stagger>${['Clarity creates trust.', 'Trust creates alignment.', 'Alignment creates influence.'].map((t) => `<span class="reveal block">${t}</span>`).join('')}</h2>
+        <h2 id="statement-h" class="reveal h-section max-w-4xl">We are a bunch of sharp thinkers and creative makers on a mission to do the best work of our lives, and always enjoy the ride.</h2>
         <div class="reveal mt-10 flex flex-wrap items-center gap-x-8 gap-y-4">
           <a class="btn btn-primary" href="contact.html">Let&rsquo;s talk</a>
-          <a class="link-arrow" href="about.html#approach">How we do it ${arrow}</a>
         </div>
       </div>
     </section>
@@ -154,23 +156,18 @@ const detail = (s, i) => {
       <figure class="section-img svc-hero-img absolute inset-0"${s.imagePos ? ` style="--pos:${s.imagePos}"` : ''} data-section-img="${s.image}"></figure>
       ${motif(s, 'absolute -right-10 top-1/2 hidden h-[30rem] w-[30rem] -translate-y-1/2 opacity-60 lg:block')}
       <div class="container-x relative">
-        <nav aria-label="Breadcrumb" style="--i:0" class="svc-in text-sm text-azure-200"><a class="underline-offset-4 hover:underline" href="services.html">What we do</a><span aria-hidden="true"> / </span><span>${esc(s.name)}</span></nav>
-        <h1 class="h-display mt-6 max-w-4xl !text-white">${s.name.split(' ').map((w, n) => `<span class="svc-w"><span style="--w:${n}">${esc(w)}</span></span>`).join(' ')}</h1>
+        <h1 class="h-display max-w-4xl !text-white">${s.name.split(' ').map((w, n) => `<span class="svc-w"><span style="--w:${n}">${esc(w)}</span></span>`).join(' ')}</h1>
         ${s.lead ? `<p style="--i:2" data-type class="svc-in lead mt-6 max-w-2xl !text-azure-100">${esc(s.lead)}</p>` : ''}
-        <p style="--i:3" class="svc-in mt-10 flex flex-wrap items-center gap-x-8 gap-y-4">
-          <a class="btn bg-warm text-azure hover:opacity-90" href="${q}">Discuss this service</a>
-          <a class="link-arrow text-white" href="${q}&amp;quote=1">Request a quotation ${arrow}</a>
-        </p>
       </div>
     </section>
 
 ${s.deliverables.length ? `    <!-- Service areas: bold, underlined heading with a short description -->
     <section class="section" aria-labelledby="areas-h">
       <div class="container-x">
-        <h2 id="areas-h" class="reveal h-section max-w-3xl">What our ${esc(s.short.toLowerCase())} work includes</h2>
+        <h2 id="areas-h" class="sr-only">${esc(s.name)} services</h2>
         <!-- Each area is anchored by its own photograph; a rule down the left fills as you scroll (js/main.js) -->
-        <ol class="svc-rail relative mt-14 space-y-16 pl-7 sm:pl-10 lg:space-y-24" data-rail>
-          ${s.deliverables.map((d, k) => `<li class="svc-area reveal grid items-center gap-8 lg:grid-cols-12 lg:gap-14">
+        <ol class="svc-rail relative mt-14 space-y-28 pl-7 sm:pl-10 lg:space-y-44" data-rail>
+          ${s.deliverables.map((d, k) => `<li id="${slug(d.name)}" class="svc-area reveal scroll-mt-32 grid items-center gap-8 lg:grid-cols-12 lg:gap-14">
             <figure class="section-img svc-img svc-par reveal aspect-[4/3] lg:col-span-6 ${k % 2 ? 'lg:order-2' : ''}" data-parallax data-section-img="${img(k)}"></figure>
             <div class="lg:col-span-6 ${k % 2 ? 'lg:order-1' : ''}">
               <h3 class="svc-u inline font-serif text-2xl font-extrabold sm:text-3xl">${esc(d.name)}</h3>
@@ -192,20 +189,6 @@ ${s.deliverables.length ? `    <!-- Service areas: bold, underlined heading with
       </div>
     </section>
 
-    ${s.capabilities && s.capabilities.length ? `<!-- Capabilities: a plain, line-separated list -->
-    <section class="section" aria-labelledby="cap-h">
-      <div class="container-x grid gap-10 lg:grid-cols-12 lg:gap-14">
-        <div class="lg:col-span-4">
-          <h2 id="cap-h" class="reveal h-section">Capabilities</h2>
-          <figure class="section-img svc-img reveal mt-8 hidden aspect-[4/5] lg:block" data-section-img="${img(5)}"></figure>
-        </div>
-        <ul class="border-t border-azure/25 sm:columns-2 lg:col-span-8" data-stagger>
-          ${s.capabilities.map((c) => `<li class="reveal break-inside-avoid border-b border-azure/25 py-4 font-serif text-xl">${esc(c)}</li>`).join('\n          ')}
-        </ul>
-      </div>
-    </section>
-
-    ` : ''}
     ${hasCopy(s) ? '' : `<!-- No copy yet: shown until the client's service text is added to data/services.json -->
     <section class="section" aria-labelledby="pending-h">
       <div class="container-x max-w-3xl">
@@ -214,16 +197,30 @@ ${s.deliverables.length ? `    <!-- Service areas: bold, underlined heading with
       </div>
     </section>`}
 
-    <!-- Call to action -->
-    <section class="svc-spot relative overflow-hidden section bg-azure text-white" data-spot aria-labelledby="talk-h">
-      ${motif(s, 'pointer-events-none absolute -right-16 -top-10 hidden h-[26rem] w-[26rem] opacity-[0.14] md:block')}
-      <div class="container-x relative">
-        <h2 id="talk-h" data-type data-type-delay="250" class="reveal h-section max-w-3xl !text-white">Let&rsquo;s talk about what you are working on.</h2>
-        <p class="reveal mt-10 flex flex-wrap items-center gap-x-8 gap-y-4">
-          <a class="btn bg-warm text-azure hover:opacity-90" href="${q}">Let&rsquo;s talk</a>
-          <a class="link-arrow text-white" href="${q}&amp;quote=1">Request a quotation ${arrow}</a>
-        </p>
-        <p class="reveal mt-14 flex flex-wrap justify-between gap-4 border-t border-white/20 pt-6 text-sm font-bold">
+    <!-- Get in touch, then featured articles (placeholder title per service; TODO(client): replace with real articles) -->
+    <section class="section bg-warm" aria-labelledby="touch-h">
+      <div class="container-x">
+        <h2 id="touch-h" class="sr-only">Get in touch</h2>
+        <p class="reveal"><a class="btn btn-primary" href="${q}">Get in touch</a></p>
+      </div>
+    </section>
+
+    ${s.perspective ? `<section class="section" aria-labelledby="persp-h">
+      <div class="container-x">
+        <h2 id="persp-h" class="reveal h-section">Our perspectives</h2>
+        <ul class="mt-10 grid gap-5 md:grid-cols-3" data-stagger>
+          <li class="reveal border border-azure/20 p-6">
+            <p class="eyebrow">Featured article</p>
+            <p class="mt-4 font-serif text-2xl font-extrabold leading-snug">${esc(s.perspective)}</p>
+            <p class="mt-4 text-sm text-azure/70">Coming soon.</p>
+          </li>
+        </ul>
+      </div>
+    </section>` : ''}
+
+    <section class="section bg-azure text-white" aria-label="More services">
+      <div class="container-x">
+        <p class="reveal flex flex-wrap justify-between gap-4 text-sm font-bold">
           <a class="link-arrow text-white" href="${file(prev)}">Previous: ${esc(prev.short)}</a>
           <a class="link-arrow text-white" href="services.html">All services</a>
           <a class="link-arrow text-white" href="${file(next)}">Next: ${esc(next.short)} ${arrow}</a>
