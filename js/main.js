@@ -149,12 +149,15 @@ function renderSectionImages() {
   const esc = (t) => String(t).replace(/[&<>"]/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]));
   document.querySelectorAll('[data-section-img]').forEach((fig) => {
     const img = config.images.sections?.[fig.dataset.sectionImg];
+    // Hero image (inside the first section of <main>) is the LCP element: load eagerly with high priority.
+    const hero = fig.classList.contains('svc-hero-img') || fig.closest('main > section:first-child') !== null;
+    const load = hero ? 'fetchpriority="high" decoding="async"' : 'loading="lazy" decoding="async"';
     if (!img) { fig.remove(); return; }
     const sizes = '(min-width: 1024px) 76rem, 100vw';
     const web = img.src.includes('images.unsplash.com');
     fig.innerHTML = web
-      ? `<picture><source type="image/webp" srcset="${set(img.src, 'webp')}" sizes="${sizes}"><img src="${img.src}?auto=format&fit=crop&q=68&w=1200" srcset="${set(img.src)}" sizes="${sizes}" alt="${esc(img.alt)}" loading="lazy" decoding="async"></picture>`
-      : `<picture><img src="${img.src}" alt="${esc(img.alt)}" loading="lazy" decoding="async"></picture>`;
+      ? `<picture><source type="image/webp" srcset="${set(img.src, 'webp')}" sizes="${sizes}"><img src="${img.src}?auto=format&fit=crop&q=68&w=1200" srcset="${set(img.src)}" sizes="${sizes}" alt="${esc(img.alt)}" ${load}></picture>`
+      : `<picture><img src="${img.src}" alt="${esc(img.alt)}" ${load}></picture>`;
   });
 }
 renderSectionImages();
