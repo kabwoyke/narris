@@ -11,6 +11,7 @@ import { fileURLToPath } from 'node:url';
 import path from 'node:path';
 
 const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
+// TODO(client): "sCharge" in the Strategy summary is a placeholder for the banned word "supercharge"; confirm replacement wording.
 const services = JSON.parse(await readFile(path.join(root, 'data/services.json'), 'utf8'));
 const esc = (s) => String(s).replace(/[&<>"]/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]));
 const num = (i) => String(i + 1).padStart(2, '0');
