@@ -178,7 +178,7 @@ export function initHero() {
       <div class="hero-slide${i === 0 && prerendered ? ' no-intro' : ''}" id="hero-slide-${i}" role="group" aria-roledescription="slide" aria-label="${i + 1} of ${total}: ${esc(s.tab)}" data-id="${s.id}">
         <div class="hero-bg ${bgClass}">${img ? pictureHTML(img, { eager: i === 0 }) : ''}</div>
         ${hasVisual ? `<div class="pointer-events-none absolute inset-y-0 right-0 flex w-full items-center justify-end pr-0 opacity-25 sm:opacity-45 lg:w-[46%] lg:pr-6 lg:opacity-100" aria-hidden="true"><div class="w-[min(40rem,125%)] shrink-0 translate-x-[18%] lg:w-full lg:translate-x-0" data-visual="${s.visual}"></div></div>` : ''}
-        <div class="container-x relative flex h-full items-center pb-40 pt-28 sm:pb-32 sm:pt-24">
+        <div class="container-x relative flex h-full items-center pb-32 pt-28 sm:pb-32 sm:pt-24">
           <div class="${hasVisual ? 'max-w-[44rem]' : 'max-w-4xl'}">
             ${s.tab === 'Latest report' ? `<p class="eyebrow hero-anim mb-7" style="--i:0">${esc(s.tab)}</p>` : ''}
             <${tag} class="hero-anim font-serif font-semibold leading-[1.4] sm:leading-[1.7] tracking-[0.015em] [word-spacing:0.1em] !text-white ${size}" style="--i:1">${esc(s.headline)}</${tag}>
@@ -194,8 +194,8 @@ export function initHero() {
     <div id="hero-slides" class="absolute inset-0">${slides.map(slideHTML).join('')}</div>
     <canvas class="hero-canvas" aria-hidden="true"></canvas>
     <div class="absolute inset-x-0 bottom-0 z-10 pb-[4.75rem] md:pb-6">
-      <div class="container-x flex items-end justify-between gap-6">
-        <ol class="grid flex-1 grid-cols-5 gap-3 sm:gap-5 lg:max-w-[60rem]" aria-label="Slides">
+      <div class="container-x flex items-end justify-between gap-6 max-md:justify-end">
+        <ol class="hidden flex-1 grid-cols-5 gap-3 md:grid sm:gap-5 lg:max-w-[60rem]" aria-label="Slides">
           ${slides.map((s, i) => `<li><button type="button" class="hero-tab w-full" data-tab="${i}" aria-label="${esc(s.tab)}"><span class="bar" aria-hidden="true"><i></i></span></button></li>`).join('')}
         </ol>
         <div class="flex shrink-0 items-center gap-1 text-white">
