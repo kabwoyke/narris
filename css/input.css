@@ -119,8 +119,8 @@
 
 /* ---------- Home sections ---------- */
 .gap-row { position: relative; outline-offset: 4px; }
-.gap-row .gap-l, .gap-row .gap-r { min-width: 0; overflow-wrap: anywhere; }
-.gap-row .gap-line { flex: 1 1 0; min-width: 1.5rem; height: 2px; background: #162b3a; transform: scaleX(0); transform-origin: left center; transition: transform .6s cubic-bezier(.22,.61,.36,1); }
+.gap-row .gap-l, .gap-row .gap-r { min-width: 0; overflow-wrap: normal; }
+.gap-row .gap-line { flex: 1 1 0; min-width: .75rem; height: 2px; background: #162b3a; transform: scaleX(0); transform-origin: left center; transition: transform .6s cubic-bezier(.22,.61,.36,1); }
 .gap-row:hover .gap-line, .gap-row:focus .gap-line, .gap-row.is-lit .gap-line { transform: scaleX(1); }
 @media (prefers-reduced-motion: reduce) { .gap-row .gap-line { transition: none; } }
 .gap-row .gap-l, .gap-row .gap-r { transition: color .4s; }
