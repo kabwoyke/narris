@@ -4,7 +4,7 @@
     "short": "Strategy",
     "name": "Strategy",
     "image": "services",
-    "summary": "In a world that demands new and better, no one can afford to stand still. Your brand can be a catalyst for change, helping you sCharge your transformation efforts and drive business performance.",
+    "summary": "In a world that demands new and better, no one can afford to stand still. Your brand can be a catalyst for change, helping you SuperCharge your transformation efforts and drive business performance.",
     "metaDescription": "Strategy from Narris International: research-informed positioning and stakeholder alignment for leaders and institutions.",
     "lead": "We dig through data and do the blue sky thinking to help organizations build brands that drive success.",
     "deliverables": [
@@ -25,7 +25,11 @@
         "text": "We facilitate innovation through the lens of brand, helping you imagine and create new things that deliver on your new strategy."
       }
     ],
-    "perspective": "The innovator's dilemma"
+    "perspective": "The innovator's dilemma",
+    "supporting": [
+      "Why positioning is a decision, not a slogan",
+      "Reading the market before it reads you"
+    ]
   },
   {
     "id": "design",
@@ -58,7 +62,11 @@
         "text": "We train internal teams in your new visual identity and help you maintain your brand as your organization grows."
       }
     ],
-    "perspective": "Stop confusing minimalism with simplicity"
+    "perspective": "Stop confusing minimalism with simplicity",
+    "supporting": [
+      "Clarity is a design decision",
+      "Identity systems that outlast a campaign"
+    ]
   },
   {
     "id": "brand-communication",
@@ -95,7 +103,11 @@
         "text": "We transform brand ideas into dynamic, voice-driven campaigns across channels, for both internal and external audiences."
       }
     ],
-    "perspective": "When words go wrong"
+    "perspective": "When words go wrong",
+    "supporting": [
+      "Say less, mean more",
+      "One voice across every audience"
+    ]
   },
   {
     "id": "brand-led-change",
@@ -128,6 +140,10 @@
         "text": "We give you the tools to measure progress, identify opportunities and strengthen your brand."
       }
     ],
-    "perspective": "Time may be changing but the promise you make to employees never should"
+    "perspective": "Time may be changing but the promise you make to employees never should",
+    "supporting": [
+      "Explaining the why through change",
+      "Culture is the strategy people live"
+    ]
   }
 ]

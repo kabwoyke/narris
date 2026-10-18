@@ -210,11 +210,14 @@ ${s.deliverables.length ? `    <!-- Service areas: bold, underlined heading with
       <div class="container-x">
         <h2 id="persp-h" class="reveal h-section">Our perspectives</h2>
         <ul class="mt-10 grid gap-5 md:grid-cols-3" data-stagger>
-          <li class="reveal border border-azure/20 p-6">
-            <p class="eyebrow">Featured article</p>
-            <p class="mt-4 font-serif text-2xl font-extrabold leading-snug">${esc(s.perspective)}</p>
-            <p class="mt-4 text-sm text-azure/70">Coming soon.</p>
-          </li>
+          ${[['Featured article',s.perspective,'text-2xl'],...(s.supporting||[]).map(x=>['Supporting article',x,'text-xl'])].map(([l,x,z],n)=>`<li class="reveal flex flex-col border border-azure/20">
+            <figure class="section-img aspect-[16/10] !rounded-none" data-section-img="${pool(s,i)(n+3)}"></figure>
+            <div class="p-6">
+              <p class="eyebrow">${l}</p>
+              <p class="mt-4 font-serif ${z} font-extrabold leading-snug">${esc(x)}</p>
+              <p class="mt-4 text-sm text-azure/70">Coming soon.</p>
+            </div>
+          </li>`).join('')}
         </ul>
       </div>
     </section>` : ''}
