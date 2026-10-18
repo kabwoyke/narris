@@ -166,7 +166,7 @@ export function initHero() {
     const hasVisual = s.visual === 'motif' || s.visual === 'rings';
     const long = s.headline.length > 90;
     const short = s.headline.length < 40;
-    const size = short ? 'text-5xl sm:text-6xl lg:text-7xl' : long ? 'text-[1.75rem] sm:text-4xl lg:text-[2.9rem]' : 'text-[2rem] sm:text-5xl lg:text-6xl';
+    const size = short ? 'text-5xl sm:text-6xl lg:text-7xl' : long ? 'text-[1.5rem] sm:text-4xl lg:text-[2.9rem]' : 'text-[1.75rem] sm:text-5xl lg:text-6xl';
     const support = s.support.length > 1
       ? `<ul class="hero-anim mt-9 space-y-3.5 text-base leading-relaxed tracking-[0.01em] text-azure-200 sm:text-lg" style="--i:2">${s.support.map((q) => `<li class="flex gap-3"><span aria-hidden="true" class="mt-[0.7em] h-px w-5 shrink-0 bg-azure-300"></span>${esc(q)}</li>`).join('')}</ul>`
       : s.support.length === 1
@@ -178,10 +178,10 @@ export function initHero() {
       <div class="hero-slide${i === 0 && prerendered ? ' no-intro' : ''}" id="hero-slide-${i}" role="group" aria-roledescription="slide" aria-label="${i + 1} of ${total}: ${esc(s.tab)}" data-id="${s.id}">
         <div class="hero-bg ${bgClass}">${img ? pictureHTML(img, { eager: i === 0 }) : ''}</div>
         ${hasVisual ? `<div class="pointer-events-none absolute inset-y-0 right-0 flex w-full items-center justify-end pr-0 opacity-25 sm:opacity-45 lg:w-[46%] lg:pr-6 lg:opacity-100" aria-hidden="true"><div class="w-[min(40rem,125%)] shrink-0 translate-x-[18%] lg:w-full lg:translate-x-0" data-visual="${s.visual}"></div></div>` : ''}
-        <div class="container-x relative flex h-full items-center pb-36 pt-24 sm:pb-32">
+        <div class="container-x relative flex h-full items-center pb-40 pt-28 sm:pb-32 sm:pt-24">
           <div class="${hasVisual ? 'max-w-[44rem]' : 'max-w-4xl'}">
             ${s.tab === 'Latest report' ? `<p class="eyebrow hero-anim mb-7" style="--i:0">${esc(s.tab)}</p>` : ''}
-            <${tag} class="hero-anim font-serif font-semibold leading-[1.7] tracking-[0.015em] [word-spacing:0.1em] !text-white ${size}" style="--i:1">${esc(s.headline)}</${tag}>
+            <${tag} class="hero-anim font-serif font-semibold leading-[1.4] sm:leading-[1.7] tracking-[0.015em] [word-spacing:0.1em] !text-white ${size}" style="--i:1">${esc(s.headline)}</${tag}>
             ${support}
             <a class="btn btn-primary hero-anim mt-12" style="--i:3" href="${rel(s.cta.href)}" data-hero-cta>${esc(s.cta.label)} ${ARROW}</a>
           </div>
