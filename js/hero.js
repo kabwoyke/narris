@@ -181,6 +181,7 @@ export function initHero() {
         <div class="container-x relative flex h-full items-center pb-32 pt-28 sm:pb-32 sm:pt-24">
           <div class="${hasVisual ? 'max-w-[44rem]' : 'max-w-4xl'}">
             ${s.tab === 'Latest report' ? `<p class="eyebrow hero-anim mb-7" style="--i:0">${esc(s.tab)}</p>` : ''}
+            ${s.statement ? `<p class="hero-anim mb-6 font-sans text-xl font-extrabold tracking-[0.01em] text-white sm:text-2xl" style="--i:0"><strong>${esc(s.statement)}</strong></p>` : ''}
             <${tag} class="hero-anim font-serif font-semibold leading-[1.4] sm:leading-[1.7] tracking-[0.015em] [word-spacing:0.1em] !text-white ${size}" style="--i:1">${esc(s.headline)}</${tag}>
             ${support}
             <a class="btn btn-primary hero-anim mt-12" style="--i:3" href="${rel(s.cta.href)}" data-hero-cta>${esc(s.cta.label)} ${ARROW}</a>

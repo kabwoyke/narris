@@ -128,7 +128,8 @@ export const config = {
       {
         id: 'gen-z',
         tab: 'Gen Z research',
-        // Client wording (Narris hero section-edited.docx): single question, no supporting line.
+        // Client wording (Nargens comments.docx): bold statement above the question.
+        statement: 'Think with Narris, Grow with Narris',
         headline: 'What if the intelligence that helps powerful institutions make better decisions became accessible, affordable, and genuinely useful to the young people making decisions about their own futures?',
         support: [],
         // TODO(client): scope of Gen Z research is unconfirmed (D5)
