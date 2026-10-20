@@ -184,6 +184,10 @@ export const config = {
       values: { src: unsplash('1573496130488-f3bd89d03653'), alt: 'Women of colour at a meeting table, attentive and mid-conversation.' },
       how: { src: unsplash('1758691737045-3ece61135061'), alt: 'A multi-ethnic team working through ideas on notes stuck to a glass wall.' },
       serve: { src: unsplash('1631131431211-4f768d89087d'), alt: 'A confident African business leader in a blue suit, smiling outdoors.' },
+      // Gen Z (NarGens) page. TODO(client): placeholders.
+      gzIntro: { src: unsplash('1687422808565-929533931584'), alt: 'A young African entrepreneur at his fruit stand, giving a thumbs up.' },
+      gzProblem: { src: unsplash('1566397000179-d83e7535349d'), alt: 'Aerial view of a broken hanging bridge, a gap that is hard to cross.' },
+      gzSolution: { src: unsplash('1687422809654-579d81c29d32'), alt: 'A young African woman entrepreneur at her fruit stand, checking her phone.' },
       contact: { src: unsplash('1600679472868-eae382e28b34'), alt: 'A smiling African professional in a navy suit and striped tie.' },
     },
   },
