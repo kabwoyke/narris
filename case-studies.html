@@ -3,8 +3,8 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Insights | Narris International</title>
-  <meta name="description" content="Insights from Narris International: case studies on positioning, stakeholder alignment and strategic communication, shared with client consent or fully anonymised.">
+  <title>Perspectives | Narris International</title>
+  <meta name="description" content="Perspectives from Narris International: articles and case studies on positioning, stakeholder alignment and strategic communication, shared with client consent or fully anonymised.">
   <meta name="theme-color" content="#162b3a">
   <link rel="manifest" href="manifest.webmanifest">
   <link rel="apple-touch-icon" href="assets/icons/apple-touch-icon.png">
@@ -15,22 +15,21 @@
   <link rel="icon" type="image/png" sizes="16x16" href="assets/icons/favicon-16.png">
   <meta property="og:type" content="website">
   <meta property="og:site_name" content="Narris International">
-  <meta property="og:title" content="Insights | Narris International">
-  <meta property="og:description" content="Insights from Narris International: case studies on positioning, stakeholder alignment and strategic communication, shared with client consent or fully anonymised.">
+  <meta property="og:title" content="Perspectives | Narris International">
+  <meta property="og:description" content="Perspectives from Narris International: articles and case studies on positioning, stakeholder alignment and strategic communication, shared with client consent or fully anonymised.">
   <meta property="og:url" content="https://narrisinternational.com/case-studies.html">
   <meta property="og:image" content="https://narrisinternational.com/assets/images/og-image.png">
   <meta property="og:image:width" content="1200">
   <meta property="og:image:height" content="630">
   <meta property="og:image:alt" content="Narris International logo">
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="Insights | Narris International">
-  <meta name="twitter:description" content="Insights from Narris International: case studies on positioning, stakeholder alignment and strategic communication, shared with client consent or fully anonymised.">
+  <meta name="twitter:title" content="Perspectives | Narris International">
+  <meta name="twitter:description" content="Perspectives from Narris International: articles and case studies on positioning, stakeholder alignment and strategic communication, shared with client consent or fully anonymised.">
   <meta name="twitter:image" content="https://narrisinternational.com/assets/images/og-image.png">
   <!-- seo:end -->
 
 
 
-  <link rel="icon" type="image/png" href="assets/logo/narris-logo-bg.png">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <!-- Fonts load without blocking first paint (display=swap) -->
@@ -51,7 +50,7 @@
         <ul class="mt-3 flex flex-wrap gap-x-5 gap-y-2">
           <li><a href="services.html">What we do</a></li><li><a href="about.html#approach">How we do it</a></li>
           <li><a href="about.html">About Us</a></li><li><a href="team.html">Our Team</a></li><li><a href="testimonials.html">Testimonials</a></li>
-          <li><a href="careers.html">Careers</a></li><li><a href="case-studies.html">Insights</a></li><li><a href="gen-z-research.html">Gen Z Research</a></li>
+          <li><a href="careers.html">Careers</a></li><li><a href="case-studies.html">Perspectives</a></li><li><a href="nargens.html">NarGens</a></li>
           <li><a href="faqs.html">FAQs</a></li><li><a href="contact.html">Contact</a></li>
         </ul>
       </nav>
@@ -62,14 +61,25 @@
   <main id="main" data-insights-page>
     <section class="bg-azure pb-16 pt-40 text-white sm:pb-20">
       <div class="container-x">
-        <p class="eyebrow !text-azure-200">Insights</p>
-        <h1 class="h-display mt-4 max-w-3xl !text-white">Work and thinking, shared with consent.</h1>
-        <p class="lead mt-6 max-w-2xl !text-azure-100">Case studies are shared with client consent or fully anonymised in line with the Data Protection Act.</p>
+        <p class="eyebrow !text-azure-200">Perspectives</p>
+        <h1 class="h-display mt-4 max-w-3xl !text-white">Explore the Narris point of view</h1>
       </div>
     </section>
-    <section class="section" aria-labelledby="list-h">
+
+    <!-- All articles: the four services' featured and supporting pieces (data/services.json) plus anything in data/articles.json -->
+    <section class="section" aria-labelledby="articles-h" data-articles>
       <div class="container-x">
-        <h2 id="list-h" class="sr-only">Case studies</h2>
+        <h2 id="articles-h" class="h-section">Articles</h2>
+        <div data-article-filters hidden class="mt-8 flex flex-wrap gap-2" role="group" aria-label="Filter articles by service"></div>
+        <ul class="mt-8 grid gap-5 md:grid-cols-2 lg:grid-cols-3" data-article-list></ul>
+        <noscript><p>Articles load with JavaScript. Please call <a class="underline" href="tel:+254111429478">0111429478</a> or <a class="underline" href="contact.html">contact us</a>.</p></noscript>
+      </div>
+    </section>
+
+    <section class="section bg-warm" aria-labelledby="list-h">
+      <div class="container-x">
+        <h2 id="list-h" class="h-section">Case studies</h2>
+        <p class="lead mt-4 mb-10 max-w-2xl">Case studies are shared with client consent or fully anonymised in line with the Data Protection Act.</p>
         <form data-filters hidden class="mb-10 grid gap-5 sm:grid-cols-2 lg:max-w-2xl" aria-label="Filter case studies" onsubmit="return false">
           <div><label for="f-sector" class="mb-2 block text-sm font-semibold">Sector</label><select id="f-sector" class="field" data-filter="sector"><option value="">All sectors</option></select></div>
           <div><label for="f-service" class="mb-2 block text-sm font-semibold">Service</label><select id="f-service" class="field" data-filter="service"><option value="">All services</option></select></div>
@@ -81,7 +91,6 @@
           <p class="mt-4 text-azure/80">If you would like to talk about a challenge of your own, we are glad to hear it.</p>
           <a class="btn btn-primary mt-8" href="contact.html">Begin with a conversation</a>
         </div>
-        <noscript><p>Case studies load with JavaScript. Please call <a class="underline" href="tel:+254111429478">0111429478</a> or <a class="underline" href="contact.html">contact us</a>.</p></noscript>
       </div>
     </section>
   </main>

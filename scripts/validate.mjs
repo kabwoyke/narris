@@ -124,7 +124,7 @@ for (const href of hrefs) {
 {
   const gz = config.hero.slides.find((x) => x.id === 'gen-z');
   const flat = (t) => t.replace(/<[^>]+>/g, '').replace(/\s+/g, ' ');
-  if (gz && !flat(pages.get('gen-z-research.html')).includes(flat(gz.headline))) fail('gen-z-research.html opening statement is out of sync with the gen-z hero slide');
+  if (gz && !flat(pages.get('nargens.html')).includes(flat(gz.headline))) fail('nargens.html opening statement is out of sync with the gen-z hero slide');
 }
 
 /* 3. Banned words and never-publish guard in visible copy (HTML + config) */

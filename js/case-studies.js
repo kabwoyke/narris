@@ -69,10 +69,51 @@ const revealNew = (root) => root.querySelectorAll('.reveal').forEach((el) => req
 const newestFirst = (a, b) => String(b.date).localeCompare(String(a.date));
 const loadStudies = async () => (await loadJSON('data/case-studies.json')).filter(isPublishableCaseStudy).sort(newestFirst);
 
-/** Insights listing: cards with sector and service filters. Shows a calm empty state when nothing is publishable. */
+/**
+ * Articles: the featured and supporting pieces from each service (data/services.json) plus any entry in
+ * data/articles.json. Add an article by appending { title, service, summary, date, href, published } there:
+ * `service` is a service id, `href` optional (cards without one read "Coming soon").
+ */
+async function initArticles(page) {
+  const section = page.querySelector('[data-articles]');
+  if (!section) return;
+  const services = await loadJSON('data/services.json');
+  const extra = (await loadJSON('data/articles.json')).filter((a) => a.published === true && a.title);
+  const fromServices = services.flatMap((s) => [
+    ...(s.perspective ? [{ title: s.perspective, service: s.id, featured: true }] : []),
+    ...(s.supporting || []).map((title) => ({ title, service: s.id })),
+  ]);
+  const articles = [...extra.sort(newestFirst), ...fromServices];
+  const list = section.querySelector('[data-article-list]');
+  const filters = section.querySelector('[data-article-filters]');
+  const names = Object.fromEntries(services.map((s) => [s.id, s.short || s.name]));
+  const cardHTML = (a) => {
+    const tag = a.href ? 'a' : 'div';
+    return `<li class="reveal"><${tag} ${a.href ? `href="${esc(a.href)}"` : ''} class="${a.href ? 'card-lift ' : ''}flex h-full flex-col border border-azure/15 bg-white p-7">
+      <p class="eyebrow">${esc(names[a.service] || 'Narris')}${a.featured ? ' &middot; Featured' : ''}</p>
+      <h3 class="mt-3 font-serif text-2xl leading-snug">${esc(a.title)}</h3>
+      ${a.summary ? `<p class="mt-3 text-azure/75">${esc(a.summary)}</p>` : ''}
+      ${a.href ? `<span class="link-arrow mt-6 self-start">Read more ${ARROW}</span>` : '<p class="mt-6 text-sm text-azure/65">Coming soon.</p>'}
+    </${tag}></li>`;
+  };
+  const draw = (service) => {
+    list.innerHTML = articles.filter((a) => !service || a.service === service).map(cardHTML).join('');
+    revealNew(list);
+    filters.querySelectorAll('button').forEach((b) => b.setAttribute('aria-pressed', String(b.dataset.service === service)));
+  };
+  const ids = [...new Set(articles.map((a) => a.service))];
+  filters.innerHTML = [['', 'All'], ...ids.map((id) => [id, names[id] || id])]
+    .map(([id, t]) => `<button type="button" data-service="${esc(id)}" aria-pressed="false" class="border border-azure/25 px-4 py-2 text-sm font-semibold transition hover:border-azure aria-pressed:bg-azure aria-pressed:text-white">${esc(t)}</button>`).join('');
+  filters.hidden = ids.length < 2;
+  filters.addEventListener('click', (e) => { const b = e.target.closest('button'); if (b) draw(b.dataset.service); });
+  draw('');
+}
+
+/** Perspectives listing: articles, then case-study cards with sector and service filters. Shows a calm empty state when nothing is publishable. */
 export async function initListing() {
   const page = document.querySelector('[data-insights-page]');
   if (!page) return;
+  initArticles(page);
   const studies = await loadStudies();
   const list = page.querySelector('[data-list]');
   const empty = page.querySelector('[data-empty]');
@@ -114,8 +155,8 @@ export async function initDetail() {
   if (!e) {
     document.title = 'Insight not found | Narris International';
     host.innerHTML = `
-      <section class="bg-azure pb-16 pt-40 text-white sm:pb-20"><div class="container-x"><p class="eyebrow !text-azure-200">Insights</p><h1 class="h-display mt-4 max-w-3xl !text-white">We could not find that insight.</h1></div></section>
-      <section class="section"><div class="container-x"><a class="link-arrow" href="${rel('/case-studies.html')}">Back to Insights</a></div></section>`;
+      <section class="bg-azure pb-16 pt-40 text-white sm:pb-20"><div class="container-x"><p class="eyebrow !text-azure-200">Perspectives</p><h1 class="h-display mt-4 max-w-3xl !text-white">We could not find that perspective.</h1></div></section>
+      <section class="section"><div class="container-x"><a class="link-arrow" href="${rel('/case-studies.html')}">Back to Perspectives</a></div></section>`;
     return;
   }
   document.title = `${e.title} | Narris International`;
@@ -136,7 +177,7 @@ export async function initDetail() {
         ${blocks.filter(([, t]) => t).map(([h, t]) => `<section class="mb-12"><h2 class="font-serif text-3xl">${h}</h2>${para(t)}</section>`).join('')}
         <ul class="flex flex-wrap gap-2" aria-label="Services involved">${(e.serviceTags || []).map((t) => `<li><a class="block border border-azure/20 px-3 py-1.5 text-sm hover:border-azure" href="${rel('/services.html')}#${encodeURIComponent(t)}">${esc(serviceName(t))}</a></li>`).join('')}</ul>
         <p class="mt-8 text-sm text-azure/65">${[fmtDate(e.date), disclosure].filter(Boolean).join(' &middot; ')}</p>
-        <div class="mt-12 flex flex-wrap items-center gap-6"><a class="btn btn-primary" href="${rel('/contact.html')}">Begin with a conversation</a><a class="link-arrow" href="${rel('/case-studies.html')}">All insights</a></div>
+        <div class="mt-12 flex flex-wrap items-center gap-6"><a class="btn btn-primary" href="${rel('/contact.html')}">Begin with a conversation</a><a class="link-arrow" href="${rel('/case-studies.html')}">All perspectives</a></div>
       </div>
     </article>`;
   revealNew(host);

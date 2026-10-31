@@ -57,8 +57,8 @@ export const config = {
         { label: 'Careers', href: '/careers.html' },
       ],
     },
-    { label: 'Insights', href: '/case-studies.html' },
-    { label: 'Gen Z Research', href: '/gen-z-research.html' },
+    { label: 'Perspectives', href: '/case-studies.html' },
+    { label: 'NarGens', href: '/nargens.html' },
     { label: 'FAQs', href: '/faqs.html' },
     { label: 'Contact', href: '/contact.html' },
   ],
@@ -68,8 +68,8 @@ export const config = {
     { label: 'How we do it', href: '/about.html#approach' },
     { label: 'About Us', href: '/about.html' },
     { label: 'Our Team', href: '/team.html' },
-    { label: 'Insights', href: '/case-studies.html' },
-    { label: 'Gen Z Research', href: '/gen-z-research.html' },
+    { label: 'Perspectives', href: '/case-studies.html' },
+    { label: 'NarGens', href: '/nargens.html' },
     { label: 'Testimonials', href: '/testimonials.html' },
     { label: 'FAQs', href: '/faqs.html' },
     { label: 'Careers', href: '/careers.html' },
@@ -113,7 +113,9 @@ export const config = {
           'Is your vision consistently understood across your organization, and does it connect meaningfully with the people the business exists to serve?',
         ],
         cta: { label: 'Build a shared understanding', href: '/service-strategy.html' },
-        visual: 'motif',
+        // Client feedback: the alignment animation was dropped in favour of a background photo, like the other slides.
+        visual: 'photo',
+        image: 'slide1',
       },
       {
         id: 'communication',
@@ -127,13 +129,13 @@ export const config = {
       },
       {
         id: 'gen-z',
-        tab: 'Gen Z research',
+        tab: 'NarGens',
         // Client wording (Nargens comments.docx): bold statement above the question.
         statement: 'Think with Narris, Grow with Narris',
         headline: 'What if the intelligence that helps powerful institutions make better decisions became accessible, affordable, and genuinely useful to the young people making decisions about their own futures?',
         support: [],
-        // TODO(client): scope of Gen Z research is unconfirmed (D5)
-        cta: { label: 'Experience research differently', href: '/gen-z-research.html' },
+        // TODO(client): scope of NarGens is unconfirmed (D5)
+        cta: { label: 'Experience research differently', href: '/nargens.html' },
         visual: 'photo',
         image: 'slide5',
       },
@@ -154,6 +156,11 @@ export const config = {
   // Image sources. Swap the `src` (or point to /assets/images/...) to change any image.
   // TODO(client): all placeholders. Slide 2 should match the MOOD of Untold Research without copying its imagery (D3).
   images: {
+    slide1: {
+      src: unsplash('1758691737543-09a1b2b715fa'),
+      alt: 'A multiracial group of colleagues in relaxed conversation by a window.',
+      width: 2000, height: 1333,
+    },
     slide2: {
       src: unsplash('1573167710701-35950a41e251'),
       alt: 'Black women executives in a meeting room, one speaking while the other listens.',
@@ -203,7 +210,7 @@ export const config = {
   flags: {
     // Sample case studies / testimonials render ONLY when this is true. Keep false in production (D9).
     showSamples: false,
-    // Visible "Draft" notes on pages awaiting client sign-off (Gen Z Research). Set false at launch.
+    // Visible "Draft" notes on pages awaiting client sign-off (NarGens). Set false at launch.
     showDraftNotes: true,
     // Drifting-points canvas in the hero.
     showNetwork: true,

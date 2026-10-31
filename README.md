@@ -39,9 +39,9 @@ Home section copy (vision, mission, values, services, philosophy) is static HTML
 - The logo mark in the footer and footer is an inline SVG traced from the supplied logo (`js/components.js` -> `logoMark`). Original files: `assets/logo/narris-logo.png` (transparent) and `assets/logo/narris-logo-bg.png` (warm background, used as the favicon for now).
 
 ### SEO and launch
-`npm run seo` writes a generated block (between `seo:start` and `seo:end`) into every page head: canonical URL, favicons, Open Graph, Twitter card, plus JSON-LD (Organization and ProfessionalService) on the home page. It also writes `sitemap.xml` and `robots.txt`. Titles and descriptions are read from each page, so edit them in the HTML and re-run. Pages with a `noindex` tag (Gen Z Research until sign-off) and the `case-study.html` template stay out of the sitemap. When the domain is confirmed, change `site.url` and run `npm run seo`; `npm run validate` fails if a canonical or sitemap entry is stale.
+`npm run seo` writes a generated block (between `seo:start` and `seo:end`) into every page head: canonical URL, favicons, Open Graph, Twitter card, plus JSON-LD (Organization and ProfessionalService) on the home page. It also writes `sitemap.xml` and `robots.txt`. Titles and descriptions are read from each page, so edit them in the HTML and re-run. Pages with a `noindex` tag (NarGens until sign-off) and the `case-study.html` template stay out of the sitemap. When the domain is confirmed, change `site.url` and run `npm run seo`; `npm run validate` fails if a canonical or sitemap entry is stale.
 
-Lighthouse (mobile, local server, Oct 2026): 91-99 Performance, 100 Accessibility, 100 Best Practices and 100 SEO on every page. The exception is Gen Z Research at 69 SEO, which is the deliberate `noindex` and will rise once it is removed.
+Lighthouse (mobile, local server, Oct 2026): 91-99 Performance, 100 Accessibility, 100 Best Practices and 100 SEO on every page. The exception is NarGens at 69 SEO, which is the deliberate `noindex` and will rise once it is removed.
 
 ### Deployment
 The site is static and the built CSS is committed, so any static host works.
@@ -68,7 +68,7 @@ Dark Azure `#162b3a` is the primary colour (buttons, text, dark bands). Warm Lig
 | 3 | About Us | Done, awaiting review |
 | 4 | Contact + Privacy, cookie notice live | Done, awaiting review. Form endpoint still needed for a live submission test |
 | 5 | Insights and case studies (see `CASE_STUDY_GUIDE.md`) | Done, awaiting review |
-| 6 | Gen Z Research (playful layout, placeholder copy, noindex until sign-off) | Done, awaiting review |
+| 6 | NarGens (playful layout, placeholder copy, noindex until sign-off) | Done, awaiting review |
 | 7 | Our Team + Testimonials (from `data/team.json` and `data/testimonials.json`; placeholders hidden) | Done, awaiting review |
 | 8 | FAQs accordion + Careers (roles, application form) | Done, awaiting review |
 | 9 | Hardening and launch: SEO tags, sitemap, robots, JSON-LD, favicons, Lighthouse and accessibility pass | Done, awaiting review. Domain, real email and logo swap-in still pending client input |
@@ -76,7 +76,7 @@ Dark Azure `#162b3a` is the primary colour (buttons, text, dark bands). Warm Lig
 Pages for later phases show a shared "In progress" stub with contact options, so no link is ever dead.
 
 ## Decisions taken with defaults (CLAUDE.md section 4)
-D1 titles use the questionnaire wording, body copy uses the Concept wording. D2 slide 1 uses reflective questions, no guarantee. D3 imagery is original-mood placeholders, not Untold Research's. D4 client's CTA "Let us tell your story…" kept. D5 Gen Z research scope is `TODO(client)`. D6 one CTA per slide. D7 "How we do it" is `/about.html#approach`. D8 tagline "Clarity creates trust." D9 samples hidden by default. D10 email set in one place.
+D1 titles use the questionnaire wording, body copy uses the Concept wording. D2 slide 1 uses reflective questions, no guarantee. D3 imagery is original-mood placeholders, not Untold Research's. D4 client's CTA "Let us tell your story…" kept. D5 NarGens scope is `TODO(client)`. D6 one CTA per slide. D7 "How we do it" is `/about.html#approach`. D8 tagline "Clarity creates trust." D9 samples hidden by default. D10 email set in one place.
 
 ## Open `TODO(client)` items
 Search the code for `TODO(client)`. The consolidated list is in `Claude.md` section 14 (email and domain, tagline, hero CTAs for slides 1 and 4, Gen Z scope, imagery direction, address/social/hours, team and testimonials, service one-liners, legal review, form endpoint).

@@ -54,7 +54,7 @@ const head = (title, desc, noindex = false) => `<!doctype html>
         <ul class="mt-3 flex flex-wrap gap-x-5 gap-y-2">
           <li><a href="services.html">What we do</a></li><li><a href="about.html#approach">How we do it</a></li>
           <li><a href="about.html">About Us</a></li><li><a href="team.html">Our Team</a></li><li><a href="testimonials.html">Testimonials</a></li>
-          <li><a href="careers.html">Careers</a></li><li><a href="case-studies.html">Insights</a></li><li><a href="gen-z-research.html">Gen Z Research</a></li>
+          <li><a href="careers.html">Careers</a></li><li><a href="case-studies.html">Perspectives</a></li><li><a href="nargens.html">NarGens</a></li>
           <li><a href="faqs.html">FAQs</a></li><li><a href="contact.html">Contact</a></li>
         </ul>
       </nav>
@@ -110,10 +110,12 @@ ${services.map((s) => `          <li id="${s.id}" class="reveal group/row relati
               <span class="svc-go hidden h-14 w-14 items-center justify-center rounded-full border border-azure/30 text-azure transition duration-300 sm:flex">${arrow}</span>
               <span class="link-arrow mt-2 sm:hidden">Read more ${arrow}</span>
             </a>
-            <!-- Hover/focus menu: links straight to each specific service on the detail page -->
-            <ul class="invisible absolute left-0 top-full z-20 -mt-2 min-w-[18rem] translate-y-1 rounded-xl border border-azure/10 bg-white py-2 opacity-0 shadow-xl transition duration-200 group-hover/row:visible group-hover/row:translate-y-0 group-hover/row:opacity-100 group-focus-within/row:visible group-focus-within/row:translate-y-0 group-focus-within/row:opacity-100" aria-label="${esc(s.name)} services">
-              ${s.deliverables.map((d) => `<li><a class="block px-5 py-2.5 text-sm font-semibold text-azure transition hover:bg-warm" href="${file(s)}#${slug(d.name)}">${esc(d.name)}</a></li>`).join('\n              ')}
-            </ul>
+            <!-- Hover/focus menu: expands inside the row (pushes the next service down instead of covering it) -->
+            <div class="grid grid-rows-[0fr] opacity-0 transition-[grid-template-rows,opacity] duration-300 group-hover/row:grid-rows-[1fr] group-hover/row:opacity-100 group-focus-within/row:grid-rows-[1fr] group-focus-within/row:opacity-100">
+              <ul class="flex min-h-0 flex-wrap gap-2 overflow-hidden" aria-label="${esc(s.name)} services">
+                ${s.deliverables.map((d) => `<li class="pb-8"><a class="block rounded-full border border-azure/20 px-4 py-2 text-sm font-semibold text-azure transition hover:bg-warm" href="${file(s)}#${slug(d.name)}">${esc(d.name)}</a></li>`).join('')}
+              </ul>
+            </div>
           </li>`).join('\n')}
         </ul>
       </div>

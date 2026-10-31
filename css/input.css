@@ -148,7 +148,7 @@
 /* Mobile sticky bar offset so content is never covered */
 @media (max-width: 767px) { body.has-mobile-bar { padding-bottom: 3.75rem; } }
 
-/* ---------- Gen Z Research: playful layer (palette stays Azure / Warm Light / White) ---------- */
+/* ---------- NarGens: playful layer (palette stays Azure / Warm Light / White) ---------- */
 .gz { --bounce: cubic-bezier(.34,1.56,.64,1); }
 .gz-dot { display: inline-block; width: .6rem; height: .6rem; margin-right: .4rem; border-radius: 9999px; background: #ebe6e4; animation: gzPulse 1.8s ease-in-out infinite; }
 .gz-bubbles { position: absolute; inset: 0; pointer-events: none; }
@@ -167,6 +167,7 @@
 .gz-blob { aspect-ratio: 1; max-width: 22rem; margin-inline: auto; color: #162b3a; background: #ebe6e4; padding: 2rem; border-radius: 58% 42% 55% 45% / 48% 56% 44% 52%; animation: gzMorph 14s ease-in-out infinite; }
 .gz-ring { transform-origin: center; transform-box: fill-box; animation: ring 6s ease-in-out infinite; animation-delay: calc(var(--k) * -1.3s); }
 
+.gz-product-img { display: flex; aspect-ratio: 4 / 3; flex-direction: column; align-items: center; justify-content: center; gap: .6rem; background: #ebe6e4; border-bottom: 1px dashed rgba(22,43,58,.3); color: rgba(22,43,58,.55); font-size: .75rem; font-weight: 600; letter-spacing: .12em; text-transform: uppercase; }
 .gz-sticker { padding: 2rem; border-radius: 1.75rem; border: 1px solid rgba(22,43,58,.15); transform: rotate(var(--r, 0deg)); transition: transform .5s var(--bounce), box-shadow .4s; }
 .gz-sticker.reveal { transform: translateY(18px) rotate(var(--r, 0deg)); }
 .js .gz-sticker.reveal.is-visible, .gz-sticker { transform: rotate(var(--r, 0deg)); }

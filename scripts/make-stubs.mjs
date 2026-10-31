@@ -19,9 +19,9 @@ const STUBS = {
   'faqs.html': ['FAQs', 8],
   'contact.html': ['Contact', 4],
   'careers.html': ['Careers', 8],
-  'case-studies.html': ['Insights', 5],
-  'case-study.html': ['Insight', 5],
-  'gen-z-research.html': ['Gen Z Research', 6],
+  'case-studies.html': ['Perspectives', 5],
+  'case-study.html': ['Perspective', 5],
+  'nargens.html': ['NarGens', 6],
   'privacy.html': ['Privacy', 4],
 };
 
@@ -55,7 +55,7 @@ const page = (title, phase) => `<!doctype html>
         <ul class="mt-3 flex flex-wrap gap-x-5 gap-y-2">
           <li><a href="services.html">What we do</a></li><li><a href="about.html#approach">How we do it</a></li>
           <li><a href="about.html">About Us</a></li><li><a href="team.html">Our Team</a></li><li><a href="testimonials.html">Testimonials</a></li>
-          <li><a href="careers.html">Careers</a></li><li><a href="case-studies.html">Insights</a></li><li><a href="gen-z-research.html">Gen Z Research</a></li>
+          <li><a href="careers.html">Careers</a></li><li><a href="case-studies.html">Perspectives</a></li><li><a href="nargens.html">NarGens</a></li>
           <li><a href="faqs.html">FAQs</a></li><li><a href="contact.html">Contact</a></li>
         </ul>
       </nav>

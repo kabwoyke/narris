@@ -100,7 +100,7 @@ for (const f of files) {
 
 /* sitemap.xml and robots.txt */
 const today = new Date().toISOString().slice(0, 10);
-// Pages carrying a noindex robots tag (e.g. Gen Z Research until content sign-off) are kept out of the sitemap.
+// Pages carrying a noindex robots tag (e.g. NarGens until content sign-off) are kept out of the sitemap.
 const noindex = new Set();
 for (const f of files) if (/<meta name="robots" content="[^"]*noindex/.test(await readFile(path.join(root, f), 'utf8'))) noindex.add(f);
 const urls = files.filter((f) => !SKIP_SITEMAP.has(f) && !noindex.has(f)).map((f) => (f === 'index.html' ? `${site}/` : abs(f)));

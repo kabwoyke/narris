@@ -261,7 +261,7 @@ function renderStub() {
     </section>`;
 }
 
-/* ---------- Gen Z Research: tap-to-reveal questions and a looping ticker ---------- */
+/* ---------- NarGens: tap-to-reveal questions and a looping ticker ---------- */
 function initPlay() {
   document.querySelectorAll('.gz-pop').forEach((btn) => {
     btn.addEventListener('click', () => {

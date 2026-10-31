@@ -168,9 +168,9 @@ export function initHero() {
     const short = s.headline.length < 40;
     const size = short ? 'text-5xl sm:text-6xl lg:text-7xl' : long ? 'text-[1.5rem] sm:text-4xl lg:text-[2.9rem]' : 'text-[1.75rem] sm:text-5xl lg:text-6xl';
     const support = s.support.length > 1
-      ? `<ul class="hero-anim mt-9 space-y-3.5 text-base leading-relaxed tracking-[0.01em] text-azure-200 sm:text-lg" style="--i:2">${s.support.map((q) => `<li class="flex gap-3"><span aria-hidden="true" class="mt-[0.7em] h-px w-5 shrink-0 bg-azure-300"></span>${esc(q)}</li>`).join('')}</ul>`
+      ? `<ul class="hero-anim mt-6 space-y-2.5 text-base leading-relaxed tracking-[0.01em] text-azure-200 sm:text-lg" style="--i:2">${s.support.map((q) => `<li class="flex gap-3"><span aria-hidden="true" class="mt-[0.7em] h-px w-5 shrink-0 bg-azure-300"></span>${esc(q)}</li>`).join('')}</ul>`
       : s.support.length === 1
-        ? `<p class="hero-anim mt-9 max-w-xl text-lg leading-relaxed tracking-[0.01em] text-azure-200 sm:text-xl" style="--i:2">${esc(s.support[0])}</p>`
+        ? `<p class="hero-anim mt-6 max-w-xl text-lg leading-relaxed tracking-[0.01em] text-azure-200 sm:text-xl" style="--i:2">${esc(s.support[0])}</p>`
         : '';
     const bgClass = img ? '' : 'is-plain';
     const tag = i === 0 ? 'h1' : 'h2'; // first headline is the page h1
@@ -182,9 +182,9 @@ export function initHero() {
           <div class="${hasVisual ? 'max-w-[44rem]' : 'max-w-4xl'}">
             ${s.tab === 'Latest report' ? `<p class="eyebrow hero-anim mb-7" style="--i:0">${esc(s.tab)}</p>` : ''}
             ${s.statement ? `<p class="hero-anim mb-6 font-sans text-xl font-extrabold tracking-[0.01em] text-white sm:text-2xl" style="--i:0"><strong>${esc(s.statement)}</strong></p>` : ''}
-            <${tag} class="hero-anim font-serif font-semibold leading-[1.4] sm:leading-[1.7] tracking-[0.015em] [word-spacing:0.1em] !text-white ${size}" style="--i:1">${esc(s.headline)}</${tag}>
+            <${tag} class="hero-anim font-serif font-semibold leading-[1.25] sm:leading-[1.3] tracking-[0.01em] !text-white ${size}" style="--i:1">${esc(s.headline)}</${tag}>
             ${support}
-            <a class="btn btn-primary hero-anim mt-12" style="--i:3" href="${rel(s.cta.href)}" data-hero-cta>${esc(s.cta.label)} ${ARROW}</a>
+            <a class="btn btn-primary hero-anim mt-9" style="--i:3" href="${rel(s.cta.href)}" data-hero-cta>${esc(s.cta.label)} ${ARROW}</a>
           </div>
         </div>
       </div>`;
