@@ -207,7 +207,7 @@ function renderFooter() {
       <div class="container-x grid gap-12 py-16 md:grid-cols-12">
         <div class="md:col-span-5">
           ${logo()}
-          <p class="mt-6 max-w-sm text-sm leading-relaxed text-azure-200">${config.brand.metaDescriptor}</p>
+          <p class="mt-6 max-w-sm text-sm leading-relaxed text-azure-200">A research-informed brand strategy consultancy and design agency</p>
           <p class="mt-4 max-w-sm text-sm leading-relaxed text-azure-300">Conversations with Narris are treated as confidential.</p>
         </div>
         <nav aria-label="Footer" class="md:col-span-3">

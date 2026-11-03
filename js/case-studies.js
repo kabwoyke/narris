@@ -87,13 +87,30 @@ async function initArticles(page) {
   const list = section.querySelector('[data-article-list]');
   const filters = section.querySelector('[data-article-filters]');
   const names = Object.fromEntries(services.map((s) => [s.id, s.short || s.name]));
+  // Card image: an article's own `image` { src, alt }, else the next photo from a shuffled pool (config.images.articles).
+  // Images are decorative (the headline sits beside them), so alt is empty. The pool repeats only once it runs out.
+  const pool = [...(config.images.articles || [])].sort(() => Math.random() - 0.5);
+  let next = 0;
+  const pick = () => (pool.length ? { src: unsplash(pool[next++ % pool.length]), alt: '' } : null);
+  const unsplash = (id) => `https://images.unsplash.com/photo-${id}`;
+  const thumb = (a) => {
+    a.photo ||= a.image || pick();
+    const img = a.photo;
+    if (!img) return '';
+    const web = img.src.includes('images.unsplash.com');
+    const src = web ? `${img.src}?auto=format&fit=crop&q=68&w=800&h=500` : img.src;
+    return `<img src="${esc(src)}" alt="${esc(img.alt || '')}" width="800" height="500" loading="lazy" decoding="async" class="aspect-[16/10] w-full object-cover">`;
+  };
   const cardHTML = (a) => {
     const tag = a.href ? 'a' : 'div';
-    return `<li class="reveal"><${tag} ${a.href ? `href="${esc(a.href)}"` : ''} class="${a.href ? 'card-lift ' : ''}flex h-full flex-col border border-azure/15 bg-white p-7">
+    return `<li class="reveal"><${tag} ${a.href ? `href="${esc(a.href)}"` : ''} class="${a.href ? 'card-lift ' : ''}flex h-full flex-col border border-azure/15 bg-white">
+      ${thumb(a)}
+      <div class="flex flex-1 flex-col p-7">
       <p class="eyebrow">${esc(names[a.service] || 'Narris')}${a.featured ? ' &middot; Featured' : ''}</p>
       <h3 class="mt-3 font-serif text-2xl leading-snug">${esc(a.title)}</h3>
       ${a.summary ? `<p class="mt-3 text-azure/75">${esc(a.summary)}</p>` : ''}
       ${a.href ? `<span class="link-arrow mt-6 self-start">Read more ${ARROW}</span>` : '<p class="mt-6 text-sm text-azure/65">Coming soon.</p>'}
+      </div>
     </${tag}></li>`;
   };
   const draw = (service) => {

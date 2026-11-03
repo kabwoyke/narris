@@ -181,6 +181,14 @@ export const config = {
       alt: 'A confident young African business leader in a blue suit, smiling outdoors.',
       width: 2000, height: 1333,
     },
+    // Perspectives article thumbnails: a pool of Unsplash photo ids, shuffled on each page load so cards get random images.
+    // TODO(client): placeholders. Add or remove ids freely; an article can still set its own `image` in data/articles.json.
+    articles: [
+      '1522071820081-009f0129c71c', '1552664730-d307ca884978', '1517048676732-d65bc937f952', '1454165804606-c3d57bc86b40',
+      '1497366216548-37526070297c', '1556761175-5973dc0f32e7', '1521737711867-e3b97375f902', '1531482615713-2afd69097998',
+      '1553877522-43269d4ea984', '1542744173-8e7e53415bb0', '1600880292203-757bb62b4baf', '1507679799987-c73779587ccf',
+      '1573497019940-1c28c88b4f3e', '1519389950473-47ba0277781c',
+    ],
     // Home page section images (one per section, rendered by main.js into <figure data-section-img="key">).
     // TODO(client): placeholders. Replace with supplied photography; keep calm, editorial, Azure/Warm-leaning.
     sections: {
